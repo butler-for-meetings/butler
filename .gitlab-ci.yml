@@ -10,6 +10,7 @@ eslint:
   stage: lint
   # What scripts do we want to run?
   before_script:
-    - npm install --only=dev
+    - cd $CI_PROJECT_DIR
+    - npm install
   script:
-    - ng lint
+    - npx ng lint
