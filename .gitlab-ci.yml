@@ -10,6 +10,6 @@ eslint:
   stage: lint
   # What scripts do we want to run?
   before_script:
-    - npm install -g @angular/cli
+    - npm install -g @angular-devkit/build-angular @angular/cli
   script:
     - ng lint
