@@ -8,7 +8,7 @@
     "serve:client": "ng serve --host localhost --port 8081 --open",
     "build": "ng build",
     "test": "ng test",
-    "lint": "ng lint",
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {

@@ -11,24 +11,24 @@
         }
       },
       "root": "",
-      "sourceRoot": "app/client/src",
+      "sourceRoot": "app/client",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/butler",
-            "index": "app/client/src/index.html",
-            "main": "app/client/src/main.ts",
-            "polyfills": "app/client/src/polyfills.ts",
+            "index": "app/client/index.html",
+            "main": "app/client/main.ts",
+            "polyfills": "app/client/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": false,
             "assets": [
-              "app/client/src/favicon.ico",
-              "app/client/src/assets"
+              "app/client/favicon.ico",
+              "app/client/assets"
             ],
             "styles": [
-              "app/client/src/styles.scss"
+              "app/client/styles.scss"
             ],
             "scripts": []
           },
@@ -36,8 +36,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "app/client/src/environments/environment.ts",
-                  "with": "app/client/src/environments/environment.prod.ts"
+                  "replace": "app/client/environments/environment.ts",
+                  "with": "app/client/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -79,16 +79,16 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "app/client/src/test.ts",
-            "polyfills": "app/client/src/polyfills.ts",
+            "main": "app/client/test.ts",
+            "polyfills": "app/client/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "assets": [
-              "app/client/src/favicon.ico",
-              "app/client/src/assets"
+              "app/client/favicon.ico",
+              "app/client/assets"
             ],
             "styles": [
-              "app/client/src/styles.scss"
+              "app/client/styles.scss"
             ],
             "scripts": []
           }
@@ -98,7 +98,7 @@
           "options": {
             "tsConfig": [
               "tsconfig.app.json",
-              "tsconfig.spec.json",
+              "tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
