@@ -10,5 +10,5 @@ eslint:
   stage: lint
   # What scripts do we want to run?
   script:
-    - npm install -g @angular/cli @angular-devkit/build-angular tslint
+    - npm install --save-dev -g @angular/cli @angular-devkit/build-angular tslint
     - npx ng lint
