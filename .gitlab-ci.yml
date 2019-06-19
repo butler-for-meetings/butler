@@ -10,6 +10,6 @@ eslint:
   stage: lint
   # What scripts do we want to run?
   before_script:
-    - npm install @angular/core
+    - npm install --only=dev
   script:
     - ng lint
