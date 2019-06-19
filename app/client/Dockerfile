@@ -15,5 +15,6 @@ RUN npm install -g @angular/cli@7.3.9
 # add app
 COPY . /app
 
+EXPOSE 8081
 # start app
 CMD npm run serve:client

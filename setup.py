@@ -15,7 +15,10 @@ setup(
     author_email='',
     description='',
     entry_points={
-      'console_scripts': ['butler=butler.server:production']
+      'console_scripts': [
+        'butler=butler.server:production',
+        'butler-develop=butler.server:develop'
+      ]
     },
     install_requires=packages
 )

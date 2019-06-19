@@ -9,4 +9,6 @@ COPY . /butler
 
 RUN pip install -r requirements.txt -e .
 
-CMD butler
+EXPOSE 5000
+
+CMD butler-develop

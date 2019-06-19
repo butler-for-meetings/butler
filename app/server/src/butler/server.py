@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.debug = True
 
 
-@app.route('/')
+@app.route('/api/projects')
 def index():
     return "Hello World!"
 
