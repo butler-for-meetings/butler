@@ -11,6 +11,6 @@ eslint:
   # What scripts do we want to run?
   before_script:
     - cd $CI_PROJECT_DIR
-    - npm install --only=dev
+    - npm install
   script:
     - npx ng lint
