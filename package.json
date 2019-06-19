@@ -5,10 +5,10 @@
     "ng": "ng",
     "start": "npm-run-all --parallel serve:server serve:client",
     "serve:server": "nodemon server.js",
-    "serve:client": "ng serve --host localhost --port 8081 --open",
+    "serve:client": "ng serve --port 8081 --host 0.0.0.0 --open",
     "build": "ng build",
     "test": "ng test",
-    "lint": "ng lint",
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
