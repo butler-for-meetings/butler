@@ -9,6 +9,8 @@ eslint:
   # tell eslint what stage it is. (This could also be build or test for example)
   stage: lint
   # What scripts do we want to run?
+  before_script:
+    - cd $CI_PROJECT_DIR
+    - npm install --only=dev
   script:
-    - npm install --save-dev -g @angular/cli @angular-devkit/build-angular tslint typescript codelyzer
     - npx ng lint
