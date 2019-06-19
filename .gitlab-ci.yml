@@ -9,7 +9,6 @@ eslint:
   # tell eslint what stage it is. (This could also be build or test for example)
   stage: lint
   # What scripts do we want to run?
-  before_script:
-    - npm install -g --only=dev
   script:
+    - npm install -g --only=dev
     - ng lint
