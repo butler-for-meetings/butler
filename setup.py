@@ -14,5 +14,8 @@ setup(
     author='butler-for-meetings',
     author_email='',
     description='',
+    entry_points={
+      'console_scripts': ['butler=butler.server:production']
+    },
     install_requires=packages
 )

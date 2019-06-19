@@ -5,9 +5,18 @@ services:
     container_name: butler-client
     build:
       context: .
-      dockerfile: ./.docker/development/DOCKERFILE
+      dockerfile: .docker/development/DOCKERFILE.frontend
     volumes:
       - '.:/app'
       - '/app/node_modules'
     ports:
       - '8081:8081'
+  server:
+      container_name: butler-server
+      build:
+        context: .
+        dockerfile: .docker/development/DOCKERFILE.backend
+      volumes:
+        - '.:/app'
+      ports:
+        - '8082:5000'

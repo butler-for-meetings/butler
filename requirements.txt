@@ -1,3 +1,4 @@
+gevent
 backcall==0.1.0
 Click==7.0
 decorator==4.4.0
