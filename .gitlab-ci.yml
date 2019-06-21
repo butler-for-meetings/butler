@@ -15,7 +15,7 @@ services:
 before_script:
   - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
   - export CLIENT_IMAGE=$CI_REGISTRY/$CI_PROJECT_PATH/butler-front
-  - export SERVER_IMAGE $CI_REGISTRY/$CI_PROJECT_PATH/butler-api
+  - export SERVER_IMAGE=$CI_REGISTRY/$CI_PROJECT_PATH/butler-api
 
 
 js linter:
