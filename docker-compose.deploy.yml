@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  client-production:
+    container_name: butler-client
+    image: butlerformeetings/butler-front:latest
+    ports:
+      - 80:80
+      - 443:443
+
+  server:
+    container_name: butler-server
+    image: butlerformeetings/butler-api:latest
+    command: butler
