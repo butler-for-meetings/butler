@@ -1,5 +1,16 @@
+image: docker:stable
+
 stages:
   - lint
+  - build
+
+variables:
+  DOCKER_HOST: tcp://docker:2375/
+  DOCKER_DRIVER: overlay2
+
+services:
+  - docker:dind
+
 
 js linter:
   image: node:latest
@@ -9,6 +20,7 @@ js linter:
   script:
     - npx ng lint
 
+
 py linter:
   image: python:3.7
   stage: lint
@@ -16,3 +28,25 @@ py linter:
     - pip install tox pylint flake8
   script:
     - tox
+
+.build_docker: &build_docker
+  stage: build
+  before_script:
+    - docker login -u $CI_DEPLOY_USER -p $CI_DEPLOY_PASSWORD $CI_REGISTRY
+  script:
+    - docker build -t $IMAGE_NAME:latest -f $DOCKERFILE_PATH .
+    - docker push $IMAGE_NAME:latest
+
+
+build client:
+  <<: *build_docker
+  variables:
+    IMAGE_NAME: $CI_REGISTRY/$CI_PROJECT_PATH/client-production
+    DOCKERFILE_PATH: app/client/Dockerfile-prod
+
+
+build server:
+  <<: *build_docker
+  variables:
+    IMAGE_NAME: $CI_REGISTRY/$CI_PROJECT_PATH/client-production
+    DOCKERFILE_PATH: app/server/Dockerfile
