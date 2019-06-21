@@ -1,11 +1,18 @@
-image: node:latest
-
 stages:
   - lint
 
 js linter:
+  image: node:latest
   stage: lint
   before_script:
     - npm install
   script:
     - npx ng lint
+
+py linter:
+  image: python:3.7
+  stage: lint
+  before_script:
+    - pip install tox pylint flake8
+  script:
+    - tox
