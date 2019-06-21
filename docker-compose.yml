@@ -23,6 +23,7 @@ services:
     container_name: production_nginx
     depends_on:
       - server
+      - client
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - /var/run/docker.sock:/tmp/docker.sock:ro
