@@ -2,10 +2,10 @@
   "name": "butler",
   "version": "0.0.0",
   "scripts": {
+    "setup": "pip install -r requirements.txt; npm install",
     "ng": "ng",
     "start": "npm-run-all --parallel serve:server serve:client",
-    "serve:server": "nodemon server.js",
-    "serve:client": "ng serve --port 8081 --host 0.0.0.0 --open",
+    "serve:client": "ng serve --port 8081 --host 0.0.0.0 --open --disable-host-check",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint"
