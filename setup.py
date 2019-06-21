@@ -1,8 +1,7 @@
 from setuptools import setup, find_packages
 
 with open("requirements.txt", "r") as requirements_file:
-  packages = requirements_file.read().splitlines()
-
+    packages = requirements_file.read().splitlines()
 
 setup(
     name='butler',
@@ -15,10 +14,10 @@ setup(
     author_email='',
     description='',
     entry_points={
-      'console_scripts': [
-        'butler=butler.server:production',
-        'butler-develop=butler.server:develop'
-      ]
+        'console_scripts': [
+            'butler=butler.server:production',
+            'butler-develop=butler.server:develop'
+        ]
     },
     install_requires=packages
 )
