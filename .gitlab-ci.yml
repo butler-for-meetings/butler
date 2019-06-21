@@ -1,16 +1,11 @@
 image: node:latest
 
 stages:
-  # I just want to lint, so I will create a "lint" stage
   - lint
 
-# Lets name our Job eslint, because that's what it's doing.
-eslint:
-  # tell eslint what stage it is. (This could also be build or test for example)
+js linter:
   stage: lint
-  # What scripts do we want to run?
   before_script:
-    - cd $CI_PROJECT_DIR
     - npm install
   script:
     - npx ng lint
