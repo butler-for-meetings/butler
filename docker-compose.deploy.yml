@@ -4,6 +4,8 @@ services:
   client-production:
     container_name: butler-client
     image: butlerformeetings/butler-front:latest
+    depends_on:
+      - server
     ports:
       - 80:80
       - 443:443

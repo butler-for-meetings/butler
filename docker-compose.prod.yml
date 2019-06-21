@@ -3,6 +3,8 @@ version: '3.7'
 services:
   client-production:
     container_name: butler-client
+    depends_on:
+      - server
     build:
       context: .
       dockerfile: ./app/client/Dockerfile-prod

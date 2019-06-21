@@ -21,6 +21,8 @@ services:
   nginx:
     image: nginx:latest
     container_name: production_nginx
+    depends_on:
+      - server
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - /var/run/docker.sock:/tmp/docker.sock:ro
