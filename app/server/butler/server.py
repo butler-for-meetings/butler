@@ -1,3 +1,4 @@
+"""Butler server application - implements required api as a REST service."""
 from flask import Flask
 from gevent.pywsgi import WSGIServer
 
@@ -5,22 +6,24 @@ from gevent.pywsgi import WSGIServer
 PORT = 5000
 
 
-app = Flask(__name__)
-app.debug = True
+APP = Flask(__name__)
 
 
-@app.route('/api/projects')
+@APP.route('/api/projects')
 def index():
+    """Example route for testings."""
     return "Hello World!"
 
 
 def production():
-    http_server = WSGIServer(('0.0.0.0', PORT), app)
+    """Start server application in production mode - wsgi server."""
+    http_server = WSGIServer(('0.0.0.0', PORT), APP)
     http_server.serve_forever()
 
 
 def develop():
-    app.run(host='0.0.0.0', port=PORT)
+    """Start server application in development mode - wsgi server."""
+    APP.run(host='0.0.0.0', port=PORT, debug=True)
 
 
 if __name__ == '__main__':
