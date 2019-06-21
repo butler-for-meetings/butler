@@ -3,7 +3,7 @@ version: '3.7'
 services:
   client-production:
     container_name: butler-client
-    image: butlerformeetings/butler-front:latest
+    image: registry.gitlab.com/butler-for-meetings/butler/butler-front:latest
     depends_on:
       - server
     ports:
@@ -12,5 +12,5 @@ services:
 
   server:
     container_name: butler-server
-    image: butlerformeetings/butler-api:latest
+    image: registry.gitlab.com/butler-for-meetings/butler/butler-front:latest
     command: butler

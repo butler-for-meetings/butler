@@ -35,6 +35,9 @@ py linter:
 
 .build_docker: &build_docker
   stage: build
+  only:
+    # Only "master" should be tagged "latest"
+    - master
   script:
     - docker build -t $IMAGE_NAME:$CI_COMMIT_SHA -f $DOCKERFILE_PATH .
     - docker push $IMAGE_NAME:$CI_COMMIT_SHA
@@ -54,10 +57,9 @@ build server:
     DOCKERFILE_PATH: app/server/Dockerfile
 
 
-.push_latest: &push_latest
+.push_docker_latest: &push_docker_latest
   stage: release
   only:
-    # Only "master" should be tagged "latest"
     - master
 
   script:
@@ -66,38 +68,37 @@ build server:
     - docker push $IMAGE_NAME:latest
 
 
-push client latest:
-  <<: *push_latest
-  variables:
-    IMAGE_NAME: $CI_REGISTRY/$CI_PROJECT_PATH/butler-front
-
-
-push server latest:
-  <<: *push_latest
-  variables:
-    IMAGE_NAME: $CI_REGISTRY/$CI_PROJECT_PATH/butler-api
-
-
-
-.push_tag: &push_tag
+.push_docker_tag: &push_docker_tag
   stage: release
   only:
-    # We want this job to be run on tags only.
-    - tags
+    - tag
 
   script:
     - docker pull $IMAGE_NAME:$CI_COMMIT_SHA
     - docker tag $IMAGE_NAME:$CI_COMMIT_SHA $IMAGE_NAME:$CI_COMMIT_REF_NAME
     - docker push $IMAGE_NAME:$CI_COMMIT_REF_NAME
+    - docker tag $IMAGE_NAME:$CI_COMMIT_REF_NAME $IMAGE_NAME:stable
+    - docker push $IMAGE_NAME:stable
+
+
+push client latest:
+  <<: *push_docker_latest
+  variables:
+    IMAGE_NAME: $CI_REGISTRY/$CI_PROJECT_PATH/butler-front
+
+push server latest:
+  <<: *push_docker_latest
+  variables:
+    IMAGE_NAME: $CI_REGISTRY/$CI_PROJECT_PATH/butler-api
 
 
 push client tag:
-  <<: *push_tag
+  <<: *push_docker_tag
   variables:
     IMAGE_NAME: $CI_REGISTRY/$CI_PROJECT_PATH/butler-front
 
 
 push server tag:
-  <<: *push_tag
+  <<: *push_docker_tag
   variables:
     IMAGE_NAME: $CI_REGISTRY/$CI_PROJECT_PATH/butler-api
