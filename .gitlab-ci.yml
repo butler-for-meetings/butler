@@ -3,14 +3,19 @@ image: docker:stable
 stages:
   - lint
   - build
+  - release
 
 variables:
   DOCKER_HOST: tcp://docker:2375/
   DOCKER_DRIVER: overlay2
+  CLIENT_IMAGE: $CI_REGISTRY/$CI_PROJECT_PATH/client-production
+  SERVER_IMAGE: $CI_REGISTRY/$CI_PROJECT_PATH/client-production
 
 services:
   - docker:dind
 
+before_script:
+  - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
 
 js linter:
   image: node:latest
@@ -32,22 +37,69 @@ py linter:
 
 .build_docker: &build_docker
   stage: build
-  before_script:
-    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
   script:
     - docker build -t $IMAGE_NAME:latest -f $DOCKERFILE_PATH .
-
+    - docker push $IMAGE_NAME:$CI_COMMIT_SHA
 
 
 build client:
   <<: *build_docker
   variables:
-    IMAGE_NAME: $CI_REGISTRY/$CI_PROJECT_PATH/client-production
+    IMAGE_NAME: $CLIENT_IMAGE
     DOCKERFILE_PATH: app/client/Dockerfile-prod
 
 
 build server:
   <<: *build_docker
   variables:
-    IMAGE_NAME: $CI_REGISTRY/$CI_PROJECT_PATH/client-production
+    IMAGE_NAME: $SERVER_IMAGE
     DOCKERFILE_PATH: app/server/Dockerfile
+
+
+.push_latest: &push_latest
+  stage: release
+  only:
+    # Only "master" should be tagged "latest"
+    - master
+
+  script:
+    - docker pull $IMAGE_NAME:$CI_COMMIT_SHA
+    - docker tag $IMAGE_NAME:$CI_COMMIT_SHA $IMAGE_NAME:latest
+    - docker push $IMAGE_NAME:latest
+
+
+push client latest:
+  <<: *push_latest
+  variables:
+    IMAGE_NAME: $CLIENT_IMAGE
+
+
+push server latest:
+  <<: *push_latest
+  variables:
+    IMAGE_NAME: $SERVER_IMAGE
+
+
+
+.push_tag: &push_tag
+  stage: release
+  only:
+    # We want this job to be run on tags only.
+    - tags
+
+  script:
+    - docker pull $IMAGE_NAME:$CI_COMMIT_SHA
+    - docker tag $IMAGE_NAME:$CI_COMMIT_SHA $IMAGE_NAME:$CI_COMMIT_REF_NAME
+    - docker push $IMAGE_NAME:$CI_COMMIT_REF_NAME
+
+
+push client tag:
+  <<: *push_tag
+  variables:
+    IMAGE_NAME: $CLIENT_IMAGE
+
+
+push server tag:
+  <<: *push_tag
+  variables:
+    IMAGE_NAME: $SERVER_IMAGE
