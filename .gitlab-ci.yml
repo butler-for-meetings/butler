@@ -14,9 +14,6 @@ services:
 
 before_script:
   - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
-  - export CLIENT_IMAGE=$CI_REGISTRY/$CI_PROJECT_PATH/butler-front
-  - export SERVER_IMAGE=$CI_REGISTRY/$CI_PROJECT_PATH/butler-api
-
 
 js linter:
   image: node:latest
@@ -39,21 +36,21 @@ py linter:
 .build_docker: &build_docker
   stage: build
   script:
-    - docker build -t $IMAGE_NAME:latest -f $DOCKERFILE_PATH .
+    - docker build -t $IMAGE_NAME:$CI_COMMIT_SHA -f $DOCKERFILE_PATH .
     - docker push $IMAGE_NAME:$CI_COMMIT_SHA
 
 
 build client:
   <<: *build_docker
   variables:
-    IMAGE_NAME: $CLIENT_IMAGE
+    IMAGE_NAME: $CI_REGISTRY/$CI_PROJECT_PATH/butler-front
     DOCKERFILE_PATH: app/client/Dockerfile-prod
 
 
 build server:
   <<: *build_docker
   variables:
-    IMAGE_NAME: $SERVER_IMAGE
+    IMAGE_NAME: $CI_REGISTRY/$CI_PROJECT_PATH/butler-api
     DOCKERFILE_PATH: app/server/Dockerfile
 
 
@@ -72,13 +69,13 @@ build server:
 push client latest:
   <<: *push_latest
   variables:
-    IMAGE_NAME: $CLIENT_IMAGE
+    IMAGE_NAME: $CI_REGISTRY/$CI_PROJECT_PATH/butler-front
 
 
 push server latest:
   <<: *push_latest
   variables:
-    IMAGE_NAME: $SERVER_IMAGE
+    IMAGE_NAME: $CI_REGISTRY/$CI_PROJECT_PATH/butler-api
 
 
 
@@ -97,10 +94,10 @@ push server latest:
 push client tag:
   <<: *push_tag
   variables:
-    IMAGE_NAME: $CLIENT_IMAGE
+    IMAGE_NAME: $CI_REGISTRY/$CI_PROJECT_PATH/butler-front
 
 
 push server tag:
   <<: *push_tag
   variables:
-    IMAGE_NAME: $SERVER_IMAGE
+    IMAGE_NAME: $CI_REGISTRY/$CI_PROJECT_PATH/butler-api
