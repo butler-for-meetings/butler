@@ -15,6 +15,7 @@ services:
 before_script:
   - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
 
+
 js linter:
   image: node:latest
   stage: lint
@@ -85,6 +86,7 @@ push client latest:
   <<: *push_docker_latest
   variables:
     IMAGE_NAME: $CI_REGISTRY/$CI_PROJECT_PATH/butler-front
+
 
 push server latest:
   <<: *push_docker_latest
