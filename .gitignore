@@ -51,3 +51,9 @@ Thumbs.db
 *.pyc
 __pycache__/
 .tox/
+
+# virtual env
+.venv/
+
+# for vim users
+*.swp

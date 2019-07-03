@@ -2,7 +2,7 @@
   "name": "butler",
   "version": "0.0.0",
   "scripts": {
-    "setup": "pip install -r requirements.txt; npm install",
+    "setup": "pip3 install -r requirements.txt; npm install",
     "ng": "ng",
     "start": "npm-run-all --parallel serve:server serve:client",
     "serve:client": "ng serve --port 8081 --host 0.0.0.0 --open --disable-host-check",
