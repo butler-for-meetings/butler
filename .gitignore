@@ -50,3 +50,10 @@ Thumbs.db
 # Python
 *.pyc
 __pycache__/
+.tox/
+
+# virtual env
+.venv/
+
+# for vim users
+*.swp

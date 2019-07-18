@@ -1,16 +1,106 @@
-image: node:latest
+image: docker:stable
 
 stages:
-  # I just want to lint, so I will create a "lint" stage
   - lint
+  - build
+  - release
 
-# Lets name our Job eslint, because that's what it's doing.
-eslint:
-  # tell eslint what stage it is. (This could also be build or test for example)
+variables:
+  DOCKER_HOST: tcp://docker:2375/
+  DOCKER_DRIVER: overlay2
+
+services:
+  - docker:dind
+
+before_script:
+  - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+
+
+js linter:
+  image: node:latest
   stage: lint
-  # What scripts do we want to run?
   before_script:
-    - cd $CI_PROJECT_DIR
     - npm install
   script:
     - npx ng lint
+
+
+py linter:
+  image: python:3.7
+  stage: lint
+  before_script:
+    - pip install tox pylint flake8
+  script:
+    - tox
+
+
+.build_docker: &build_docker
+  stage: build
+  only:
+    # Only "master" should be tagged "latest"
+    - master
+  script:
+    - docker build -t $IMAGE_NAME:$CI_COMMIT_SHA -f $DOCKERFILE_PATH .
+    - docker push $IMAGE_NAME:$CI_COMMIT_SHA
+
+
+build client:
+  <<: *build_docker
+  variables:
+    IMAGE_NAME: $CI_REGISTRY/$CI_PROJECT_PATH/butler-front
+    DOCKERFILE_PATH: app/client/Dockerfile-prod
+
+
+build server:
+  <<: *build_docker
+  variables:
+    IMAGE_NAME: $CI_REGISTRY/$CI_PROJECT_PATH/butler-api
+    DOCKERFILE_PATH: app/server/Dockerfile
+
+
+.push_docker_latest: &push_docker_latest
+  stage: release
+  only:
+    - master
+
+  script:
+    - docker pull $IMAGE_NAME:$CI_COMMIT_SHA
+    - docker tag $IMAGE_NAME:$CI_COMMIT_SHA $IMAGE_NAME:latest
+    - docker push $IMAGE_NAME:latest
+
+
+.push_docker_tag: &push_docker_tag
+  stage: release
+  only:
+    - tag
+
+  script:
+    - docker pull $IMAGE_NAME:$CI_COMMIT_SHA
+    - docker tag $IMAGE_NAME:$CI_COMMIT_SHA $IMAGE_NAME:$CI_COMMIT_REF_NAME
+    - docker push $IMAGE_NAME:$CI_COMMIT_REF_NAME
+    - docker tag $IMAGE_NAME:$CI_COMMIT_REF_NAME $IMAGE_NAME:stable
+    - docker push $IMAGE_NAME:stable
+
+
+push client latest:
+  <<: *push_docker_latest
+  variables:
+    IMAGE_NAME: $CI_REGISTRY/$CI_PROJECT_PATH/butler-front
+
+
+push server latest:
+  <<: *push_docker_latest
+  variables:
+    IMAGE_NAME: $CI_REGISTRY/$CI_PROJECT_PATH/butler-api
+
+
+push client tag:
+  <<: *push_docker_tag
+  variables:
+    IMAGE_NAME: $CI_REGISTRY/$CI_PROJECT_PATH/butler-front
+
+
+push server tag:
+  <<: *push_docker_tag
+  variables:
+    IMAGE_NAME: $CI_REGISTRY/$CI_PROJECT_PATH/butler-api
