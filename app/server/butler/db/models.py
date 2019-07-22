@@ -1,5 +1,7 @@
 from mongoengine import *
 import datetime
+import json
+from bson import json_util
 
 class User(Document):
     email = EmailField(required=True)
@@ -51,5 +53,19 @@ class Project(Document):
     meta = {
         "queryset_class": ProjectQuerySet
     }
+
+    def to_json(self, *args, **kwargs):
+        data = super(Project, self).to_mongo(*args, **kwargs)
+        participants = []
+        for participant in data["participants"]:
+            print(participant)
+            participant = User.objects.get(pk=participant)
+            participants.append(participant.to_mongo())
+
+        data["participants"] = participants
+        print(data)
+        return json_util.dumps(data)
+
+
 class Tag(Document):
     name = StringField(required=True)
