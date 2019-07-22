@@ -1,12 +1,11 @@
 from mongoengine import *
 import datetime
 
-
 class User(Document):
     email = EmailField(required=True)
     first_name = StringField(max_length=64, required=True)
     last_name = StringField(max_length=64, required=True)
-
+    username = StringField(max_length=64, required=True)
 
 class Task(EmbeddedDocument):
     finished = BooleanField(default=False)
@@ -45,4 +44,3 @@ class Project(Document):
 
 class Tag(Document):
     name = StringField(required=True)
-
