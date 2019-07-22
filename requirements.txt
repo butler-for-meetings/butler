@@ -69,9 +69,6 @@ virtualenv==16.6.1
 wcwidth==0.1.7
 websocket-client==0.56.0
 Werkzeug==0.15.4
-<<<<<<< HEAD
 atlassian-python-api==1.13.23
-=======
 wrapt==1.11.2
 zipp==0.5.1
->>>>>>> master
