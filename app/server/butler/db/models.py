@@ -9,6 +9,7 @@ class User(Document):
 
 
 class Task(EmbeddedDocument):
+    name = StringField(required=True)
     finished = BooleanField(default=False)
     responsible = ReferenceField(User, required=True)
     start_date = DateTimeField(default=datetime.datetime.utcnow, required=True)
