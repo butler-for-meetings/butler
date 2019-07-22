@@ -9,15 +9,18 @@ class User(Document):
     last_name = StringField(max_length=64)
     required = BooleanField(default=False)
 
+
 class Task(EmbeddedDocument):
     finished = BooleanField(default=False)
     responsible = ReferenceField(User)
     start_date = DateTimeField(default=datetime.datetime.utcnow, required=True)
     end_date = DateTimeField(required=True)
 
+
 class Comment(Document):
     content = StringField(required=True)
-    author = User(required=True)
+    author = User()
+
 
 class Discussion(Document):
     title = StringField()
@@ -33,11 +36,13 @@ class Discussion(Document):
     main_points_sum = ListField(StringField)
     comments = ListField(Comment)
 
+
 class Project(Document):
     participants = ListField(ReferenceField(User))
     start_date = DateTimeField(default=datetime.datetime.utcnow, required=True)
     end_date = DateTimeField(required=True)
     discussions = ListField(ReferenceField(Discussion))
+
 
 class Tag(Document):
     name = StringField(required=True)
@@ -86,7 +91,5 @@ if __name__ == '__main__':
     # print(ret)
 
     status = dump_to_confluence(AUTHENTICATION, discussion, "i am a test")
-
-
 
     print(status)

@@ -29,44 +29,44 @@ def render_to_confluence(discussion):
 
     participants = []
     for p in discussion.participants:
-       participants.append(
+        participants.append(
           {
             "name": p.first_name + " " + p.first_name,
             "link": "#"
           }
-       )
+        )
     tasks = []
     for t in discussion.tasks:
         tasks.append(
             {
-            "name": t.name,
-            "finished": t.finished,
-            "responsible": {
-                "name": t.responsible.first_name + " " + t.responsible.first_name,
-                "link": "#"
-            },
-            "start_date": t.start_date,
-            "end_date": t.end_date
+                "name": t.name,
+                "finished": t.finished,
+                "responsible": {
+                    "name": t.responsible.first_name + " " + t.responsible.first_name,
+                    "link": "#"
+                },
+                "start_date": t.start_date,
+                "end_date": t.end_date
             }
         )
     data = {
-    'title': discussion.title,
-    'previous_discussion': {
-      'title': discussion.previous_discussion.title,
-      "link": "#"
-    },
-    'tasks': tasks,
-    'date': discussion.date,
-    "user": {
-      "name": discussion.host.first_name + " " + discussion.host.first_name,
-      "link": "#"
-    },
-    "participants": participants,
-    "tags": discussion.tags,
-    "purpose": discussion.purpose,
-    "background": discussion.background,
-    "main_points": discussion.main_points,
-    "main_points_sum": discussion.main_points_sum,
-    "comments": comments
+        'title': discussion.title,
+        'previous_discussion': {
+          'title': discussion.previous_discussion.title,
+          "link": "#"
+        },
+        'tasks': tasks,
+        'date': discussion.date,
+        "user": {
+          "name": discussion.host.first_name + " " + discussion.host.first_name,
+          "link": "#"
+        },
+        "participants": participants,
+        "tags": discussion.tags,
+        "purpose": discussion.purpose,
+        "background": discussion.background,
+        "main_points": discussion.main_points,
+        "main_points_sum": discussion.main_points_sum,
+        "comments": comments
     }
     return template.render(data)

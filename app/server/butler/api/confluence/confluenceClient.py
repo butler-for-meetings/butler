@@ -19,8 +19,6 @@ def dump_to_confluence(authentication, data, title):
     :param data:
     :return:
     """
-
-
     confluence = Confluence(
         url=CONFIG['url'],
         username=authentication['uname'],
