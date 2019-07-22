@@ -11,6 +11,10 @@ import datetime
 from confluenceClient import dump_to_confluence
 
 
+"""
+Just for test
+"""
+
 class User(Document):
     email = EmailField(required=True)
     first_name = StringField(max_length=64)

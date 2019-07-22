@@ -1,9 +1,9 @@
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-""""
+"""
     Utils for the conf
 """
-env = Environment(
+ENV = Environment(
     loader=FileSystemLoader('./templates'),
     autoescape=select_autoescape(['html'])
 )
@@ -13,54 +13,55 @@ def render_to_confluence(discussion):
     """
     discussion: data form db
     """
-    template = env.get_template('template01.html')
+    template = ENV.get_template('template01.html')
 
     comments = []
-    for c in discussion.comments:
+    for comment in discussion.comments:
         comments.append(
             {
                 "author": {
-                  "name": c.author.first_name + " " + c.author.first_name,
-                  "link": "#"
+                    "name": f"{comment.author.first_name} "
+                            f"{comment.author.first_name}",
+                    "link": "#"
                 },
-                "content": c.content
+                "content": comment.content
             }
         )
 
     participants = []
-    for p in discussion.participants:
+    for participant in discussion.participants:
         participants.append(
-          {
-            "name": p.first_name + " " + p.first_name,
-            "link": "#"
-          }
+            {
+              "name": participant.first_name + " " + participant.first_name,
+              "link": "#"
+            }
         )
     tasks = []
-    for t in discussion.tasks:
+    for task in discussion.tasks:
         tasks.append(
             {
-                "name": t.name,
-                "finished": t.finished,
+                "name": task.name,
+                "finished": task.finished,
                 "responsible": {
-                    "name": f"{t.responsible.first_name} "
-                    f"{t.responsible.first_name}",
+                    "name": f"{task.responsible.first_name} "
+                            f"{task.responsible.first_name}",
                     "link": "#"
                 },
-                "start_date": t.start_date,
-                "end_date": t.end_date
+                "start_date": task.start_date,
+                "end_date": task.end_date
             }
         )
     data = {
         'title': discussion.title,
         'previous_discussion': {
-          'title': discussion.previous_discussion.title,
-          "link": "#"
+            'title': discussion.previous_discussion.title,
+            "link": "#"
         },
         'tasks': tasks,
         'date': discussion.date,
         "user": {
             "name": f"{discussion.host.first_name} "
-            f"{discussion.host.first_name}",
+                    f"{discussion.host.first_name}",
             "link": "#"
         },
         "participants": participants,
