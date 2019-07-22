@@ -1,7 +1,7 @@
 """Butler server application - implements required api as a REST service."""
 from flask import Flask
 from gevent.pywsgi import WSGIServer
-from api.v1 import users, projects
+from api.v1 import users, projects, tasks
 
 PORT = 5000
 API_PREFIX = '/api/v1/{}'
@@ -10,6 +10,7 @@ APP = Flask(__name__)
 
 APP.register_blueprint(users.users_blueprint, url_prefix=API_PREFIX.format('users'))
 APP.register_blueprint(projects.projects_blueprint, url_prefix=API_PREFIX.format('projects'))
+APP.register_blueprint(tasks.tasks_blueprint, url_prefix=API_PREFIX.format('tasks'))
 
 @APP.route('/api/projects')
 def index():
