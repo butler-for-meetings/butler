@@ -1,3 +1,12 @@
-<div *ngFor="let project of projects">
-  {{ project | json }}
+<div class="sidebar-container">
+  <div class="sidebar-title">פרויקטים דחופים</div>
+  <div *ngFor="let project of projects">
+    <div class="sidebar-project">
+      <div class="project-title"> {{ project.title }}</div>
+      <div class="discussion-count">
+        <span class="discussion-num">{{ project.discussions.length }}</span>
+        <span class="discussion-perfix">דיונים</span>
+      </div>
+    </div>
+  </div>
 </div>

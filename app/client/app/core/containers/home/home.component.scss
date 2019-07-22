@@ -1,8 +1,9 @@
+@import '../../../../styles/variables.scss';
 .home-content {
     height: 100vh;
     
     .sidenav-menu {
         width: 20%;
-        background: #5888f4;
+        background: $primary-color;
     }
 }

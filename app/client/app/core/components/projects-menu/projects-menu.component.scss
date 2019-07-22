@@ -1,0 +1,33 @@
+
+@import '../../../../styles/variables.scss';
+.sidebar-container {
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+.sidebar-title {
+    color: $white;
+    text-align: center;
+    font-weight: 700;
+    margin: 20px 0;
+    font-size: 1.1em;
+}
+.sidebar-project {
+    background: $white;
+    border-radius: 3px;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.project-title {
+    display: flex;
+    align-items: center;
+}
+.discussion-num {
+    display: block;
+    text-align: center;
+    margin-bottom: -0.4em;
+}
+.discussion-perfix {
+    font-size: 0.8em;
+}
