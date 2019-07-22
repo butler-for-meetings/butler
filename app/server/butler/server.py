@@ -2,11 +2,17 @@
 from flask import Flask
 from gevent.pywsgi import WSGIServer
 
+from butler.api.v1.users import users_blueprint
+
 
 PORT = 5000
 
+API_PREFIX = '/api/v1/{}'
+
 
 APP = Flask(__name__)
+
+APP.register_blueprint(users_blueprint, url_prefix=API_PREFIX.format('users'))
 
 
 @APP.route('/api/projects')
