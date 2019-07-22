@@ -1,4 +1,5 @@
 from atlassian import Confluence
+from utils import render_to_confluence
 
 
 """
@@ -11,15 +12,7 @@ CONFIG = dict({
 })
 
 
-def render_conf_page(data):
-    """
-
-    :param data:
-    :return:
-    """
-    return data['body']
-
-
+# TODO - figure out data issue
 def dump_to_confluence(authentication, data):
     """
     
@@ -35,15 +28,15 @@ def dump_to_confluence(authentication, data):
 
     page = confluence.get_page_by_title(
         space=CONFIG['space'],
-        title=data['title']
+        title= 'test conf 2' # data['title']
     )
 
     if not page:
 
         creation = confluence.create_page(
             space=CONFIG['space'],
-            title=data['title'],
-            body=render_conf_page(data)
+            title= 'test conf 2', # data['title'],
+            body=render_to_confluence(data)
         )
 
         if not creation:
@@ -55,8 +48,8 @@ def dump_to_confluence(authentication, data):
 
         updating = confluence.update_existing_page(
             page_id=page['id'],
-            title=data['title'],
-            body=render_conf_page(data)
+            title= 'test conf 2', # data['title'],
+            body=render_to_confluence(data)
         )
 
         if not updating:
@@ -66,6 +59,10 @@ def dump_to_confluence(authentication, data):
 
 
 if __name__ == '__main__':
+
+
+
+
 
     AUTHENTICATION = dict({
         'uname': 'kobi',

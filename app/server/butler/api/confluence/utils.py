@@ -57,7 +57,7 @@ def render_to_confluence(discussion):
     'tasks': tasks,
     'date': discussion.date,
     "user": {
-      "name": discussion.first_name + " " + discussion.first_name,
+      "name": discussion.host.first_name + " " + discussion.host.first_name,
       "link": "#"
     },
     "participants": participants,
