@@ -16,16 +16,13 @@ import { DiscussionEditComponent } from './components/discussion-edit/discussion
 
 import { MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, MatDividerModule } from '@angular/material';
 import { HeaderComponent } from './containers/header/header.component';
+import { MaterialModule } from '../material.module';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatDividerModule
+    MaterialModule,
   ],
   declarations: [
     ContentComponent,

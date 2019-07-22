@@ -1,4 +1,9 @@
 <div class="sidebar-container">
+  <div class="search-contianer" fxLayout="row" fxLayoutAlign="center center" [dir]="'rtl'">
+    <mat-form-field appearance="outline" floatingLabel="never">
+      <input class="search-input" matInput type="text" placeholder="הזן טקסט לחיפוש" />
+    </mat-form-field>
+  </div>
   <div class="sidebar-title">פרויקטים דחופים</div>
   <div *ngFor="let project of projects">
     <div class="sidebar-project">
