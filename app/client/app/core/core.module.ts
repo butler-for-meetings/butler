@@ -13,9 +13,17 @@ import { DiscussionPageComponent } from './components/discussion-page/discussion
 import { DiscussionViewComponent } from './components/discussion-view/discussion-view.component';
 import { DiscussionEditComponent } from './components/discussion-edit/discussion-edit.component';
 
+import { MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, MatDividerModule } from '@angular/material';
+import { HeaderComponent } from './containers/header/header.component';
+
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatDividerModule
   ],
   declarations: [
     ContentComponent,
@@ -27,7 +35,11 @@ import { DiscussionEditComponent } from './components/discussion-edit/discussion
     DiscussionsMenuComponent,
     DiscussionPageComponent,
     DiscussionViewComponent,
-    DiscussionEditComponent
+    DiscussionEditComponent,
+    HeaderComponent
+  ],
+  providers: [
+    MatSidenavModule
   ]
 })
 export class CoreModule { }
