@@ -1,5 +1,10 @@
 from atlassian import Confluence
 
+
+"""
+    This module connects to confluence instance and adds / updates pages
+"""
+
 CONFIG = dict({
     'url': 'http://localhost:8090',
     'space': 'BUT'
@@ -7,10 +12,21 @@ CONFIG = dict({
 
 
 def render_conf_page(data):
+    """
+
+    :param data:
+    :return:
+    """
     return data['body']
 
 
 def dump_to_confluence(authentication, data):
+    """
+    
+    :param authentication:
+    :param data:
+    :return:
+    """
 
     confluence = Confluence(
         url=CONFIG['url'],
