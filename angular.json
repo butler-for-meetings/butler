@@ -28,7 +28,8 @@
               "app/client/assets"
             ],
             "styles": [
-              "app/client/styles.scss"
+              "app/client/styles.scss",
+              "app/client/assets/themes/butler-theme.scss"
             ],
             "scripts": []
           },
