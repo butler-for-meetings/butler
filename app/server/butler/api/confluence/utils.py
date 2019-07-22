@@ -42,7 +42,7 @@ def render_to_confluence(discussion):
                 "name": t.name,
                 "finished": t.finished,
                 "responsible": {
-                    "name": t.responsible.first_name + " " + t.responsible.first_name,
+                    "name": f"{t.responsible.first_name} {t.responsible.first_name}",
                     "link": "#"
                 },
                 "start_date": t.start_date,
@@ -58,8 +58,8 @@ def render_to_confluence(discussion):
         'tasks': tasks,
         'date': discussion.date,
         "user": {
-          "name": discussion.host.first_name + " " + discussion.host.first_name,
-          "link": "#"
+            "name": f"{discussion.host.first_name} {discussion.host.first_name}",
+            "link": "#"
         },
         "participants": participants,
         "tags": discussion.tags,
