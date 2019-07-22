@@ -57,3 +57,5 @@ __pycache__/
 
 # for vim users
 *.swp
+
+t.py
