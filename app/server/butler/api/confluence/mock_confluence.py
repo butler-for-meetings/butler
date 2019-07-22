@@ -1,4 +1,4 @@
-from mongoengine import Document,EmailField,StringField,BooleanField,EmbeddedDocument,ReferenceField,DateTimeField,ListField,EmbeddedDocumentListField
+from mongoengine import Document, EmailField, StringField, BooleanField, EmbeddedDocument, ReferenceField, DateTimeField, ListField, EmbeddedDocumentListField
 import datetime
 from confluenceClient import dump_to_confluence
 
@@ -54,11 +54,8 @@ AUTHENTICATION = dict({
 })
 
 if __name__ == '__main__':
-
     discussion = Discussion()
-
     discussion.title = "test discussion"
-
     prev = Discussion()
     prev.title = "another one"
     discussion.previous_discussion = prev
