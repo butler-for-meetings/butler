@@ -1,0 +1,44 @@
+<h1>{{ title }}</h1>
+<h2>general</h2>
+<h3>previous_discussion: <a href="{{ previous_discussion.link }}">{{ previous_discussion.title }}</a></h3>
+<h3>date: {{ date }}</h3>
+<h3>user:  <a href="{{ user.link }}">{{ user.name }}</a></h3>
+<h3>participants: </h3>
+<ul>
+  {% for p in participants %}
+    <li><a href="{{ user.link }}">{{ user.name }}</a></li>
+  {% endfor %}
+</ul>
+<h3>tags: {% for t in tags %} {{ t }} | {% endfor %}</h3>
+<h2>purpose</h2>
+<p>
+  {{ purpose }}
+</p>
+<h2>background</h2>
+<p>
+  {{ background }}
+</p>
+
+<ul>
+  {% for p in main_points %}
+    <li>{{ p }}</li>
+  {% endfor %}
+</ul>
+
+<ul>
+  {% for p in main_points_sum %}
+    <li>{{ p }}</li>
+  {% endfor %}
+</ul>
+
+<ul>
+  {% for t in tasks %}
+    <li>{{ t.name }} {% if not finished %}({{t.start_date}} - {{t.end_date}}) <a href="{{ t.responsible.link }}">{{ t.responsible.name }}</a>{% endif %}</li>
+  {% endfor %}
+</ul>
+
+<ul>
+  {% for c in comments %}
+    <li><a href="{{ c.author.link }}">{{ c.author.name }}</a>&gt; {{ c.content}}</li>
+  {% endfor %}
+</ul>
