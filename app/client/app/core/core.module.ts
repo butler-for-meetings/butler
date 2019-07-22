@@ -14,23 +14,15 @@ import { DiscussionPageComponent } from './components/discussion-page/discussion
 import { DiscussionViewComponent } from './components/discussion-view/discussion-view.component';
 import { DiscussionEditComponent } from './components/discussion-edit/discussion-edit.component';
 
-import { MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, MatDividerModule, MatChipsModule, MatCardModule } from '@angular/material';
 import { HeaderComponent } from './containers/header/header.component';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { DescriptionBoxComponent } from './components/description-box/description-box.component';
+import { MaterialModule } from '../material.module';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatDividerModule,
-    MatChipsModule,
-    FlexLayoutModule,
-    MatCardModule
+    MaterialModule,
   ],
   declarations: [
     ContentComponent,
@@ -45,9 +37,6 @@ import { DescriptionBoxComponent } from './components/description-box/descriptio
     DiscussionEditComponent,
     HeaderComponent,
     DescriptionBoxComponent
-  ],
-  providers: [
-    MatSidenavModule
   ]
 })
 export class CoreModule { }

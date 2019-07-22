@@ -6,9 +6,10 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+
   @Output() sideNavStateChanged = new EventEmitter<boolean>();
 
-  sideNavOpen: boolean = true;
+  sideNavOpen = true;
 
   constructor() { }
 
@@ -16,7 +17,7 @@ export class HeaderComponent implements OnInit {
   }
 
   drawerClick() {
-    this.sideNavOpen = ! this.sideNavOpen;
+    this.sideNavOpen = !this.sideNavOpen;
     this.sideNavStateChanged.emit(this.sideNavOpen);
   }
 
