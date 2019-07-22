@@ -1,5 +1,6 @@
 from atlassian import Confluence
-from .utils import render_to_confluence
+from utils import render_to_confluence
+from pprint import pprint
 
 
 """
@@ -13,12 +14,13 @@ CONFIG = dict({
 
 
 # TODO - figure out data issue
-def dump_to_confluence(authentication, data):
+def dump_to_confluence(authentication, data, title):
     """
     :param authentication:
     :param data:
     :return:
     """
+
 
     confluence = Confluence(
         url=CONFIG['url'],
@@ -27,14 +29,14 @@ def dump_to_confluence(authentication, data):
 
     page = confluence.get_page_by_title(
         space=CONFIG['space'],
-        title='test conf 2',# data['title']
+        title=title
     )
 
     if not page:
 
         creation = confluence.create_page(
             space=CONFIG['space'],
-            title='test conf 2',# data['title'],
+            title=title,
             body=render_to_confluence(data)
         )
 
@@ -47,7 +49,7 @@ def dump_to_confluence(authentication, data):
 
         updating = confluence.update_existing_page(
             page_id=page['id'],
-            title='test conf 2',# data['title'],
+            title=title,
             body=render_to_confluence(data)
         )
 
@@ -59,8 +61,8 @@ def dump_to_confluence(authentication, data):
 
 if __name__ == '__main__':
     AUTHENTICATION = dict({
-        'uname': 'kobi',
-        'password': '12345'
+        'uname': 'admin',
+        'password': '159357'
     })
 
     DATA = dict({
@@ -68,4 +70,4 @@ if __name__ == '__main__':
         'body': 'discussion body - updating'
     })
 
-    dump_to_confluence(AUTHENTICATION, DATA)
+    dump_to_confluence(AUTHENTICATION, DATA, "dwda")

@@ -1,6 +1,6 @@
 from mongoengine import *
 import datetime
-from .confluenceClient import dump_to_confluence
+from confluenceClient import dump_to_confluence
 
 
 class User(Document):
@@ -44,8 +44,8 @@ class Tag(Document):
 
 
 AUTHENTICATION = dict({
-    'uname': 'kobi',
-    'password': '12345'
+    'uname': 'admin',
+    'password': '159357'
 })
 
 if __name__ == '__main__':
@@ -85,6 +85,8 @@ if __name__ == '__main__':
     #
     # print(ret)
 
-    status = dump_to_confluence(AUTHENTICATION, discussion)
+    status = dump_to_confluence(AUTHENTICATION, discussion, "i am a test")
+
+
 
     print(status)
