@@ -8,6 +8,7 @@ env = Environment(
     autoescape=select_autoescape(['html'])
 )
 
+
 def render_to_confluence(discussion):
     """
     discussion: data form db

@@ -1,6 +1,6 @@
 from mongoengine import *
 import datetime
-from confluenceClient import dump_to_confluence
+from .confluenceClient import dump_to_confluence
 
 
 class User(Document):
