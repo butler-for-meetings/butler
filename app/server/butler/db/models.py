@@ -14,8 +14,9 @@ class User(Document):
 class Task(EmbeddedDocument):
     finished = BooleanField(default=False)
     responsible = ReferenceField(User, required=True)
-    start_date = DateTimeField(default=datetime.datetime.utcnow, required=True)
+    start_date = DateTimeField(required=True)
     end_date = DateTimeField(required=True)
+    description = StringField(required=True)
 
 
 class Comment(Document):
