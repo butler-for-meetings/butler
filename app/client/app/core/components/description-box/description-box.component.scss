@@ -1,0 +1,24 @@
+.desc-box-main {
+    min-height: 150px;
+    width: 100%;
+
+    .desc-box-title {
+        float: right;
+        background-color: #6191fd;
+        color: white;
+        position: relative;
+        z-index: 2;
+        padding: 5px 20px 5px 20px;
+        border-radius: 5px;
+    }
+
+    .desc-box-description {
+        background-color: white;
+        border-color: black;
+        border-radius: 5px;
+        position: relative;
+        top: 10px;
+        padding: 38px;
+        z-index: 1;
+    }
+}

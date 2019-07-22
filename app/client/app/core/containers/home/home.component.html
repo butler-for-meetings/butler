@@ -2,9 +2,9 @@
     <app-header (sideNavStateChanged)="drawer.toggle()"></app-header>
     <mat-divider></mat-divider>
     <div fxFlexFill>
-        <mat-drawer-container class="home-content">
+        <mat-drawer-container class="home-main">
             <mat-drawer #drawer mode="side" position="end" opened class="sidenav-menu"><app-sidenav></app-sidenav></mat-drawer>
-            <mat-drawer-content class="sidenav-content"><app-content></app-content></mat-drawer-content>
+            <mat-drawer-content class="sidenav-content"><app-content class="home-content"></app-content></mat-drawer-content>
         </mat-drawer-container>
     </div>
 </div>

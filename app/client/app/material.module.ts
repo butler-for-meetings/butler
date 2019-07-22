@@ -1,7 +1,7 @@
 
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, MatDividerModule, MatInputModule } from '@angular/material';
+import { MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, MatDividerModule, MatInputModule, MatChipsModule, MatCardModule } from '@angular/material';
 
 const imports = [
   MatSidenavModule,
@@ -10,7 +10,9 @@ const imports = [
   MatButtonModule,
   MatDividerModule,
   MatInputModule,
-  FlexLayoutModule
+  FlexLayoutModule,
+  MatChipsModule,
+  MatCardModule
 ];
 
 const exportsModules = [
@@ -20,7 +22,9 @@ const exportsModules = [
   MatButtonModule,
   MatDividerModule,
   MatInputModule,
-  FlexLayoutModule
+  FlexLayoutModule,
+  MatChipsModule,
+  MatCardModule
 ];
 
 @NgModule({
@@ -29,6 +33,9 @@ const exportsModules = [
   ],
   exports: [
     ...exportsModules
+  ],
+  providers: [
+    MatSidenavModule
   ]
 })
 export class MaterialModule { }
