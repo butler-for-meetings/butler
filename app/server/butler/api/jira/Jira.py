@@ -9,8 +9,7 @@ class Jira:
         self.jira_handler.create_issue(project=project, summary=summary, description=description, issuetype={'name': type})
         print('Issue {0} created successfully on project {1}'.format(summary, project))
 
-    #todo: user can enter key or name of issue, not only key
-    #todo: only from project mngr's user
+    # only from project mngr's user
     def delete_issue(self, key):
         issue_to_delete = self.jira_handler.issue(key)
         issue_to_delete.delete()
@@ -30,4 +29,15 @@ class Jira:
             lst_of_issues[iss.key] = iss.fields
         return lst_of_issues
 
+    def find_issue(self, key):
+        return self.jira_handler.issue(key)
+
+    def add_comment(self, key, comment):
+        issue = self.find_issue(key)
+        self.jira_handler.add_comment(issue, comment)
+        return
+
+    def add_attechment(self, file_path, key):
+        issue = self.find_issue(key)
+        self.jira_handler.add_attachment(issue=issue, attachment=file_path)
 
