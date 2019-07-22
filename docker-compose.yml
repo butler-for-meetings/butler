@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+  client:
+    container_name: butler-client
+    build:
+      context: .
+      dockerfile: ./app/client/Dockerfile
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+  server:
+      container_name: butler-server
+      build:
+        context: .
+        dockerfile: ./app/server/Dockerfile
+      volumes:
+        - .:/app
+
+  nginx:
+    image: nginx:latest
+    container_name: production_nginx
+    depends_on:
+      - server
+      - client
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    ports:
+      - 80:80
+      - 443:443
