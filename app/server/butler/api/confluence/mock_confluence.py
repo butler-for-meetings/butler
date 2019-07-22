@@ -1,4 +1,4 @@
-from mongoengine import *
+from mongoengine import Document,EmailField,StringField,BooleanField,EmbeddedDocument,ReferenceField,DateTimeField,ListField,EmbeddedDocumentListField
 import datetime
 from confluenceClient import dump_to_confluence
 
