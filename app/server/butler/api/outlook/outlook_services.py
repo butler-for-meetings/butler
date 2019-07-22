@@ -51,6 +51,7 @@ def get_me(access_token):
     else:
         return "{0}: {1}".format(results.status_code, results.text)
 
+
 def get_events(access_token):
     get_events_url = graph_endpoint.format('/me/events')
 
@@ -61,6 +62,18 @@ def get_events(access_token):
     results = make_api_call('GET', get_events_url, access_token, "", parameters = query_parameters)
 
     if (results.status_code == 200):
-        return results.json()
+        results = results.json()
+        events = []
+        for event in results['value']:
+            events.append({
+                "subject": event['subject'],
+                "body": event['bodyPreview'],
+                "organizer": event['organizer']['emailAddress']['name'],
+                "attendees": [att['emailAddress']['name'] for att in event['attendees']],
+                "start": event['start']['dateTime'],
+                "end" : event['end']['dateTime']
+
+            })
+        return events
     else:
         return "{0}: {1}".format(results.status_code, results.text)
