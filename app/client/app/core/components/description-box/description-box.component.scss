@@ -1,0 +1,22 @@
+.desc-box-main {
+    min-height: 150px;
+    width: 100%;
+
+    .desc-box-title {
+        float: right;
+        background-color: #6191fd;
+        position: relative;
+        z-index: 2;
+    }
+
+    .desc-box-description {
+        background-color: white;
+        border-color: black;
+        border-width: 1px;
+        border-radius: 20px;
+        border-style: solid;
+        position: relative;
+        top: 10px;
+        z-index: 1;
+    }
+}

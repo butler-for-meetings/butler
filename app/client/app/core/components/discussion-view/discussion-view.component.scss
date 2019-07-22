@@ -1,6 +1,19 @@
 .discussion-header {
     width: 100%;
-    .date-chip {
-        //background-color: #cacaca;
+
+    .discussion-title {
+        font-size: 36px;
+        font-weight: bold;
     }
+    .date-chip {
+        background-color: #eaa971;
+    }
+}
+
+.discussion-sub-title {
+    font-weight: bold;
+}
+
+.discussion-sub-content {
+    margin-right: 10px;
 }
