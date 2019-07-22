@@ -5,10 +5,12 @@ import auth_keys
 Jira class, manages the connection to jira.
 """
 
+
 class jira:
     """
     jira class
     """
+
     def __init__(self):
         self.jira_handler = JIRA('https://butlertest.atlassian.net/',
                                  basic_auth=(auth_keys.USER, auth_keys.TOKEN))
