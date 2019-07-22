@@ -14,6 +14,6 @@ export class AppComponent {
   }
 
   addMockData() {
-    mimic.import(JSON.stringify(mocks));
+    mimic.import(JSON.stringify((mocks as any).default));
   }
 }
