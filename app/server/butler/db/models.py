@@ -24,6 +24,7 @@ class Comment(Document):
     content = StringField(required=True)
     author = ReferenceField(User, required=True)
 
+
 class Discussion(Document):
     title = StringField(required=True)
     previous_discussion = LazyReferenceField(document_type="Discussion")
