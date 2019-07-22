@@ -1,11 +1,17 @@
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
+""""
+  Utils for the conf
+"""
 env = Environment(
     loader = FileSystemLoader('./templates'),
     autoescape = select_autoescape(['html'])
 )
 
 def render_to_confluence(discussion):
+  """
+  discussion: data form db
+  """
   template = env.get_template('template01.html')
 
   comments = []
