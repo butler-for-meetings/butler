@@ -1,7 +1,6 @@
 from mongoengine import *
 import datetime
 
-
 class User(Document):
     email = EmailField(required=True)
     first_name = StringField(max_length=64, required=True)
@@ -41,6 +40,16 @@ class Project(Document):
     end_date = DateTimeField(required=True)
     discussions = ListField(ReferenceField(Discussion))
 
+    class ProjectQuerySet(QuerySet):
+        def create(self, end_date, start_date, *args, **kwargs):
+            if isinstance(start_date, int):
+                start_date = datetime.datetime.fromtimestamp(start_date / 1000)
+            if isinstance(end_date, int):
+                end_date = datetime.datetime.fromtimestamp(end_date / 1000)
+            return super(Project.ProjectQuerySet, self).create(start_date=start_date, end_date=end_date, *args, **kwargs)
 
+    meta = {
+        "queryset_class": ProjectQuerySet
+    }
 class Tag(Document):
     name = StringField(required=True)
