@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 // components
 import { HomeComponent } from './containers/home/home.component';
@@ -15,7 +16,8 @@ import { DiscussionEditComponent } from './components/discussion-edit/discussion
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
   declarations: [
     ContentComponent,

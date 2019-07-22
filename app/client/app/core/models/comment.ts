@@ -1,4 +1,6 @@
+import { User } from './user';
+
 export interface Comment {
   content: string;
-  auther: string;
+  author: User;
 }
