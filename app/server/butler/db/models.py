@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from mongoengine import *
 import datetime
 
@@ -39,3 +40,10 @@ class Project(Document):
 
 class Tag(Document):
     name = StringField(required=True)
+=======
+
+
+if __name__ == '__main__':
+    from mongoengine import connect
+    connect(host='mongodb+srv://admin:@butler-mqkbs.azure.mongodb.net/test?retryWrites=true&w=majority')
+>>>>>>> d0d0fd7d57e7b853321cc16ed446b93f388c1285
