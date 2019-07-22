@@ -1,13 +1,8 @@
 """Butler server application - implements required api as a REST service."""
 from flask_api import FlaskAPI
 from gevent.pywsgi import WSGIServer
-<<<<<<< HEAD
-from mongoengine import connect
-from butler.api.v1 import users, projects, discussion
-=======
-from butler.api.v1 import  users, projects, tasks
+from butler.api.v1 import users, projects, discussion, tasks
 
->>>>>>> api-v1
 
 PORT = 5000
 API_PREFIX = '/api/v1/{}'
