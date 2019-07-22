@@ -1,8 +1,11 @@
+
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './containers/home/home.component';
 
 const routes: Routes = [
-  {  path: '', component: HomeComponent },
+  {
+    path: '',  component: HomeComponent
+  }
 ];
 
 export const CoreRoutes = RouterModule.forChild(routes);

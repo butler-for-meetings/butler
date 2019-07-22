@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { CoreRoutes } from './core/core.routing';
 
 const routes: Routes = [
-
 ];
 
 @NgModule({
