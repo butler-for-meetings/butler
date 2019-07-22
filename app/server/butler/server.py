@@ -14,6 +14,7 @@ APP.register_blueprint(projects.projects_blueprint, url_prefix=API_PREFIX.format
 APP.register_blueprint(discussion.discussions_blueprint, url_prefix=API_PREFIX.format('discussion'))
 APP.register_blueprint(tasks.tasks_blueprint, url_prefix=API_PREFIX.format('tasks'))
 
+
 @APP.route('/api/projects')
 def index():
     """Example route for testings."""

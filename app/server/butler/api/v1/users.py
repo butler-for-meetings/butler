@@ -1,4 +1,4 @@
-from flask import Blueprint, Response
+from flask import Blueprint, Response, request
 from butler.db.models import User
 
 users_blueprint = Blueprint('users', __name__)
@@ -10,6 +10,7 @@ def index():
     return Response(response=users.to_json(), status=200, mimetype="application/json")
 
 
-@users_blueprint.route('create_user')
+@users_blueprint.route('create', methods=['POST'])
 def create_user():
-    return 'CREATED USER'
+    user = User.objects.create(**request.get_json())
+    return Response(response=user.to_json(), status=200, mimetype="application/json")
