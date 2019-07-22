@@ -1,14 +1,10 @@
 """Butler server application - implements required api as a REST service."""
 from flask import Flask
 from gevent.pywsgi import WSGIServer
-
-from butler.api.v1.users import users_blueprint
-
+from api.v1.users import *
 
 PORT = 5000
-
 API_PREFIX = '/api/v1/{}'
-
 
 APP = Flask(__name__)
 
