@@ -1,6 +1,7 @@
 from mongoengine import *
 import datetime
-
+import json
+from bson import json_util
 
 class User(Document):
     email = EmailField(required=True)
@@ -23,7 +24,6 @@ class Comment(Document):
     content = StringField(required=True)
     author = ReferenceField(User, required=True)
 
-
 class Discussion(Document):
     title = StringField(required=True)
     previous_discussion = LazyReferenceField(document_type="Discussion")
@@ -42,11 +42,34 @@ class Discussion(Document):
 class Project(Document):
     title = StringField(required=True)
     participants = ListField(ReferenceField(User))
-    start_date = DateTimeField(default=datetime.datetime.utcnow, required=True)
+    start_date = DateTimeField(default=datetime.datetime.utcnow)
     end_date = DateTimeField(required=True)
     discussions = ListField(ReferenceField(Discussion))
+
+    class ProjectQuerySet(QuerySet):
+        def create(self, end_date, start_date, *args, **kwargs):
+            if isinstance(start_date, int):
+                start_date = datetime.datetime.fromtimestamp(start_date / 1000)
+            if isinstance(end_date, int):
+                end_date = datetime.datetime.fromtimestamp(end_date / 1000)
+            return super(Project.ProjectQuerySet, self).create(start_date=start_date, end_date=end_date, *args, **kwargs)
+
+    meta = {
+        "queryset_class": ProjectQuerySet
+    }
+
+    def to_json(self, *args, **kwargs):
+        data = super(Project, self).to_mongo(*args, **kwargs)
+        participants = []
+        for participant in data["participants"]:
+            print(participant)
+            participant = User.objects.get(pk=participant)
+            participants.append(participant.to_mongo())
+
+        data["participants"] = participants
+        print(data)
+        return json_util.dumps(data)
 
 
 class Tag(Document):
     name = StringField(required=True)
-
