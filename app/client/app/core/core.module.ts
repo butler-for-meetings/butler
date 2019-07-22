@@ -14,8 +14,9 @@ import { DiscussionPageComponent } from './components/discussion-page/discussion
 import { DiscussionViewComponent } from './components/discussion-view/discussion-view.component';
 import { DiscussionEditComponent } from './components/discussion-edit/discussion-edit.component';
 
-import { MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, MatDividerModule } from '@angular/material';
+import { MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, MatDividerModule, MatChipsModule } from '@angular/material';
 import { HeaderComponent } from './containers/header/header.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   imports: [
@@ -25,7 +26,9 @@ import { HeaderComponent } from './containers/header/header.component';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    MatDividerModule
+    MatDividerModule,
+    MatChipsModule,
+    FlexLayoutModule
   ],
   declarations: [
     ContentComponent,

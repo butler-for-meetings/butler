@@ -1,3 +1,9 @@
-<p>
-  discussion-view works!
-</p>
+<div class="discussion-main">
+  <div class="discussion-header" fxLayout="row" fxLayoutAlign="space-between center" >
+    <div class="discussion-title">{{ discussion.title }}</div>
+    <mat-chip-list>
+      <mat-chip class="date-chip">{{ discussion.datetime.toLocaleDateString() }}</mat-chip>
+    </mat-chip-list>
+
+  </div>
+</div>
