@@ -1,15 +1,27 @@
 import { Component, OnInit } from '@angular/core';
+import { ButlerApiService } from '../../services/butler-api.service';
+import { Project } from '../../models/project';
 
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
-  styleUrls: ['./sidenav.component.css']
+  styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _butlerApiService: ButlerApiService) { }
 
-  ngOnInit() {
+  public projects: Project[];
+  public menuTypes = {
+    PROJECT: 'project',
+    DISCUSSION: 'discussion'
+  };
+
+  public menuType = this.menuTypes.PROJECT;
+
+   async ngOnInit() {
+    const result = await this._butlerApiService.getAllProjetcs();
+    this.projects = result;
   }
 
 }

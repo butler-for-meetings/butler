@@ -12,8 +12,8 @@ export class AppComponent {
   constructor() {
     this.addMockData();
   }
-  
+
   addMockData() {
-    mimic.import(JSON.stringify(mocks.default));
+    mimic.import(JSON.stringify((mocks as any).default));
   }
 }
