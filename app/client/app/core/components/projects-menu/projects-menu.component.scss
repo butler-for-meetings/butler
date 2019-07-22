@@ -1,12 +1,21 @@
 @import '../../../../styles/variables.scss';
 
 .sidebar-container {
-    padding: 0 20px;
+    padding: 20px 20px 0 20px;
     box-sizing: border-box;
 
     .search-contianer {
       .search-input {
         color: $white;
+        background-color: $dark-blue;
+        border: none;
+        border-radius: 100px;
+        padding: 15px 20px;
+        width: 100%;
+      }
+      .search-input::placeholder {
+        color: $white;
+        opacity: .75;
       }
     }
 
