@@ -1,5 +1,5 @@
 from atlassian import Confluence
-from utils import render_to_confluence
+from .utils import render_to_confluence
 
 
 """
@@ -27,14 +27,14 @@ def dump_to_confluence(authentication, data):
 
     page = confluence.get_page_by_title(
         space=CONFIG['space'],
-        title='test conf 2' # data['title']
+        title='test conf 2',# data['title']
     )
 
     if not page:
 
         creation = confluence.create_page(
             space=CONFIG['space'],
-            title='test conf 2', # data['title'],
+            title='test conf 2',# data['title'],
             body=render_to_confluence(data)
         )
 
@@ -47,7 +47,7 @@ def dump_to_confluence(authentication, data):
 
         updating = confluence.update_existing_page(
             page_id=page['id'],
-            title='test conf 2', # data['title'],
+            title='test conf 2',# data['title'],
             body=render_to_confluence(data)
         )
 
