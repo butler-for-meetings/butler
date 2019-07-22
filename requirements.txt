@@ -73,3 +73,4 @@ atlassian-python-api==1.13.23
 wrapt==1.11.2
 zipp==0.5.1
 atlassian-python-api==1.13.23
+mongoengine==0.18.2
