@@ -1,2 +1,2 @@
-USER=''
-TOKEN=''
+USER = ''
+TOKEN = ''
