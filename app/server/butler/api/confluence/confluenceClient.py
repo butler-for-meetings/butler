@@ -15,7 +15,6 @@ CONFIG = dict({
 # TODO - figure out data issue
 def dump_to_confluence(authentication, data):
     """
-    
     :param authentication:
     :param data:
     :return:
@@ -28,14 +27,14 @@ def dump_to_confluence(authentication, data):
 
     page = confluence.get_page_by_title(
         space=CONFIG['space'],
-        title= 'test conf 2' # data['title']
+        title='test conf 2' # data['title']
     )
 
     if not page:
 
         creation = confluence.create_page(
             space=CONFIG['space'],
-            title= 'test conf 2', # data['title'],
+            title='test conf 2', # data['title'],
             body=render_to_confluence(data)
         )
 
@@ -48,7 +47,7 @@ def dump_to_confluence(authentication, data):
 
         updating = confluence.update_existing_page(
             page_id=page['id'],
-            title= 'test conf 2', # data['title'],
+            title='test conf 2', # data['title'],
             body=render_to_confluence(data)
         )
 
@@ -59,11 +58,6 @@ def dump_to_confluence(authentication, data):
 
 
 if __name__ == '__main__':
-
-
-
-
-
     AUTHENTICATION = dict({
         'uname': 'kobi',
         'password': '12345'
@@ -75,15 +69,3 @@ if __name__ == '__main__':
     })
 
     dump_to_confluence(AUTHENTICATION, DATA)
-
-
-# status = confluence.create_space(
-#     space_key='BUTLER',
-#     space_name="testSpace"
-# )
-
-# status = confluence.get_all_spaces()
-
-# status = confluence.get_all_pages_from_space(space='BUT')
-
-# status = confluence.get_page_by_id(page_id=65614)
