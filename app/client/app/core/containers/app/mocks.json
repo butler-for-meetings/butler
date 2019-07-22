@@ -1,0 +1,283 @@
+{
+    "version": "2.0.0",
+    "mocks": [
+      {
+        "id": "8c828d45-d06c-4474-a2ce-b9408835b5c5",
+        "active": true,
+        "method": "GET",
+        "url": "http://localhost:8081/api/projects",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "response": {
+          "status": 200,
+          "delay": 500,
+          "headers": {
+            "content-type": "application/json"
+          },
+          "body": [
+            {
+                "title": "tui hacaton 1",
+                "participants": [
+                    {
+                        "username": "xliron",
+                        "firstName": "liron",
+                        "lastName": "taub",
+                        "email": "liron@gmail.com"
+                    },
+                    {
+                        "username": "xliron",
+                        "firstName": "liron",
+                        "lastName": "taub",
+                        "email": "liron@gmail.com"
+                    }
+                ],
+                "startDate": "Mon Jul 22 2019 15:16:30 GMT+0300",
+                "endDate": "Mon Jul 22 2019 15:16:30 GMT+0300",
+                "discussions": [
+                    {
+                        "title": "מה נאכל היום ארוחת צהריים",
+                        "previousDiscussionId": "מה נאכל ארוחת בוקר",
+                        "tasks": [
+            
+                        ],
+                        "date": "Mon Jul 22 2019 15:16:30 GMT+0300",
+                        "host": [
+                            {
+                                "username": "xliron",
+                                "firstName": "liron",
+                                "lastName": "taub",
+                                "email": "liron@gmail.com"
+                            }
+                        ],
+                        "participants": [
+                            {
+                                "username": "xliron",
+                                "firstName": "liron",
+                                "lastName": "taub",
+                                "email": "liron@gmail.com"
+                            }
+                        ],
+                        "tags": [
+                            "אוכל",
+                            "wework",
+                            "microsoft"
+                        ],
+                        "purpose": "make many",
+                        "background": "When building web applications, you are in a dynamic environment. In most cases you are not alone working on the project, you are dependent on implementations of server features which you need to wait for to finish your feature.",
+                        "mainPoints": ["building web applications", "building web applications", "building web applications"],
+                        "mainPointsSum":["you are in a dynamic environment", "you are in a dynamic environment", "you are in a dynamic environment"],
+                        "comments": [
+                            {
+                                "content": "הי מה נשמע",
+                                "author": {
+                                    "username": "xliron",
+                                    "firstName": "liron",
+                                    "lastName": "taub",
+                                    "email": "liron@gmail.com"
+                                }
+                            },
+                            {
+                                "content": "הי מה נשמע",
+                                "author": {
+                                    "username": "xliron",
+                                    "firstName": "liron",
+                                    "lastName": "taub",
+                                    "email": "liron@gmail.com"
+                                }
+                            },
+                            {
+                                "content": "הי מה נשמע",
+                                "author": {
+                                    "username": "xliron",
+                                    "firstName": "liron",
+                                    "lastName": "taub",
+                                    "email": "liron@gmail.com"
+                                }
+                            }
+                        ]
+                      }
+                      
+                ]
+              },
+              {
+                "title": "tui hacaton 2",
+                "participants": [
+                    {
+                        "username": "xliron",
+                        "firstName": "liron",
+                        "lastName": "taub",
+                        "email": "liron@gmail.com"
+                    },
+                    {
+                        "username": "xliron",
+                        "firstName": "liron",
+                        "lastName": "taub",
+                        "email": "liron@gmail.com"
+                    }
+                ],
+                "startDate": "Mon Jul 22 2019 15:16:30 GMT+0300",
+                "endDate": "Mon Jul 22 2019 15:16:30 GMT+0300",
+                "discussions": [
+                    {
+                        "title": "מה נאכל היום ארוחת צהריים",
+                        "previousDiscussionId": "מה נאכל ארוחת בוקר",
+                        "tasks": [
+            
+                        ],
+                        "date": "Mon Jul 22 2019 15:16:30 GMT+0300",
+                        "host": [
+                            {
+                                "username": "xliron",
+                                "firstName": "liron",
+                                "lastName": "taub",
+                                "email": "liron@gmail.com"
+                            }
+                        ],
+                        "participants": [
+                            {
+                                "username": "xliron",
+                                "firstName": "liron",
+                                "lastName": "taub",
+                                "email": "liron@gmail.com"
+                            }
+                        ],
+                        "tags": [
+                            "אוכל",
+                            "wework",
+                            "microsoft"
+                        ],
+                        "purpose": "make many",
+                        "background": "When building web applications, you are in a dynamic environment. In most cases you are not alone working on the project, you are dependent on implementations of server features which you need to wait for to finish your feature.",
+                        "mainPoints": ["building web applications", "building web applications", "building web applications"],
+                        "mainPointsSum":["you are in a dynamic environment", "you are in a dynamic environment", "you are in a dynamic environment"],
+                        "comments": [
+                            {
+                                "content": "הי מה נשמע",
+                                "author": {
+                                    "username": "xliron",
+                                    "firstName": "liron",
+                                    "lastName": "taub",
+                                    "email": "liron@gmail.com"
+                                }
+                            },
+                            {
+                                "content": "הי מה נשמע",
+                                "author": {
+                                    "username": "xliron",
+                                    "firstName": "liron",
+                                    "lastName": "taub",
+                                    "email": "liron@gmail.com"
+                                }
+                            },
+                            {
+                                "content": "הי מה נשמע",
+                                "author": {
+                                    "username": "xliron",
+                                    "firstName": "liron",
+                                    "lastName": "taub",
+                                    "email": "liron@gmail.com"
+                                }
+                            }
+                        ]
+                      }
+                      
+                ]
+              },
+              {
+                "title": "tui hacaton 3",
+                "participants": [
+                    {
+                        "username": "xliron",
+                        "firstName": "liron",
+                        "lastName": "taub",
+                        "email": "liron@gmail.com"
+                    },
+                    {
+                        "username": "xliron",
+                        "firstName": "liron",
+                        "lastName": "taub",
+                        "email": "liron@gmail.com"
+                    }
+                ],
+                "startDate": "Mon Jul 22 2019 15:16:30 GMT+0300",
+                "endDate": "Mon Jul 22 2019 15:16:30 GMT+0300",
+                "discussions": [
+                    {
+                        "title": "מה נאכל היום ארוחת צהריים",
+                        "previousDiscussionId": "מה נאכל ארוחת בוקר",
+                        "tasks": [
+            
+                        ],
+                        "date": "Mon Jul 22 2019 15:16:30 GMT+0300",
+                        "host": [
+                            {
+                                "username": "xliron",
+                                "firstName": "liron",
+                                "lastName": "taub",
+                                "email": "liron@gmail.com"
+                            }
+                        ],
+                        "participants": [
+                            {
+                                "username": "xliron",
+                                "firstName": "liron",
+                                "lastName": "taub",
+                                "email": "liron@gmail.com"
+                            }
+                        ],
+                        "tags": [
+                            "אוכל",
+                            "wework",
+                            "microsoft"
+                        ],
+                        "purpose": "make many",
+                        "background": "When building web applications, you are in a dynamic environment. In most cases you are not alone working on the project, you are dependent on implementations of server features which you need to wait for to finish your feature.",
+                        "mainPoints": ["building web applications", "building web applications", "building web applications"],
+                        "mainPointsSum":["you are in a dynamic environment", "you are in a dynamic environment", "you are in a dynamic environment"],
+                        "comments": [
+                            {
+                                "content": "הי מה נשמע",
+                                "author": {
+                                    "username": "xliron",
+                                    "firstName": "liron",
+                                    "lastName": "taub",
+                                    "email": "liron@gmail.com"
+                                }
+                            },
+                            {
+                                "content": "הי מה נשמע",
+                                "author": {
+                                    "username": "xliron",
+                                    "firstName": "liron",
+                                    "lastName": "taub",
+                                    "email": "liron@gmail.com"
+                                }
+                            },
+                            {
+                                "content": "הי מה נשמע",
+                                "author": {
+                                    "username": "xliron",
+                                    "firstName": "liron",
+                                    "lastName": "taub",
+                                    "email": "liron@gmail.com"
+                                }
+                            }
+                        ]
+                      }
+                      
+                ]
+              }
+        ]
+        },
+        "origin": "https://mimic.js.org"
+      }
+    ],
+    "groups": [
+      {
+        "id": "38f89463-f5d3-48ad-b7f2-7ed8daa4d108",
+        "name": "alternative",
+        "active": false
+      }
+    ]
+  }
