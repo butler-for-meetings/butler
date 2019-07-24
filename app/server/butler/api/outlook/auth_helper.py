@@ -1,4 +1,4 @@
-from urllib.parse import quote, urlencode
+from urllib.parse import urlencode
 import requests
 
 # Client ID and secret
@@ -54,4 +54,5 @@ def get_token_from_code(auth_code, redirect_uri):
         return r.json()
 
     except Exception:
-        return 'Error retrieving token: {0} - {1}'.format(r.status_code, r.text)
+        return 'Error retrieving token: {0} - {1}'.format(
+            r.status_code, r.text)
