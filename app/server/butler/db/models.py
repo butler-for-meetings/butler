@@ -1,7 +1,8 @@
-from mongoengine import *
 import datetime
-import json
+
+from mongoengine import *
 from bson import json_util
+
 
 class User(Document):
     email = EmailField(required=True)
@@ -53,7 +54,8 @@ class Project(Document):
                 start_date = datetime.datetime.fromtimestamp(start_date / 1000)
             if isinstance(end_date, int):
                 end_date = datetime.datetime.fromtimestamp(end_date / 1000)
-            return super(Project.ProjectQuerySet, self).create(start_date=start_date, end_date=end_date, *args, **kwargs)
+            return super(Project.ProjectQuerySet, self).create(
+                start_date=start_date, end_date=end_date, **kwargs)
 
     meta = {
         "queryset_class": ProjectQuerySet

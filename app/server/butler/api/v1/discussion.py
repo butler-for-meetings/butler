@@ -1,14 +1,16 @@
 from flask import Blueprint, request, Response
-from butler.db.models import *
+from butler.db.models import Discussion
 import json
 import logging
-logging.basicConfig(level=logging.DEBUG)
 
+
+logging.basicConfig(level=logging.DEBUG)
 discussions_blueprint = Blueprint('blueprint', __name__)
 
 
 def handle_post():
     return json.dumps(dict(**request.data))
+
 
 @discussions_blueprint.route('')
 def index():
@@ -16,14 +18,16 @@ def index():
 
 
 # Create a new discussion object
-@discussions_blueprint.route('create_discussion', methods = ['POST'])
+@discussions_blueprint.route('create_discussion', methods=['POST'])
 def create_discussion():
     dict_discussion = dict(**request.data)
     #  fixme change this
     discussions = handle_post()
     discussions.save()
 
-    return Response(response=dict_discussion, status=201, mimetype="application/json")
+    return Response(response=dict_discussion,
+                    status=201,
+                    mimetype="application/json")
 
 
 # Returns all discussions
@@ -35,8 +39,8 @@ def get_all_discussion():
 # Return saved discussion by id
 @discussions_blueprint.route('get_discussion')
 def get_discussion():
-    id = request.args.get("id", type=str)
-    return Discussion.objects(_id=id)
+    discussion_id = request.args.get("id", type=str)
+    return Discussion.objects(_id=discussion_id)
 
 
 # Return saved discussion by title
@@ -44,7 +48,9 @@ def get_discussion():
 def get_discussion_by_name():
     title = request.args.get("title", type=str)
     discussions = Discussion.objects(title=title)
-    return Response(response=discussions.to_json(), status=200, mimetype="application/json")
+    return Response(response=discussions.to_json(),
+                    status=200,
+                    mimetype="application/json")
 
 
 # Return previous discussion by title

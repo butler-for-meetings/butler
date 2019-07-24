@@ -1,5 +1,8 @@
 """Butler server application - implements required api as a REST service."""
+import os
+
 from flask_api import FlaskAPI
+from mongoengine import connect
 from gevent.pywsgi import WSGIServer
 from butler.api.v1 import users, projects, discussion, tasks
 
@@ -9,10 +12,17 @@ API_PREFIX = '/api/v1/{}'
 
 APP = FlaskAPI(__name__)
 
-APP.register_blueprint(users.users_blueprint, url_prefix=API_PREFIX.format('users'))
-APP.register_blueprint(projects.projects_blueprint, url_prefix=API_PREFIX.format('projects'))
-APP.register_blueprint(discussion.discussions_blueprint, url_prefix=API_PREFIX.format('discussion'))
-APP.register_blueprint(tasks.tasks_blueprint, url_prefix=API_PREFIX.format('tasks'))
+APP.register_blueprint(users.users_blueprint,
+                       url_prefix=API_PREFIX.format('users'))
+
+APP.register_blueprint(projects.projects_blueprint,
+                       url_prefix=API_PREFIX.format('projects'))
+
+APP.register_blueprint(discussion.discussions_blueprint,
+                       url_prefix=API_PREFIX.format('discussion'))
+
+APP.register_blueprint(tasks.tasks_blueprint,
+                       url_prefix=API_PREFIX.format('tasks'))
 
 
 @APP.route('/api/projects')
@@ -33,9 +43,7 @@ def develop():
 
 
 if __name__ == '__main__':
-    import os
     connection_string = os.getenv('BUTLER_CONNECTION_STRING')
     if connection_string:
-        from mongoengine import connect
         connect(host=connection_string)
     develop()
