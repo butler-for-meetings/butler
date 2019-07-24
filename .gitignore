@@ -58,4 +58,6 @@ __pycache__/
 # for vim users
 *.swp
 
+#temp files
+/src/butler/api/confluence/temp.txt
 t.py
