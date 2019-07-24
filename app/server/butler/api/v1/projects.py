@@ -16,4 +16,3 @@ def create_project():
     return Response(response=project.to_json(),
                     status=200,
                     mimetype="application/json")
-

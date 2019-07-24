@@ -1,6 +1,18 @@
 import datetime
 
-from mongoengine import *
+from mongoengine import (
+    Document,
+    EmailField,
+    StringField,
+    EmbeddedDocument,
+    BooleanField,
+    ReferenceField,
+    DateTimeField,
+    LazyReferenceField,
+    EmbeddedDocumentListField,
+    ListField,
+    QuerySet
+)
 from bson import json_util
 
 
