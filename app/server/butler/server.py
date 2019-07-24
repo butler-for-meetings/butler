@@ -11,7 +11,6 @@ from api.outlook.auth_helper import get_signin_url, get_token_from_code
 from api.outlook.outlook_services import get_events, get_me
 
 
-
 PORT = 5000
 API_PREFIX = '/api/v1/{}'
 
