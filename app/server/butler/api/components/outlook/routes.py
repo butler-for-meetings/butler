@@ -20,3 +20,9 @@ def get_token():
 
     return "got token successfully! {}".format(access_token)
     # return token_res['access_token']
+
+@outlook_blueprint.route('get_me')
+def get_me():
+    access_token = session['outlook_access_token']
+    user = get_me(access_token)
+    return "{}".format(user['displayName'])
