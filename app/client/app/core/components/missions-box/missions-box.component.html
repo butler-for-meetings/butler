@@ -1,0 +1,11 @@
+<div class="missions-box">
+  <div class="missions-title">{{ title }}</div>
+  <div class="missions-box-main" *ngFor="let mission of missions; let i =index;">
+    <mat-checkbox class="missions-box-check" [(ngModel)]="mission.done"></mat-checkbox>
+    <div class="desc-box-description">
+      <div>
+        {{ mission.summary }}
+      </div>
+    </div>
+  </div>
+</div>

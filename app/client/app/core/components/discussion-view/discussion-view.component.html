@@ -50,6 +50,11 @@
     
   </div>
   <div class="discussion-side">
-  
+    <div class="desc-box">
+      <app-missions-box  [title]="'משימות מדיון קודם'" [missions]="discussion.priorMissions"></app-missions-box>
+    </div>
+    <div class="desc-box">
+        <app-missions-box  [title]="'משימות להמשך'" [missions]="discussion.continueMissions"></app-missions-box>
+      </div>
   </div>
 </div>

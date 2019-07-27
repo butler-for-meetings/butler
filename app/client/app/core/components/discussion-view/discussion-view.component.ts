@@ -16,7 +16,9 @@ export class DiscussionViewComponent implements OnInit {
     tags: ["חיל המודיעין", "גזרת צפון"],
     background: " בלחסלדחדלגחכדלגחכ דלחגכילד גחכידלג חכיד לגחכידלגח כידלגחכידלגכ שדג",
     highlights: "שדגשדגש דגשדג שדג שדג שדג שדגשד גשדגשדגשדגשגד שדגש",
-    administratorsSummary: "שגלשךדגלשדג שדג שדצג שלדצג שלצד גלשצד גלשצד גלשדצ גלשדצ גשדגח"
+    administratorsSummary: "שגלשךדגלשדג שדג שדצג שלדצג שלצד גלשצד גלשצד גלשדצ גלשדצ גשדגח",
+    priorMissions: [{summary: "משימה 1", dueDate: new Date(), assignee: "שיראל קדוש", jiraLink: "url", done: true}, {summary: "משימה 1", dueDate: new Date(), assignee: "שיראל קדוש", jiraLink: "url", done: true}, {summary: "משימה 1", dueDate: new Date(), assignee: "שיראל קדוש", jiraLink: "url", done: false}],
+    continueMissions: [{summary: "משימה 1", dueDate: new Date(), assignee: "שיראל קדוש", jiraLink: "url", done: false}, {summary: "משימה 1", dueDate: new Date(), assignee: "שיראל קדוש", jiraLink: "url", done: false}]
   }
 
   constructor() { }

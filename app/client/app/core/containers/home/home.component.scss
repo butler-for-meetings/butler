@@ -6,6 +6,12 @@
     .sidenav-menu {
         width: 20%;
         background: $primary-color;
+        height: 100%;
+    }
+
+    .sidenav-content {
+        background-color: #e2dfdf;
+        height: 100%;
     }
 
 }

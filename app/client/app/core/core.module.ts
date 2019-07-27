@@ -17,12 +17,15 @@ import { DiscussionEditComponent } from './components/discussion-edit/discussion
 import { HeaderComponent } from './containers/header/header.component';
 import { DescriptionBoxComponent } from './components/description-box/description-box.component';
 import { MaterialModule } from '../material.module';
+import { MissionsBoxComponent } from './components/missions-box/missions-box.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
     MaterialModule,
+    FormsModule      
   ],
   declarations: [
     ContentComponent,
@@ -36,7 +39,8 @@ import { MaterialModule } from '../material.module';
     DiscussionViewComponent,
     DiscussionEditComponent,
     HeaderComponent,
-    DescriptionBoxComponent
+    DescriptionBoxComponent,
+    MissionsBoxComponent
   ]
 })
 export class CoreModule { }
