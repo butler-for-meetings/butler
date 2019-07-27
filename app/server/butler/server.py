@@ -30,6 +30,8 @@ APP.register_blueprint(discussion.discussions_blueprint,
 APP.register_blueprint(tasks.tasks_blueprint,
                        url_prefix=API_PREFIX.format('tasks'))
 
+APP.register_blueprint(outlook.routes.outlook_blueprint,
+                       url_prefix=API_prefix.format('outlook'))
 
 @APP.route('/api/projects')
 def index():
