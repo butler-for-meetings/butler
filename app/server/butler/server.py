@@ -3,13 +3,11 @@ import os
 
 from flask_api import FlaskAPI
 from mongoengine import connect
-from flask import request, session
 from gevent.pywsgi import WSGIServer
 
+from flask import request
 from butler.api.v1 import users, projects, discussion, tasks
-from butler.api.components.outlook.outlook_services import get_events, get_me
-from butler.api.components.outlook.auth_helper import get_signin_url, \
-    get_token_from_code
+from butler.api.components.outlook.routes import outlook_blueprint
 
 
 PORT = 5000
@@ -30,44 +28,13 @@ APP.register_blueprint(discussion.DISCUSSIONS_BLUEPRINT,
 APP.register_blueprint(tasks.TASKS_BLUEPRINT,
                        url_prefix=API_PREFIX.format('tasks'))
 
+APP.register_blueprint(outlook_blueprint,
+                       url_prefix=API_PREFIX.format('outlook'))
 
 @APP.route('/api/projects')
 def index():
     """Example route for testings."""
     return "Hello World!"
-
-
-@APP.route('/api/outlook/getsigininurl')
-def get_outlook_sign_in_url():
-    redirect_uri = 'http://localhost:5000/api/outlook/gettoken'
-    return get_signin_url(redirect_uri)
-
-
-@APP.route('/api/outlook/gettoken')
-def get_token():
-    auth_code = request.args.get('code')
-    redirect_uri = 'http://localhost:5000/api/outlook/gettoken'
-    token_res = get_token_from_code(auth_code, redirect_uri)
-    access_token = token_res['access_token']
-    session['outlook_access_token'] = access_token
-
-    return "got token successfully! {}".format(access_token)
-    # return token_res['access_token']
-
-
-@APP.route('/api/outlook/getme')
-def getme():
-    access_token = session['outlook_access_token']
-    user = get_me(access_token)
-    return "{}".format(user['displayName'])
-
-
-@APP.route('/api/outlook/getevents')
-def get_outlook_events():
-    access_token = session['outlook_access_token']
-    events = get_events(access_token)
-    return "{}".format(events)
-
 
 def production():
     """Start server application in production mode - wsgi server."""
