@@ -2,16 +2,37 @@
 Jira class, manages the connection to jira.
 """
 from jira import JIRA
+import logging
+import logging.handlers
 
-import auth_keys
+
+@property
+def is_jira_authenticated(func):
+    def decorator(self, *args, **kwargs):
+        if not self._is_authenticated:
+            self.logger.info('Jira_was_not_authenticated!')
+
+        else:
+            return func(self, *args, **kwargs)
+
+    return decorator
 
 
 class Jira:
     """
     jira class
     """
+    @staticmethod
+    def get_logger():
+        logger = logging.getLogger('JiraLogger')
+        logger.setLevel(logging.INFO)
+        handler = logging.handlers.SysLogHandler(address='/dev/log')
+        logger.addHandler(handler)
+        return logger
 
-    def __init__(self):
+    def __init__(self, user, token):
+        self._is_authenticated = False
+
         self.jira_handler = JIRA('https://butlertest.atlassian.net/',
                                  basic_auth=(auth_keys.USER, auth_keys.TOKEN))
 
