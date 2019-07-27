@@ -1,6 +1,7 @@
-from flask import Blueprint, Response
-from butler.db.models import Discussion
 import json
+from flask import Blueprint, Response
+
+from butler.db.models import Discussion
 
 
 tasks_blueprint = Blueprint('tasks', __name__)

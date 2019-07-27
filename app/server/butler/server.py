@@ -7,8 +7,9 @@ from flask import request, session
 from gevent.pywsgi import WSGIServer
 
 from butler.api.v1 import users, projects, discussion, tasks
-from api.components.outlook.outlook_services import get_events, get_me
-from api.components.outlook.auth_helper import get_signin_url, get_token_from_code
+from butler.api.components.outlook.outlook_services import get_events, get_me
+from butler.api.components.outlook.auth_helper import get_signin_url, \
+    get_token_from_code
 
 
 PORT = 5000
