@@ -29,7 +29,7 @@ export class SidenavComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(AddDiscussionDialogComponent, {
       width: '250px',
-      data: {} 
+      data: {}
     });
 
     dialogRef.afterClosed().subscribe(result => {
