@@ -1,60 +1,84 @@
 <div class="discussion-main" fxLayout="row">
   <div class="discussion-main-content">
-    <div class="discussion-header" fxLayout="row" fxLayoutAlign="space-between center" >
+    <div class="discussion-header" fxLayout="row" fxLayoutAlign="space-between center">
       <div class="discussion-title">{{ discussion.title }}</div>
       <mat-chip-list>
-        <mat-chip class="date-chip">{{ discussion.datetime.toLocaleDateString() }}</mat-chip>
+        <mat-chip class="date-chip">{{ discussion.date.toLocaleDateString('en-GB') }}</mat-chip>
       </mat-chip-list>
     </div>
     <div class="discussion-purpose" fxLayout="row" fxLayoutAlign="start center">
-        <div class="discussion-sub-title">מטרת הדיון: </div>
-        <div class="discussion-sub-content">{{ discussion.purpose }}</div>
+      <div class="discussion-sub-title">מטרת הדיון: </div>
+      <div class="discussion-sub-content">{{ discussion.purpose }}</div>
     </div>
     <div class="discussion-administrator" fxLayout="row" fxLayoutAlign="start center">
-        <div class="discussion-sub-title">מנהל דיון: </div>
-        <div class="discussion-sub-content">
-            <mat-chip-list>
-              <mat-chip class="admin-chip">{{ discussion.administrator }}</mat-chip>
-            </mat-chip-list> 
-        </div>
+      <div class="discussion-sub-title">מנהל דיון: </div>
+      <div class="discussion-sub-content">
+        <mat-chip-list>
+          <mat-chip class="admin-chip">{{ discussion.host }}</mat-chip>
+        </mat-chip-list>
+      </div>
     </div>
     <div class="discussion-administrator" fxLayout="row" fxLayoutAlign="start center">
-        <div class="discussion-sub-title">נוכחים בדיון: </div>
-        <div class="discussion-sub-content">
-            <mat-chip-list>
-              <mat-chip class="attendant-chip" *ngFor="let attendant of discussion.attendants">{{ attendant }}</mat-chip>
-            </mat-chip-list> 
-        </div>
+      <div class="discussion-sub-title">נוכחים בדיון: </div>
+      <div class="discussion-sub-content">
+        <mat-chip-list>
+          <mat-chip class="attendant-chip" *ngFor="let attendant of discussion.participants">{{ attendant }}</mat-chip>
+        </mat-chip-list>
+      </div>
     </div>
     <div class="discussion-tags" fxLayout="row" fxLayoutAlign="start center">
-        <div class="discussion-sub-title">תיוגים: </div>
-        <div class="discussion-sub-content">
-            <mat-chip-list>
-              <mat-chip class="tag-chip" *ngFor="let tag of discussion.tags">{{ tag }}</mat-chip>
-            </mat-chip-list> 
+      <div class="discussion-sub-title">תיוגים: </div>
+      <div class="discussion-sub-content">
+        <mat-chip-list>
+          <mat-chip class="tag-chip" *ngFor="let tag of discussion.tags">{{ tag }}</mat-chip>
+        </mat-chip-list>
+      </div>
+    </div>
+    <div class="desc-box">
+      <app-description-box [title]="'רקע הדיון'" [description]="discussion.background"></app-description-box>
+    </div>
+
+    <div class="desc-box">
+      <app-description-box [title]="'עיקרי הדיון'" [description]="discussion.mainPoints"></app-description-box>
+    </div>
+
+    <div class="desc-box">
+      <app-description-box [title]="'סיכום מנהלי הדיון'" [description]="discussion.mainPointsSum"></app-description-box>
+    </div>
+
+    <div class="comments">
+      <div class="desc-box-title">תגובות</div>
+      <div class="desc-box-description">
+        <div class="comment-container" *ngFor="let comment of discussion.comments; let i=index" fxLayout="row"
+          fxLayoutAlign="space-between end" [ngClass]="{'row-reverse': i%2===1}">
+          <div class="comment-side">
+            <img class="person-logo" src="assets/images/person.png">
+            <div>{{ comment.author }}</div>
+          </div>
+          <div class="comment-content">{{ comment.content }}</div>
         </div>
+      </div>
     </div>
-    <div class="desc-box">
-      <app-description-box  [title]="'רקע הדיון'" [description]="discussion.background"></app-description-box>
+
+    <div class="buttons" fxLayout="row" fxLayoutAlign="start center">
+      <button mat-fab>
+        <mat-icon>arrow_forward</mat-icon>
+      </button>
+      <button mat-fab>
+        <mat-icon>arrow_back</mat-icon>
+      </button>
     </div>
-  
-    <div class="desc-box">
-      <app-description-box  [title]="'עיקרי הדיון'" [description]="discussion.highlights"></app-description-box>
-    </div>
-  
-    <div class="desc-box">
-      <app-description-box  [title]="'סיכום מנהלי הדיון'" [description]="discussion.administratorsSummary"></app-description-box>
-    </div>
+
   </div>
   <div class="discussion-divider">
-    
+
   </div>
   <div class="discussion-side">
-    <div class="desc-box">
-      <app-missions-box  [title]="'משימות מדיון קודם'" [missions]="discussion.priorMissions"></app-missions-box>
+    <div class="tasks-box">
+      <app-tasks-box [title]="'משימות מדיון קודם'" [tasks]="discussion.priorTasks"></app-tasks-box>
     </div>
-    <div class="desc-box">
-        <app-missions-box  [title]="'משימות להמשך'" [missions]="discussion.continueMissions"></app-missions-box>
-      </div>
+    <div class="tasks-box">
+      <app-tasks-box [title]="'משימות להמשך'" [tasks]="discussion.continueTasks"></app-tasks-box>
+    </div>
   </div>
 </div>

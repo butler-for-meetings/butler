@@ -5,7 +5,8 @@ import { Tag } from './tag';
 export interface Discussion {
   title: string;
   previousDiscussionId: string;
-  tasks: Task[];
+  priorTasks: Task[];
+  continueTasks: Task[];
   date: Date;
   host: User;
   participants: User[];

@@ -2,7 +2,7 @@
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSidenavModule, MatToolbarModule, MatIconModule, MatCheckboxModule, MatButtonModule,
-  MatDividerModule, MatInputModule, MatChipsModule, MatCardModule } from '@angular/material';
+  MatDividerModule, MatInputModule, MatChipsModule, MatCardModule, MatDialogModule } from '@angular/material';
 
 const imports = [
   MatSidenavModule,
@@ -14,7 +14,8 @@ const imports = [
   FlexLayoutModule,
   MatChipsModule,
   MatCardModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatDialogModule
 ];
 
 const exportsModules = [
@@ -27,7 +28,8 @@ const exportsModules = [
   FlexLayoutModule,
   MatChipsModule,
   MatCardModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatDialogModule
 ];
 
 @NgModule({

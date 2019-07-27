@@ -13,11 +13,11 @@ import { DiscussionsMenuComponent } from './components/discussions-menu/discussi
 import { DiscussionPageComponent } from './components/discussion-page/discussion-page.component';
 import { DiscussionViewComponent } from './components/discussion-view/discussion-view.component';
 import { DiscussionEditComponent } from './components/discussion-edit/discussion-edit.component';
-
-import { HeaderComponent } from './containers/header/header.component';
+import { TasksBoxComponent } from './components/tasks-box/tasks-box.component';
 import { DescriptionBoxComponent } from './components/description-box/description-box.component';
+import { HeaderComponent } from './containers/header/header.component';
+
 import { MaterialModule } from '../material.module';
-import { MissionsBoxComponent } from './components/missions-box/missions-box.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -40,7 +40,7 @@ import { FormsModule } from '@angular/forms';
     DiscussionEditComponent,
     HeaderComponent,
     DescriptionBoxComponent,
-    MissionsBoxComponent
+    TasksBoxComponent
   ]
 })
 export class CoreModule { }

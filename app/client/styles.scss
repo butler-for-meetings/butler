@@ -3,6 +3,8 @@
 @import '~normalize.css/normalize.css';
 @import "~material-design-icons/iconfont/material-icons.css";
 @import './assets/fonts/stylesheet.css';
+@import './styles/main.scss';
+@import './assets/themes/butler-theme.scss';
 
 body { 
     direction: rtl; 

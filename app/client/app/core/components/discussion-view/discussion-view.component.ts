@@ -9,22 +9,26 @@ export class DiscussionViewComponent implements OnInit {
 
   discussion = {
     title: 'הדיון הכי הכי הכי',
-    datetime: new Date(),
+    date: new Date(),
     purpose: 'לא לכל דיון יש מטרה אמיתית, בזבוז זמן מוחלט',
-    administrator: 'מיטב שרוני',
-    attendants: ['מנחם ציקוואשווילי', 'לירון טאוב'],
+    host: 'מיטב שרוני',
+    participants: ['מנחם ציקוואשווילי', 'לירון טאוב'],
     tags: ['חיל המודיעין', 'גזרת צפון'],
     background: 'בלחסלדחדלגחכדלגחכ דלחגכילד גחכידלג חכיד לגחכידלגח כידלגחכידלגכ שדג',
-    highlights: 'שדגשדגש דגשדג שדג שדג שדג שדגשד גשדגשדגשדגשגד שדגש',
-    administratorsSummary: 'שגלשךדגלשדג שדג שדצג שלדצג שלצד גלשצד גלשצד גלשדצ גלשדצ גשדגח',
-    priorMissions: [
-      {summary: 'משימה 1', dueDate: new Date(), assignee: 'שיראל קדוש', jiraLink: 'url', done: true},
-      {summary: 'משימה 1', dueDate: new Date(), assignee: 'שיראל קדוש', jiraLink: 'url', done: true},
-      {summary: 'משימה 1', dueDate: new Date(), assignee: 'שיראל קדוש', jiraLink: 'url', done: false}
+    mainPoints: 'שדגשדגש דגשדג שדג שדג שדג שדגשד גשדגשדגשדגשגד שדגש',
+    mainPointsSum: 'שגלשךדגלשדג שדג שדצג שלדצג שלצד גלשצד גלשצד גלשדצ גלשדצ גשדגח',
+    priorTasks: [
+      {summary: 'משימה 1', endDate: new Date(), responsible: 'שיראל קדוש', jiraLink: 'url', finished: true},
+      {summary: 'משימה 1', endDate: new Date(), responsible: 'שיראל קדוש', jiraLink: 'url', finished: true},
+      {summary: 'משימה 1', endDate: new Date(), responsible: 'שיראל קדוש', jiraLink: 'url', finished: false}
     ],
-    continueMissions: [
-      {summary: 'משימה 1', dueDate: new Date(), assignee: 'שיראל קדוש', jiraLink: 'url', done: false},
-      {summary: 'משימה 1', dueDate: new Date(), assignee: 'שיראל קדוש', jiraLink: 'url', done: false}
+    continueTasks: [
+      {summary: 'משימה 1', endDate: new Date(), responsible: 'שיראל קדוש', jiraLink: 'url', finished: false},
+      {summary: 'משימה 1', endDate: new Date(), responsible: 'שיראל קדוש', jiraLink: 'url', finished: false}
+    ],
+    comments: [
+      {author: 'שיראל קדוש', content: 'תגובה תגובה תגובה'},
+      {author: 'שיראל קדוש', content: 'תגובה תגובה תגובה'}
     ]
   };
 

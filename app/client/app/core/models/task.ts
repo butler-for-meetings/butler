@@ -5,4 +5,6 @@ export interface Task {
   responsible: User;
   startDate: Date;
   endDate: Date;
+  jiraLink: string;
+  summary: string;
 }
