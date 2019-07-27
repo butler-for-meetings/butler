@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Discussion } from '../../models/discussion';
 
 @Component({
   selector: 'app-add-discussion-dialog',
@@ -7,8 +9,13 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AddDiscussionDialogComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public dialogRef: MatDialogRef<AddDiscussionDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Discussion) {}
 
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
   ngOnInit() {
   }
 
