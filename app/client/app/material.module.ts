@@ -1,9 +1,8 @@
 
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, MatDividerModule, MatInputModule, MatChipsModule, MatCardModule } from '@angular/material';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-
+import { MatSidenavModule, MatToolbarModule, MatIconModule, MatCheckboxModule, MatButtonModule,
+  MatDividerModule, MatInputModule, MatChipsModule, MatCardModule } from '@angular/material';
 
 const imports = [
   MatSidenavModule,
@@ -14,7 +13,7 @@ const imports = [
   MatInputModule,
   FlexLayoutModule,
   MatChipsModule,
-  MatCardModule, 
+  MatCardModule,
   MatCheckboxModule
 ];
 

@@ -25,7 +25,7 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     HttpClientModule,
     MaterialModule,
-    FormsModule      
+    FormsModule
   ],
   declarations: [
     ContentComponent,

@@ -7,7 +7,7 @@ import { MatDrawer } from '@angular/material';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  //@ViewChild('drawer',{static: true}) drawer: MatDrawer;
+  // @ViewChild('drawer',{static: true}) drawer: MatDrawer;
 
   constructor() { }
 
@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   }
 
   changeDrawerState(e) {
-    //this.drawer.toggle();
+    // this.drawer.toggle();
   }
 
 }
