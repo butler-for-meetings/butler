@@ -8,8 +8,8 @@ from gevent.pywsgi import WSGIServer
 
 from butler.api.v1 import users, projects, discussion, tasks
 from butler.api.components.outlook.outlook_services import get_events, get_me
-from butler.api.components.outlook.auth_helper import get_signin_url, \
-    get_token_from_code
+from butler.api.components.outlook.auth_helper import get_signin_url, get_token_from_code
+from butler.api.components.outlook.routes import outlook_blueprint
 
 
 PORT = 5000
@@ -30,20 +30,13 @@ APP.register_blueprint(discussion.discussions_blueprint,
 APP.register_blueprint(tasks.tasks_blueprint,
                        url_prefix=API_PREFIX.format('tasks'))
 
-APP.register_blueprint(outlook.routes.outlook_blueprint,
-                       url_prefix=API_prefix.format('outlook'))
+APP.register_blueprint(outlook_blueprint,
+                       url_prefix=API_PREFIX.format('outlook'))
 
 @APP.route('/api/projects')
 def index():
     """Example route for testings."""
     return "Hello World!"
-
-
-@APP.route('/api/outlook/getsigininurl')
-def get_outlook_sign_in_url():
-    redirect_uri = 'http://localhost:5000/api/outlook/gettoken'
-    return get_signin_url(redirect_uri)
-
 
 @APP.route('/api/outlook/gettoken')
 def get_token():
