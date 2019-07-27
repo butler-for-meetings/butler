@@ -1,7 +1,9 @@
 <div class="sidenav-container">
-    <app-projects-menu [projects]="projects" *ngIf="menuType === menuTypes?.PROJECT; else discMenu;"></app-projects-menu>
-    <ng-template #discMenu>
-      <app-discussions-menu></app-discussions-menu>
-    </ng-template>
-  </div>
-  
+  <app-projects-menu [projects]="projects" *ngIf="menuType === menuTypes?.PROJECT; else discMenu;"></app-projects-menu>
+  <ng-template #discMenu>
+    <app-discussions-menu></app-discussions-menu>
+  </ng-template>
+  <button mat-mini-fab class="add-button" (click)="openDialog()">
+      <mat-icon>add</mat-icon>
+    </button>
+</div>

@@ -1,15 +1,21 @@
+@import '../../../../styles/variables.scss';
+
 .mat-toolbar {
     background-color: white;
-}
-.navbar-main {
-    width: 100%;
-    .navbar-content {
+    font-family: $rubik;
+    font-size: 15px;
+    &.navbar-main {
         width: 100%;
-        height: 100%;
-    }
-
-    .drawer-btn {}
-    .butler-logo {
-        height: 100%;
+        .navbar-content {
+            width: 100%;
+            height: 100%;
+            .butler-logo {
+                height: 100%;
+            }
+            .person-logo {
+                margin-right: 5px;
+                height: 40px;
+            }
+        }
     }
 }

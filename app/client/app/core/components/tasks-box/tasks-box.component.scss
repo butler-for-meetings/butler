@@ -1,0 +1,61 @@
+@import '../../../../styles/variables.scss';
+
+.tasks-box {
+    .tasks-title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    .tasks-box-main {
+        min-height: 120px;
+        width: 100%;
+        margin-bottom: 10px;
+    
+        .tasks-box-check {
+            float: right;
+            position: relative;
+            z-index: 2;
+            top: 40px;
+            right: -10px;
+        }
+    
+        .tasks-container {
+            font-family: $rubik;
+
+            .tasks-summary {
+                margin: 10px;
+                vertical-align: top;
+            }
+
+            .mat-chip-list-stacked {
+                .date-chip {
+                    background-color: #eaa971;
+                }
+
+                .name-chip {
+                    background-color: $primary-color; 
+                }
+            }
+        }
+    }
+}
+
+::ng-deep {
+    .mat-checkbox-frame, .mat-checkbox-background {
+        border-color: #0288d1;
+        border-radius: 50% !important;
+    }
+    .mat-checkbox-inner-container {
+        height: 40px!important;
+        width: 40px!important;
+    }
+
+    .mat-checkbox-checkmark {
+        height: 30px;
+        top: 5px !important;
+    }
+      
+    .mat-card {
+        box-shadow: none !important;
+    }
+}

@@ -1,0 +1,18 @@
+<div class="tasks-box">
+  <div class="tasks-title">{{ title }}</div>
+  <div class="tasks-box-main" *ngFor="let task of tasks">
+    <mat-checkbox class="tasks-box-check" [(ngModel)]="task.finished"></mat-checkbox>
+    <mat-card class="tasks-container">
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="tasks-summary">
+          {{ task.summary }}
+        </div>
+        <mat-chip-list class="mat-chip-list-stacked" aria-orientation="vertical">
+          <mat-chip class="date-chip">{{ task.endDate.toLocaleDateString('en-GB') }}</mat-chip>
+          <mat-chip class="name-chip">{{ task.responsible }}</mat-chip>
+          <mat-chip class="tag-chip"><a [href]="task.jiraLink" target="_blank">Open in JIRA</a></mat-chip>
+        </mat-chip-list>
+      </div>
+    </mat-card>
+  </div>
+</div>

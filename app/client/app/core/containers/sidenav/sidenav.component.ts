@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ButlerApiService } from '../../services/butler-api.service';
 import { Project } from '../../models/project';
+import { MatDialog } from '@angular/material';
+import { AddDiscussionDialogComponent } from '../../components/add-discussion-dialog/add-discussion-dialog.component';
 
 @Component({
   selector: 'app-sidenav',
@@ -9,7 +11,7 @@ import { Project } from '../../models/project';
 })
 export class SidenavComponent implements OnInit {
 
-  constructor(private _butlerApiService: ButlerApiService) { }
+  constructor(private _butlerApiService: ButlerApiService, public dialog: MatDialog) { }
 
   public projects: Project[];
   public menuTypes = {
@@ -22,6 +24,17 @@ export class SidenavComponent implements OnInit {
    async ngOnInit() {
     const result = await this._butlerApiService.getAllProjetcs();
     this.projects = result;
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(AddDiscussionDialogComponent, {
+      width: '250px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
 }
