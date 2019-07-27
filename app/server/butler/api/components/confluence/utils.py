@@ -21,7 +21,7 @@ def render_to_confluence(discussion):
             {
                 "author": {
                     "name": f"{comment.author.first_name} "
-                            f"{comment.author.first_name}",
+                            f"{comment.author.last_name}",
                     "link": "#"
                 },
                 "content": comment.content
@@ -32,8 +32,8 @@ def render_to_confluence(discussion):
     for participant in discussion.participants:
         participants.append(
             {
-              "name": participant.first_name + " " + participant.first_name,
-              "link": "#"
+                "name": participant.first_name + " " + participant.last_name,
+                "link": "#"
             }
         )
     tasks = []
@@ -44,7 +44,7 @@ def render_to_confluence(discussion):
                 "finished": task.finished,
                 "responsible": {
                     "name": f"{task.responsible.first_name} "
-                            f"{task.responsible.first_name}",
+                            f"{task.responsible.last_name}",
                     "link": "#"
                 },
                 "start_date": task.start_date,
@@ -61,7 +61,7 @@ def render_to_confluence(discussion):
         'date': discussion.date,
         "user": {
             "name": f"{discussion.host.first_name} "
-                    f"{discussion.host.first_name}",
+                    f"{discussion.host.last_name}",
             "link": "#"
         },
         "participants": participants,

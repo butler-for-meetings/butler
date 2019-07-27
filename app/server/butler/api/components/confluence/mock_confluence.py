@@ -1,14 +1,15 @@
+import datetime
 from mongoengine import Document
+from mongoengine import ListField
 from mongoengine import EmailField
 from mongoengine import StringField
 from mongoengine import BooleanField
-from mongoengine import EmbeddedDocument
 from mongoengine import DateTimeField
-from mongoengine import ListField
-from mongoengine import EmbeddedDocumentListField
 from mongoengine import ReferenceField
-import datetime
-from confluenceClient import dump_to_confluence
+from mongoengine import EmbeddedDocument
+from mongoengine import EmbeddedDocumentListField
+
+from client import dump_to_confluence
 
 
 """

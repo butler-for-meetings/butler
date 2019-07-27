@@ -1,12 +1,12 @@
-from jira import JIRA
-import auth_keys
-
 """
 Jira class, manages the connection to jira.
 """
+from jira import JIRA
+
+import auth_keys
 
 
-class jira:
+class Jira:
     """
     jira class
     """

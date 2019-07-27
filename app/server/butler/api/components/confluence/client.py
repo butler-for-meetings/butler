@@ -1,4 +1,5 @@
 from atlassian import Confluence
+
 from utils import render_to_confluence
 
 

@@ -1,8 +1,9 @@
-import requests
-import uuid
 import json
+import uuid
+import requests
 
-graph_endpoint = 'https://graph.microsoft.com/v1.0{0}'
+
+GRAPH_ENDPOINT = 'https://graph.microsoft.com/v1.0{0}'
 
 
 # Generic API Sending
@@ -51,7 +52,7 @@ def make_api_call(method, url, token, payload=None, parameters=None):
 
 
 def get_me(access_token):
-    get_me_url = graph_endpoint.format('/me')
+    get_me_url = GRAPH_ENDPOINT.format('/me')
 
     # Use OData query parameters to control the results
     #    - Only return the displayName and mail fields
@@ -63,12 +64,11 @@ def get_me(access_token):
     if results.status_code == 200:
         return results.json()
 
-    else:
-        return "{0}: {1}".format(results.status_code, results.text)
+    return "{0}: {1}".format(results.status_code, results.text)
 
 
 def get_events(access_token):
-    get_events_url = graph_endpoint.format('/me/events')
+    get_events_url = GRAPH_ENDPOINT.format('/me/events')
 
     query_parameters = {
         '$select':
@@ -83,15 +83,15 @@ def get_events(access_token):
         events = []
         for event in results['value']:
             events.append({
-                    "subject": event['subject'],
-                    "body": event['bodyPreview'],
-                    "organizer": event['organizer']['emailAddress']['name'],
-                    "attendees": [att['emailAddress']['name']
-                                  for att in event['attendees']],
-                    "start": event['start']['dateTime'],
-                    "end": event['end']['dateTime']
+                "subject": event['subject'],
+                "body": event['bodyPreview'],
+                "organizer": event['organizer']['emailAddress']['name'],
+                "attendees": [att['emailAddress']['name']
+                              for att in event['attendees']],
+                "start": event['start']['dateTime'],
+                "end": event['end']['dateTime']
 
             })
         return events
-    else:
-        return "{0}: {1}".format(results.status_code, results.text)
+
+    return "{0}: {1}".format(results.status_code, results.text)

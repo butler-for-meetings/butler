@@ -6,7 +6,7 @@ with open("requirements.txt", "r") as requirements_file:
 setup(
     name='butler',
     version='0.1.0',
-    packages=find_packages("app/server/"),
+    packages=find_packages("app/server"),
     package_dir={"": "app/server"},
     url='https://gitlab.com/butler-for-meetings/butler',
     license='MIT',
