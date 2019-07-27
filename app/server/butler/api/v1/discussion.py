@@ -1,7 +1,9 @@
-from flask import Blueprint, request, Response
-from butler.db.models import Discussion
 import json
 import logging
+
+from flask import Blueprint, request, Response
+
+from butler.db.models import Discussion
 
 
 logging.basicConfig(level=logging.DEBUG)
