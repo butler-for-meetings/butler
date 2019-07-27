@@ -23,7 +23,6 @@ def index():
 @DISCUSSIONS_BLUEPRINT.route('create_discussion', methods=['POST'])
 def create_discussion():
     dict_discussion = dict(**request.data)
-    #  fixme change this
     discussions = handle_post()
     discussions.save()
 

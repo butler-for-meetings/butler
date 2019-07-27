@@ -12,11 +12,11 @@ CONFIG = dict({
 })
 
 
-# TODO - figure out data issue
 def dump_to_confluence(authentication, data, title):
     """
     :param authentication:
     :param data:
+    :param title:
     :return:
     """
     confluence = Confluence(

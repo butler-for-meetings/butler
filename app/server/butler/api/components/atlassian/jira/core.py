@@ -30,9 +30,8 @@ class Jira(Atlassian):
                                        description=description,
                                        issuetype={'name': issue_type})
 
-        self.logger.info('Create issue to project with ket: {} '
-                         'with type {}'.
-                         format(project_key, issue_type))
+        self.logger.info('Create issue to project with key: '
+                         '%s with type %s', project_key, issue_type)
 
     # only from project manager's user
     def delete_issue(self, key):
@@ -41,7 +40,7 @@ class Jira(Atlassian):
         """
         issue_to_delete = self.jira_handler.issue(key)
         issue_to_delete.delete()
-        self.logger.info('Issue with key: {} was deleted.'.format(key))
+        self.logger.info('Issue with key: %s was deleted.', key)
 
     def update_issue(self, key, fields):
         """
@@ -50,7 +49,7 @@ class Jira(Atlassian):
         """
         issue_to_update = self.jira_handler.issue(key)
         issue_to_update.update(fields)
-        self.logger.info('Issue with key: {} was updated.'.format(key, fields))
+        self.logger.info('Issue with key: %s was updated.', key)
 
     def get_project_issues(self, project_key):
         """
@@ -58,13 +57,13 @@ class Jira(Atlassian):
         :return: dictionary <issue-key,issue-fields>
         """
         issues_in_project = self.jira_handler.search_issues(
-            'project={}'.format(project_key))
+            'project=%s', project_key)
         issues = {}
         for issue in issues_in_project:
             issues[issue.key] = issue.fields
 
-        self.logger.info('Return issues from project with key: {}.'.
-                         format(project_key))
+        self.logger.info('Return issues from project with key: %s.',
+                         project_key)
 
         return issues
 
@@ -73,7 +72,7 @@ class Jira(Atlassian):
         :param key: issue key
         :return: issue
         """
-        self.logger.info('Return issue with key: {}.'.format(key))
+        self.logger.info('Return issue with key: %s.', key)
 
         return self.jira_handler.issue(key)
 
@@ -85,7 +84,7 @@ class Jira(Atlassian):
         issue = self.find_issue(key)
         self.jira_handler.add_comment(issue, comment)
 
-        self.logger.info('Add comment to issue with key: {}.'.format(key))
+        self.logger.info('Add comment to issue with key: %s.', key)
 
     def add_attachment(self, file_path, key):
         """
@@ -95,12 +94,4 @@ class Jira(Atlassian):
         issue = self.find_issue(key)
         self.jira_handler.add_attachment(issue=issue, attachment=file_path)
 
-        self.logger.info('Add attachment to issue with key: {}.'.format(key))
-
-
-if __name__ == '__main__':
-    jira = Jira('https://butlertest.atlassian.net/')
-    jira.authenticate_on_cloud(user='tugmica@gmail.com',
-                               token='Im9IWQIOtnIkf2Ab0w9s15A7')
-    from ipdb import set_trace
-    set_trace()
+        self.logger.info('Add attachment to issue with key: %s.', key)

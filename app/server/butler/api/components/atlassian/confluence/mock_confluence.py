@@ -17,6 +17,7 @@ from mongoengine import EmbeddedDocumentListField
 from butler.api.components.atlassian.confluence.client import \
     dump_to_confluence
 
+
 class User(Document):
     email = EmailField(required=True)
     first_name = StringField(max_length=64)
