@@ -5,9 +5,8 @@ from flask_api import FlaskAPI
 from mongoengine import connect
 from gevent.pywsgi import WSGIServer
 
-from flask import request
 from butler.api.v1 import users, projects, discussion, tasks
-from butler.api.components.outlook.routes import outlook_blueprint
+from butler.api.components.outlook.routes import OUTLOOK_BLUEPRINT
 
 
 PORT = 5000
@@ -28,13 +27,15 @@ APP.register_blueprint(discussion.DISCUSSIONS_BLUEPRINT,
 APP.register_blueprint(tasks.TASKS_BLUEPRINT,
                        url_prefix=API_PREFIX.format('tasks'))
 
-APP.register_blueprint(outlook_blueprint,
+APP.register_blueprint(OUTLOOK_BLUEPRINT,
                        url_prefix=API_PREFIX.format('outlook'))
+
 
 @APP.route('/api/projects')
 def index():
     """Example route for testings."""
     return "Hello World!"
+
 
 def production():
     """Start server application in production mode - wsgi server."""
