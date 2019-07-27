@@ -3,10 +3,9 @@ import os
 
 from flask_api import FlaskAPI
 from mongoengine import connect
-from flask import request, session
 from gevent.pywsgi import WSGIServer
 
-from flask import Blueprint, request, Response
+from flask import request
 from butler.api.v1 import users, projects, discussion, tasks
 from butler.api.components.outlook.routes import outlook_blueprint
 

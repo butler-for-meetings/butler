@@ -1,6 +1,6 @@
-from flask import Blueprint, request, Response, session
+from flask import Blueprint, request, session
 from butler.api.components.outlook.outlook_services import get_events, get_me
-from butler.api.components.outlook.auth_helper import get_signin_url, get_token_from_code
+from butler.api.components.outlook.auth_helper import get_token_from_code
 
 outlook_blueprint = Blueprint('outlook', __name__)
 
