@@ -1,11 +1,10 @@
-from atlassian import Confluence
-
-from utils import render_to_confluence
-
-
 """
     This module connects to confluence instance and adds / updates pages
 """
+from atlassian import Confluence
+
+from .utils import render_to_confluence
+
 
 CONFIG = dict({
     'url': 'http://localhost:8090',

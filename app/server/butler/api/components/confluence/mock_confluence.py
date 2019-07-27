@@ -1,3 +1,8 @@
+"""
+Just for test
+"""
+# pylint: disable-all
+# linter is disable because its a test file
 import datetime
 from mongoengine import Document
 from mongoengine import ListField
@@ -10,11 +15,6 @@ from mongoengine import EmbeddedDocument
 from mongoengine import EmbeddedDocumentListField
 
 from client import dump_to_confluence
-
-
-"""
-Just for test
-"""
 
 
 class User(Document):
@@ -66,6 +66,7 @@ AUTHENTICATION = dict({
     'uname': 'admin',
     'password': '159357'
 })
+
 
 if __name__ == '__main__':
     discussion = Discussion()

@@ -7,20 +7,20 @@ from butler.db.models import Discussion
 
 
 logging.basicConfig(level=logging.DEBUG)
-discussions_blueprint = Blueprint('blueprint', __name__)
+DISCUSSIONS_BLUEPRINT = Blueprint('blueprint', __name__)
 
 
 def handle_post():
     return json.dumps(dict(**request.data))
 
 
-@discussions_blueprint.route('')
+@DISCUSSIONS_BLUEPRINT.route('')
 def index():
     return 'DISCUSSIONS!!'
 
 
 # Create a new discussion object
-@discussions_blueprint.route('create_discussion', methods=['POST'])
+@DISCUSSIONS_BLUEPRINT.route('create_discussion', methods=['POST'])
 def create_discussion():
     dict_discussion = dict(**request.data)
     #  fixme change this
@@ -33,20 +33,20 @@ def create_discussion():
 
 
 # Returns all discussions
-@discussions_blueprint.route('get_all_discussion')
+@DISCUSSIONS_BLUEPRINT.route('get_all_discussion')
 def get_all_discussion():
     return Discussion.objects()
 
 
 # Return saved discussion by id
-@discussions_blueprint.route('get_discussion')
+@DISCUSSIONS_BLUEPRINT.route('get_discussion')
 def get_discussion():
     discussion_id = request.args.get("id", type=str)
     return Discussion.objects(_id=discussion_id)
 
 
 # Return saved discussion by title
-@discussions_blueprint.route('get_discussion_by_name')
+@DISCUSSIONS_BLUEPRINT.route('get_discussion_by_name')
 def get_discussion_by_name():
     title = request.args.get("title", type=str)
     discussions = Discussion.objects(title=title)
@@ -56,14 +56,14 @@ def get_discussion_by_name():
 
 
 # Return previous discussion by title
-@discussions_blueprint.route('get_previous_discussion')
+@DISCUSSIONS_BLUEPRINT.route('get_previous_discussion')
 def get_previous_discussion():
     title = request.args.get("title", type=str)
     discussion = Discussion.objects(title=title)
     return discussion.previous_discussion
 
 # Return discussions by tag word
-@discussions_blueprint.route('get_discussions_by_tag')
+@DISCUSSIONS_BLUEPRINT.route('get_discussions_by_tag')
 def get_discussions_by_tag():
     discs = []
     desired_tag = request.args.get("tag", type=str)
@@ -74,7 +74,7 @@ def get_discussions_by_tag():
     return json.dumps(discs)
 
 # Update existing discussion
-@discussions_blueprint.route('update_discussion')
+@DISCUSSIONS_BLUEPRINT.route('update_discussion')
 def update_discussion():
     discussion = handle_post()
     discussion.update()
@@ -82,20 +82,20 @@ def update_discussion():
 
 
 #  Returns all discussions from a earlier to latter date
-@discussions_blueprint.route('get_discussions_by_date')
+@DISCUSSIONS_BLUEPRINT.route('get_discussions_by_date')
 def get_discussions_by_date():
     discs = []
     early_date = request.args.get("early_date", type=str)
     late_date = request.args.get("late_date", type=str)
     for discussion in Discussion.objects:
         disc_date = discussion.date
-        if disc_date >= early_date and late_date <= late_date:
+        if early_date <= disc_date <= late_date:
             discs.append(discussion)
     return json.dumps(discs)
 
 
 # Returns next discussion
-@discussions_blueprint.route('get_next_discussion')
+@DISCUSSIONS_BLUEPRINT.route('get_next_discussion')
 def get_next_discussion():
     title = request.args.get("title", type=str)
     for discussion in Discussion.objects:

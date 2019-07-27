@@ -1,3 +1,4 @@
+# pylint: disable=too-few-public-methods,arguments-differ
 import datetime
 
 from mongoengine import (
@@ -61,7 +62,7 @@ class Project(Document):
     discussions = ListField(ReferenceField(Discussion))
 
     class ProjectQuerySet(QuerySet):
-        def create(self, end_date, start_date, *args, **kwargs):
+        def create(self, end_date, start_date, **kwargs):
             if isinstance(start_date, int):
                 start_date = datetime.datetime.fromtimestamp(start_date / 1000)
             if isinstance(end_date, int):

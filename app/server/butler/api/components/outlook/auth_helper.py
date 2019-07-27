@@ -1,4 +1,5 @@
 from urllib.parse import urlencode
+
 import requests
 
 # Client ID and secret

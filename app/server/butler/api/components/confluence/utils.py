@@ -1,8 +1,9 @@
-from jinja2 import Environment, FileSystemLoader, select_autoescape
-
 """
     Utils for the conf
 """
+from jinja2 import Environment, FileSystemLoader, select_autoescape
+
+
 ENV = Environment(
     loader=FileSystemLoader('./templates'),
     autoescape=select_autoescape(['html'])

@@ -18,16 +18,16 @@ API_PREFIX = '/api/v1/{}'
 APP = FlaskAPI(__name__)
 APP.secret_key = b'_5#y2L"F3Q8z\n\xec]/'
 
-APP.register_blueprint(users.users_blueprint,
+APP.register_blueprint(users.USERS_BLUEPRINT,
                        url_prefix=API_PREFIX.format('users'))
 
-APP.register_blueprint(projects.projects_blueprint,
+APP.register_blueprint(projects.PROJECTS_BLUEPRINT,
                        url_prefix=API_PREFIX.format('projects'))
 
-APP.register_blueprint(discussion.discussions_blueprint,
+APP.register_blueprint(discussion.DISCUSSIONS_BLUEPRINT,
                        url_prefix=API_PREFIX.format('discussion'))
 
-APP.register_blueprint(tasks.tasks_blueprint,
+APP.register_blueprint(tasks.TASKS_BLUEPRINT,
                        url_prefix=API_PREFIX.format('tasks'))
 
 
@@ -81,7 +81,7 @@ def develop():
 
 
 if __name__ == '__main__':
-    connection_string = os.getenv('BUTLER_CONNECTION_STRING')
-    if connection_string:
-        connect(host=connection_string)
+    CONNECTION_STRING = os.getenv('BUTLER_CONNECTION_STRING')
+    if CONNECTION_STRING:
+        connect(host=CONNECTION_STRING)
     develop()

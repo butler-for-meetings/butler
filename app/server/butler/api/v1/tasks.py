@@ -4,10 +4,10 @@ from flask import Blueprint, Response
 from butler.db.models import Discussion
 
 
-tasks_blueprint = Blueprint('tasks', __name__)
+TASKS_BLUEPRINT = Blueprint('tasks', __name__)
 
 
-@tasks_blueprint.route('get_discussion_tasks/<discussion_id>', methods=["GET"])
+@TASKS_BLUEPRINT.route('get_discussion_tasks/<discussion_id>', methods=["GET"])
 def get_discussion_tasks(discussion_id):
     discussion = Discussion.objects.get(pk=discussion_id)
     return Response(
