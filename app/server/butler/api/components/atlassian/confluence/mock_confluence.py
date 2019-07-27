@@ -9,8 +9,8 @@ from mongoengine import ReferenceField
 from mongoengine import EmbeddedDocument
 from mongoengine import EmbeddedDocumentListField
 
-from client import dump_to_confluence
-
+from butler.api.components.atlassian.confluence.client import \
+    dump_to_confluence
 
 """
 Just for test
