@@ -1,0 +1,72 @@
+@import '../../../../styles/variables.scss';
+
+.sidebar-container {
+    padding: 20px 20px 0 20px;
+    box-sizing: border-box;
+
+    .sidebar-discussion-top {
+        color: $white;
+        font-weight: 700;
+        display: flex;
+        margin-bottom: 15px;
+        
+        .go-back {
+            width: 10%;
+            display: flex;
+            align-items: center;
+        }
+
+        .current-project {
+
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .project-title {
+                font-size: 1em;
+            }
+        
+            .project-count {
+                width: 15%;
+                margin-right: 5px;
+
+                .project-discussion-num {
+                    display: block;
+                    text-align: center;
+                    margin-bottom: -0.4em;
+                }
+            
+                .project-discussion-perfix {
+                    font-size: 0.8em;
+                }
+
+            }
+
+        }
+    }
+    .sidebar-discussion {
+        background: $white;
+        border-radius: 3px;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+
+    .discussion-title {
+        display: flex;
+        align-items: center;
+        padding-left: 5px;
+        line-height: 1.3;
+    }
+
+    .discussion-date  {
+        display: block;
+        text-align: center;
+        font-size: 0.7em;
+        display: flex;
+        align-items: center;
+    }
+
+}
