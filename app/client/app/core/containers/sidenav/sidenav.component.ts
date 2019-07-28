@@ -22,7 +22,7 @@ export class SidenavComponent implements OnInit {
   public menuType = this.menuTypes.PROJECT;
 
    async ngOnInit() {
-    const result = await this._butlerApiService.getAllProjetcs();
+    const result = await this._butlerApiService.getAllProjects();
     this.projects = result;
   }
 
