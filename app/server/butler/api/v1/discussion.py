@@ -101,3 +101,7 @@ def get_next_discussion():
         if discussion.previous_discussion.title == title:
             return discussion
     return 'NO PREVIOUS DISCUSSIONS WERE FOUND!!!'
+
+@DISCUSSIONS_BLUEPRINT.route("get_discussions_by_project")
+def get_discussions_by_project(id):
+    return Project.objects.get(pk=id).discussions
