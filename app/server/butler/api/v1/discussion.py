@@ -20,7 +20,7 @@ def create_discussion():
 
 
 # Returns all discussions
-@DISCUSSIONS_BLUEPRINT.route('get_all_discussion')
+@DISCUSSIONS_BLUEPRINT.route('get_all_discussions')
 def get_all_discussion():
     return Discussion.objects()
 
