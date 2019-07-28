@@ -22,7 +22,7 @@ APP.register_blueprint(projects.PROJECTS_BLUEPRINT,
                        url_prefix=API_PREFIX.format('projects'))
 
 APP.register_blueprint(discussion.DISCUSSIONS_BLUEPRINT,
-                       url_prefix=API_PREFIX.format('discussion'))
+                       url_prefix=API_PREFIX.format('discussions'))
 
 APP.register_blueprint(tasks.TASKS_BLUEPRINT,
                        url_prefix=API_PREFIX.format('tasks'))
