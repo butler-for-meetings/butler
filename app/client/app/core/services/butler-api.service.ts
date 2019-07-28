@@ -19,7 +19,8 @@ export class ButlerApiService {
    * TODO: Use sessions so this will be relative to the connected user.
    */
   getAllProjects(): Promise<Project[]> {
-    return this._http.get<Project[]>(this.constructAPIRoute("projects")).toPromise();
+    return this._http.get<Project[]>(this.constructAPIRoute("projects"))
+           .toPromise();
   }
 
   /**
@@ -27,7 +28,8 @@ export class ButlerApiService {
   * @param {string} id The ID of the project
   */
   getProject(id: string) : Promise<Project> {
-    return this._http.get<Project>(this.constructAPIRoute(`projects/${id}`)).toPromise();
+    return this._http.get<Project>(this.constructAPIRoute(`projects/${id}`))
+           .toPromise();
   }
 
   /**
@@ -35,6 +37,7 @@ export class ButlerApiService {
   * @param {string} id The ID of the project
   */
   getDiscussion(id: string) : Promise<Discussion> {
-    return this._http.get<Discussion>(this.constructAPIRoute(`discussions/${id}`)).toPromise()
+    return this._http.get<Discussion>(this.constructAPIRoute(`discussions/${id}`))
+           .toPromise()
   }
 }
