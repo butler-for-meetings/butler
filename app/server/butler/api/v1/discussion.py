@@ -38,10 +38,9 @@ def get_all_discussion():
 
 
 # Return saved discussion by id
-@DISCUSSIONS_BLUEPRINT.route('get_discussion')
-def get_discussion():
-    discussion_id = request.args.get("id", type=str)
-    return Discussion.objects(_id=discussion_id)
+@DISCUSSIONS_BLUEPRINT.route('get_discussion/<string:id>')
+def get_discussion(id):
+    return Discussion.objects(pk=id)
 
 
 # Return saved discussion by title
