@@ -31,6 +31,7 @@ def create_project():
                     status=200,
                     mimetype="application/json")
 
+
 @PROJECTS_BLUEPRINT.route("discussions/<string:projid>")
 def get_discussions(projid):
     return Project.objects.get(pk=projid).discussions
