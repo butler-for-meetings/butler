@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Project } from '../models/project';
+import { Discussion } from '../models/discussion';
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +28,13 @@ export class ButlerApiService {
   */
   getProject(id: string) : Promise<Project> {
     return this._http.get<Project>(this.constructAPIRoute(`projects/${id}`)).toPromise();
+  }
+
+  /**
+  * Get a specific discussion using it's ID
+  * @param {string} id The ID of the project
+  */
+  getDiscussion(id: string) : Promise<Discussion> {
+    return this._http.get<Discussion>(this.constructAPIRoute(`discussions/${id}`)).toPromise()
   }
 }
