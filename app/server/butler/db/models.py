@@ -95,7 +95,6 @@ class Project(Document):
             participants.append(participant.to_mongo())
 
         data["participants"] = participants
-        print(data)
         return json_util.dumps(data)
 
 
