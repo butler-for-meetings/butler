@@ -48,13 +48,23 @@ class Discussion(Document):
     date = DateTimeField(required=True)
     host = ReferenceField(User, required=True)
     participants = ListField(ReferenceField(User))
-    tags = ListField(StringField)
+    tags = ListField(StringField())
     purpose = StringField(required=True)
     background = StringField(required=True)
-    main_points = ListField(StringField)
-    main_points_sum = ListField(StringField)
+    main_points = ListField(StringField())
+    main_points_sum = ListField(StringField())
     comments = ListField(Comment)
 
+    class DiscussionQuerySet(QuerySet):
+        def create(self, date, **kwargs):
+            if isinstance(date, int):
+                date = datetime.datetime.fromtimestamp(date / 1000)
+            return super(Discussion.DiscussionQuerySet, self).create(
+                date=date, **kwargs)
+
+    meta = {
+        "queryset_class": DiscussionQuerySet
+    }
 
 class Project(Document):
     title = StringField(required=True)
