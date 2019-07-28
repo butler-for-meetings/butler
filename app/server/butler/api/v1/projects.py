@@ -1,4 +1,4 @@
-from flask import Blueprint, request, Response, jsonify
+from flask import Blueprint, request, Response
 from butler.db.models import Project
 import json
 
@@ -7,6 +7,7 @@ PROJECTS_BLUEPRINT = Blueprint('projects', __name__)
 def get_project(project_id):
     project = Project.objects.get(pk=project_id)
     return project.to_json()
+
 
 @PROJECTS_BLUEPRINT.route("")
 def get_all_projects():
@@ -17,9 +18,10 @@ def get_all_projects():
     resp = Response(response=json.dumps(projects),
                     status=200,
                     mimetype="application/json")
-                    
+
     resp.headers["Access-Control-Allow-Origin"] = "*"
     return resp
+
 
 @PROJECTS_BLUEPRINT.route("create", methods=["POST"])
 def create_project():
@@ -28,3 +30,7 @@ def create_project():
     return Response(response=project.to_json(),
                     status=200,
                     mimetype="application/json")
+
+@PROJECTS_BLUEPRINT.route("discussions/<string:projid>")
+def get_discussions(projid):
+    return Project.objects.get(pk=projid).discussions
