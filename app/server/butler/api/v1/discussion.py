@@ -69,7 +69,7 @@ def update_discussion():
     return discussion
 
 
-#  Returns all discussions from a earlier to latter date
+#  Returns all discussions from a earlier to later date
 @DISCUSSIONS_BLUEPRINT.route('get_discussions_by_date')
 def get_discussions_by_date():
     discs = []
