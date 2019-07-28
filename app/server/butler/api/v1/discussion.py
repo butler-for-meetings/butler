@@ -6,7 +6,6 @@ from flask import Blueprint, request, Response
 from butler.db.models import Discussion
 
 
-logging.basicConfig(level=logging.DEBUG)
 DISCUSSIONS_BLUEPRINT = Blueprint('discussions', __name__)
 
 
