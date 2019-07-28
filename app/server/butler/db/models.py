@@ -32,6 +32,7 @@ class Task(EmbeddedDocument):
     start_date = DateTimeField(required=True)
     end_date = DateTimeField(required=True)
     description = StringField(required=True)
+    jiraLink = StringField(required=True)
 
 
 class Comment(Document):
@@ -42,7 +43,8 @@ class Comment(Document):
 class Discussion(Document):
     title = StringField(required=True)
     previous_discussion = LazyReferenceField(document_type="Discussion")
-    tasks = EmbeddedDocumentListField(Task)
+    prior_tasks = EmbeddedDocumentListField(Task)
+    continue_tasks = EmbeddedDocumentListField(Task)
     date = DateTimeField(required=True)
     host = ReferenceField(User, required=True)
     participants = ListField(ReferenceField(User))
