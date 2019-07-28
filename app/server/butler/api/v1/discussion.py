@@ -26,13 +26,15 @@ def get_all_discussion():
 
 
 # Return saved discussion by id
-@DISCUSSIONS_BLUEPRINT.route('get_discussion/<string:id>')
+@DISCUSSIONS_BLUEPRINT.route('<string:id>')
 def get_discussion(id):
     try:
         result = Discussion.objects.get(pk=id)
-        return Response(response=result.to_json(),
+        resp = Response(response=result.to_json(),
                         status=200,
                         mimetype="application/json")
+        resp.headers["Allow-Cross-Origin"] = "*"
+        return resp
     except DoesNotExist as e:
         return Response(
                         response=json.dumps({
