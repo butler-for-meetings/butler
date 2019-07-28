@@ -50,15 +50,16 @@ def get_previous_discussion():
     return discussion.previous_discussion
 
 # Return discussions by tag word
-@DISCUSSIONS_BLUEPRINT.route('get_discussions_by_tag')
-def get_discussions_by_tag():
+@DISCUSSIONS_BLUEPRINT.route('get_discussions_by_tag/<string:tag>')
+def get_discussions_by_tag(tag):
     discs = []
-    desired_tag = request.args.get("tag", type=str)
     for discussion in Discussion.objects:
-        tag_words = discussion.tags
-        if tag_words.count(desired_tag) > 0:
+        if tag in discussion.tags:
             discs.append(discussion)
-    return json.dumps(discs)
+
+    return Response(response=json.dumps(discs),
+                    status=200,
+                    mimetype="application/json")
 
 # Update existing discussion
 @DISCUSSIONS_BLUEPRINT.route('update_discussion')
