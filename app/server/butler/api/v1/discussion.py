@@ -7,7 +7,7 @@ from butler.db.models import Discussion
 
 
 logging.basicConfig(level=logging.DEBUG)
-DISCUSSIONS_BLUEPRINT = Blueprint('blueprint', __name__)
+DISCUSSIONS_BLUEPRINT = Blueprint('discussions', __name__)
 
 
 # Create a new discussion object
