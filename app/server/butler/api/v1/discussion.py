@@ -10,24 +10,13 @@ logging.basicConfig(level=logging.DEBUG)
 DISCUSSIONS_BLUEPRINT = Blueprint('blueprint', __name__)
 
 
-def handle_post():
-    return json.dumps(dict(**request.data))
-
-
-@DISCUSSIONS_BLUEPRINT.route('')
-def index():
-    return 'DISCUSSIONS!!'
-
-
 # Create a new discussion object
 @DISCUSSIONS_BLUEPRINT.route('create_discussion', methods=['POST'])
 def create_discussion():
-    dict_discussion = dict(**request.data)
-    discussions = handle_post()
-    discussions.save()
-
-    return Response(response=dict_discussion,
-                    status=201,
+    data = request.get_json()
+    discussion = Discussion.objects.create(**data)
+    return Response(response=discussion.to_json(),
+                    status=200,
                     mimetype="application/json")
 
 
