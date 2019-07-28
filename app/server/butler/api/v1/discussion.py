@@ -33,9 +33,8 @@ def get_discussion(id):
 
 
 # Return saved discussion by title
-@DISCUSSIONS_BLUEPRINT.route('get_discussion_by_name')
-def get_discussion_by_name():
-    title = request.args.get("title", type=str)
+@DISCUSSIONS_BLUEPRINT.route('get_discussion_by_name/<string:title>')
+def get_discussion_by_name(title):
     discussions = Discussion.objects(title=title)
     return Response(response=discussions.to_json(),
                     status=200,
@@ -43,9 +42,8 @@ def get_discussion_by_name():
 
 
 # Return previous discussion by title
-@DISCUSSIONS_BLUEPRINT.route('get_previous_discussion')
-def get_previous_discussion():
-    title = request.args.get("title", type=str)
+@DISCUSSIONS_BLUEPRINT.route('get_previous_discussion/<string:title>')
+def get_previous_discussion(title):
     discussion = Discussion.objects(title=title)
     return discussion.previous_discussion
 
@@ -56,20 +54,24 @@ def get_discussions_by_tag(tag):
     for discussion in Discussion.objects:
         if tag in discussion.tags:
             discs.append(discussion)
-
     return Response(response=json.dumps(discs),
                     status=200,
                     mimetype="application/json")
 
 # Update existing discussion
-@DISCUSSIONS_BLUEPRINT.route('update_discussion')
-def update_discussion():
-    discussion = handle_post()
-    discussion.update()
-    return discussion
+@DISCUSSIONS_BLUEPRINT.route('update_discussion/<string:id>', methods=["PATCH"])
+def update_discussion(id):
+    discussion = Discussion.objects.get(pk=id)
+    data = request.get_json()
+    discussion.update(**data)
+    discussion.reload() # Reload the new data from the database
+    return Response(response=discussion.to_json(),
+                    status=200,
+                    mimetype="application/json")
 
 
 #  Returns all discussions from a earlier to later date
+# Required querystring!
 @DISCUSSIONS_BLUEPRINT.route('get_discussions_by_date')
 def get_discussions_by_date():
     discs = []
@@ -79,7 +81,9 @@ def get_discussions_by_date():
         disc_date = discussion.date
         if early_date <= disc_date <= late_date:
             discs.append(discussion)
-    return json.dumps(discs)
+    return Response(response=json.dumps(discs),
+                    status=200,
+                    mimetype="application/json")
 
 
 # Returns next discussion
