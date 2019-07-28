@@ -5,6 +5,7 @@ from flask import Blueprint, request, Response
 
 from butler.db.models import Discussion
 
+from mongoengine import DoesNotExist
 
 DISCUSSIONS_BLUEPRINT = Blueprint('discussions', __name__)
 
@@ -28,7 +29,19 @@ def get_all_discussion():
 # Return saved discussion by id
 @DISCUSSIONS_BLUEPRINT.route('get_discussion/<string:id>')
 def get_discussion(id):
-    return Discussion.objects(pk=id)
+    try:
+        result = Discussion.objects.get(pk=id)
+        return Response(response=result.to_json(),
+                        status=200,
+                        mimetype="application/json")
+    except DoesNotExist as e:
+        return Response(
+                        response=json.dumps({
+                            "message": "Couldn't find the desired discussion"
+                        }),
+                        status=404,
+                        mimetype="application/json")
+    return "TODO, shouldn't occur."
 
 
 # Return saved discussion by title
