@@ -15,6 +15,7 @@ export class ButlerApiService {
 
   /**
    * Get all projects
+   * TODO: Use sessions so this will be relative to the connected user.
    */
   getAllProjects(): Promise<Project[]> {
     return this._http.get<Project[]>(this.constructAPIRoute("projects")).toPromise();
