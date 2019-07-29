@@ -19,6 +19,7 @@ from bson import json_util
 
 class User(Document):
     email = EmailField(required=True)
+    username = StringField(max_length=64, required=True)
     first_name = StringField(max_length=64, required=True)
     last_name = StringField(max_length=64, required=True)
 
