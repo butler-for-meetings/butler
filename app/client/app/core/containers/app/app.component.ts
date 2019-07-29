@@ -11,9 +11,9 @@ import * as mocks from './mocks.json';
 export class AppComponent {
 
   constructor() {
-    // this.addMockData();
+  //   this.addMockData();
   }
-
+  //
   // addMockData() {
   //   mimic.import(JSON.stringify((mocks as any).default));
   // }
