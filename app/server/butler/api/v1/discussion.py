@@ -71,6 +71,7 @@ def get_discussions_by_tag(tag):
                     status=200,
                     mimetype="application/json")
 
+
 # Update existing discussion
 @DISCUSSIONS_BLUEPRINT.route(
     'update_discussion/<string:id>',
