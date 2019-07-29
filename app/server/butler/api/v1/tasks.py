@@ -8,7 +8,7 @@ TASKS_BLUEPRINT = Blueprint('tasks', __name__)
 
 
 @TASKS_BLUEPRINT.route('get_discussion_tasks/<string:discussion_id>',
-                        methods=["GET"])
+                    methods=["GET"])
 def get_discussion_tasks(discussion_id):
     discussion = Discussion.objects.get(pk=discussion_id)
     return Response(

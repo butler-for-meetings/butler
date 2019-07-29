@@ -35,7 +35,7 @@ def get_discussion(id):
                         mimetype="application/json")
         resp.headers["Access-Control-Allow-Origin"] = "*"
         return resp
-    except DoesNotExist as e:
+    except DoesNotExist:
         return Response(
                         response=json.dumps({
                             "message": "Couldn't find the desired discussion"
@@ -72,12 +72,13 @@ def get_discussions_by_tag(tag):
                     mimetype="application/json")
 
 # Update existing discussion
-@DISCUSSIONS_BLUEPRINT.route('update_discussion/<string:id>', methods=["PATCH"])
+@DISCUSSIONS_BLUEPRINT.route('update_discussion/<string:id>',
+                            methods=["PATCH"])
 def update_discussion(id):
     discussion = Discussion.objects.get(pk=id)
     data = request.get_json()
     discussion.update(**data)
-    discussion.reload() # Reload the new data from the database
+    discussion.reload()  # Reload the new data from the database
     return Response(response=discussion.to_json(),
                     status=200,
                     mimetype="application/json")
