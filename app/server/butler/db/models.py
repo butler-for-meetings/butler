@@ -23,9 +23,6 @@ class User(Document):
     first_name = StringField(max_length=64, required=True)
     last_name = StringField(max_length=64, required=True)
 
-    def __repr__(self):
-        return '{}, {}, {}'.format(self.email, self.first_name, self.last_name)
-
 
 class Task(EmbeddedDocument):
     finished = BooleanField(default=False)
@@ -78,6 +75,7 @@ class Discussion(Document):
         host = User.objects.get(pk=data["host"])
         data["host"] = host.to_mongo()
         return json_util.dumps(data)
+
 
 class Project(Document):
     title = StringField(required=True)
