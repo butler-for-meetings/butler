@@ -10,7 +10,7 @@ export interface Discussion {
   date: Date;
   host: User;
   participants: User[];
-  tags: Tag[];
+  tags: string[];
   purpose: string;
   background: string;
   mainPoints: string[];
