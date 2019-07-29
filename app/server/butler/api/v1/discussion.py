@@ -72,8 +72,9 @@ def get_discussions_by_tag(tag):
                     mimetype="application/json")
 
 # Update existing discussion
-@DISCUSSIONS_BLUEPRINT.route('update_discussion/<string:id>',
-                            methods=["PATCH"])
+@DISCUSSIONS_BLUEPRINT.route(
+    'update_discussion/<string:id>',
+    methods=["PATCH"])
 def update_discussion(id):
     discussion = Discussion.objects.get(pk=id)
     data = request.get_json()
