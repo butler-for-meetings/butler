@@ -33,7 +33,7 @@ def get_discussion(id):
         resp = Response(response=result.to_json(),
                         status=200,
                         mimetype="application/json")
-        resp.headers["Allow-Cross-Origin"] = "*"
+        resp.headers["Access-Control-Allow-Origin"] = "*"
         return resp
     except DoesNotExist as e:
         return Response(
