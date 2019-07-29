@@ -56,15 +56,27 @@ class Discussion(Document):
     comments = ListField(Comment)
 
     class DiscussionQuerySet(QuerySet):
-        def create(self, date, **kwargs):
+        def create(self, date, host, **kwargs):
             if isinstance(date, int):
                 date = datetime.datetime.fromtimestamp(date / 1000)
             return super(Discussion.DiscussionQuerySet, self).create(
-                date=date, **kwargs)
+                date=date, host=host, **kwargs)
 
     meta = {
         "queryset_class": DiscussionQuerySet
     }
+
+    def to_json(self, *args, **kwargs):
+        data = super(Discussion, self).to_mongo(*args, **kwargs)
+        participants = []
+        for participant in data["participants"]:
+            participant = User.objects.get(pk=participant)
+            participants.append(participant.to_mongo())
+
+        data["participants"] = participants
+        host = User.objects.get(pk=data["host"])
+        data["host"] = host.to_mongo()
+        return json_util.dumps(data)
 
 class Project(Document):
     title = StringField(required=True)
@@ -90,7 +102,6 @@ class Project(Document):
         data = super(Project, self).to_mongo(*args, **kwargs)
         participants = []
         for participant in data["participants"]:
-            print(participant)
             participant = User.objects.get(pk=participant)
             participants.append(participant.to_mongo())
 
