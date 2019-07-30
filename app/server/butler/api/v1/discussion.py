@@ -27,9 +27,9 @@ def get_all_discussion():
 
 # Return saved discussion by id
 @DISCUSSIONS_BLUEPRINT.route('<string:id>')
-def get_discussion(id):
+def get_discussion(discussion_id):
     try:
-        result = Discussion.objects.get(pk=id)
+        result = Discussion.objects.get(pk=discussion_id)
         resp = Response(response=result.to_json(),
                         status=200,
                         mimetype="application/json")
@@ -76,8 +76,8 @@ def get_discussions_by_tag(tag):
 @DISCUSSIONS_BLUEPRINT.route(
     'update_discussion/<string:id>',
     methods=["PATCH"])
-def update_discussion(id):
-    discussion = Discussion.objects.get(pk=id)
+def update_discussion(discussion_id):
+    discussion = Discussion.objects.get(pk=discussion_id)
     data = request.get_json()
     discussion.update(**data)
     discussion.reload()  # Reload the new data from the database
