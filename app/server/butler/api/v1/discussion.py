@@ -26,7 +26,7 @@ def get_all_discussion():
 
 
 # Return saved discussion by id
-@DISCUSSIONS_BLUEPRINT.route('<string:id>')
+@DISCUSSIONS_BLUEPRINT.route('<string:discussion_id>')
 def get_discussion(discussion_id):
     try:
         result = Discussion.objects.get(pk=discussion_id)
@@ -74,7 +74,7 @@ def get_discussions_by_tag(tag):
 
 # Update existing discussion
 @DISCUSSIONS_BLUEPRINT.route(
-    'update_discussion/<string:id>',
+    'update_discussion/<string:discussion_id>',
     methods=["PATCH"])
 def update_discussion(discussion_id):
     discussion = Discussion.objects.get(pk=discussion_id)
