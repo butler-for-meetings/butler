@@ -1,6 +1,7 @@
+import json
+
 from flask import Blueprint, request, Response
 from butler.db.models import Project
-import json
 
 PROJECTS_BLUEPRINT = Blueprint('projects', __name__)
 @PROJECTS_BLUEPRINT.route("<string:project_id>")
