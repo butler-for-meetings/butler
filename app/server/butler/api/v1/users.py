@@ -14,7 +14,18 @@ def index():
 
 @USERS_BLUEPRINT.route('create', methods=['POST'])
 def create_user():
-    user = User.objects.create(**request.get_json())
-    return Response(response=user.to_json(),
-                    status=200,
-                    mimetype="application/json")
+    data = request.get_json()
+    try:
+        user = User.objects.create(**data)
+        return Response(response=user.to_json(),
+                        status=200,
+                        mimetype="application/json")
+    except TypeError:
+        response = {
+            "message": "Error: missing required fields."
+        }
+        return Response(response=json.dumps(response),
+                        status=500,
+                        mimetype="application/json")
+
+    return "An unknown error occured"
