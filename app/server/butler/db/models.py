@@ -19,11 +19,9 @@ from bson import json_util
 
 class User(Document):
     email = EmailField(required=True)
+    username = StringField(max_length=64, required=True)
     first_name = StringField(max_length=64, required=True)
     last_name = StringField(max_length=64, required=True)
-
-    def __repr__(self):
-        return '{}, {}, {}'.format(self.email, self.first_name, self.last_name)
 
 
 class Task(EmbeddedDocument):
@@ -48,12 +46,35 @@ class Discussion(Document):
     date = DateTimeField(required=True)
     host = ReferenceField(User, required=True)
     participants = ListField(ReferenceField(User))
-    tags = ListField(StringField)
+    tags = ListField(StringField())
     purpose = StringField(required=True)
     background = StringField(required=True)
-    main_points = ListField(StringField)
-    main_points_sum = ListField(StringField)
+    main_points = ListField(StringField())
+    main_points_sum = ListField(StringField())
     comments = ListField(Comment)
+
+    class DiscussionQuerySet(QuerySet):
+        def create(self, date, host, **kwargs):
+            if isinstance(date, int):
+                date = datetime.datetime.fromtimestamp(date / 1000)
+            return super(Discussion.DiscussionQuerySet, self).create(
+                date=date, host=host, **kwargs)
+
+    meta = {
+        "queryset_class": DiscussionQuerySet
+    }
+
+    def to_json(self, *args, **kwargs):
+        data = super(Discussion, self).to_mongo(*args, **kwargs)
+        participants = []
+        for participant in data["participants"]:
+            participant = User.objects.get(pk=participant)
+            participants.append(participant.to_mongo())
+
+        data["participants"] = participants
+        host = User.objects.get(pk=data["host"])
+        data["host"] = host.to_mongo()
+        return json_util.dumps(data)
 
 
 class Project(Document):
@@ -80,12 +101,10 @@ class Project(Document):
         data = super(Project, self).to_mongo(*args, **kwargs)
         participants = []
         for participant in data["participants"]:
-            print(participant)
             participant = User.objects.get(pk=participant)
             participants.append(participant.to_mongo())
 
         data["participants"] = participants
-        print(data)
         return json_util.dumps(data)
 
 
