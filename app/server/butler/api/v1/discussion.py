@@ -19,7 +19,6 @@ def create_discussion():
                         status=200,
                         mimetype="application/json")
     except TypeError:
-        # TODO: Write a util function to find the missing fields
         response = {
             "message": "Error: missing required fields."
         }
