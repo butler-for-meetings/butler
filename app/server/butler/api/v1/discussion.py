@@ -13,11 +13,21 @@ DISCUSSIONS_BLUEPRINT = Blueprint('discussions', __name__)
 @DISCUSSIONS_BLUEPRINT.route('create_discussion', methods=['POST'])
 def create_discussion():
     data = request.get_json()
-    discussion = Discussion.objects.create(**data)
-    return Response(response=discussion.to_json(),
-                    status=200,
-                    mimetype="application/json")
+    try:
+        discussion = Discussion.objects.create(**data)
+        return Response(response=discussion.to_json(),
+                        status=200,
+                        mimetype="application/json")
+    except TypeError:
+        # TODO: Write a util function to find the missing fields
+        response = {
+            "message": "Error: missing required fields."
+        }
+        return Response(response=json.dumps(response),
+                        status=500,
+                        mimetype="application/json")
 
+    return "An unknown error occured"
 
 # Returns all discussions
 @DISCUSSIONS_BLUEPRINT.route('get_all_discussions')
