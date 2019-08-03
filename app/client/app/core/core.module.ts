@@ -19,6 +19,7 @@ import { HeaderComponent } from './containers/header/header.component';
 
 import { MaterialModule } from '../material.module';
 import { FormsModule } from '@angular/forms';
+import { AddDiscussionDialogComponent } from './components/add-discussion-dialog/add-discussion-dialog.component';
 
 @NgModule({
   imports: [
@@ -40,7 +41,11 @@ import { FormsModule } from '@angular/forms';
     DiscussionEditComponent,
     HeaderComponent,
     DescriptionBoxComponent,
-    TasksBoxComponent
+    TasksBoxComponent,
+    AddDiscussionDialogComponent
+  ],
+  entryComponents: [
+    AddDiscussionDialogComponent
   ]
 })
 export class CoreModule { }

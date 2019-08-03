@@ -1,0 +1,19 @@
+@import '../../../../styles/variables.scss';
+
+::ng-deep{
+    .mat-dialog-container{
+        font-family: $rubik !important;
+    
+        .mat-dialog-title {
+            text-align: center;
+            font-family: $rubik !important;
+        }
+
+        .mat-dialog-content{
+            .mat-form-field{
+                display: block;
+                width: 50%;
+            }
+        }
+    }
+}

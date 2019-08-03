@@ -1,0 +1,52 @@
+<h1 mat-dialog-title>הוספת דיון חדש</h1>
+<form mat-dialog-content [formGroup]="discussionForm" (ngSubmit)="save()">
+  <mat-form-field>
+    <input matInput placeholder="כותרת" formControlName="title">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [min]="minDate" [matDatepicker]="picker" placeholder="תאריך הדיון" formControlName="date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput placeholder="מטרת הדיון" formControlName="purpose"></textarea>
+  </mat-form-field>
+  <!-- host -->
+  <!-- participants -->
+  <!-- tags -->
+  <mat-form-field class="example-chip-list">
+      <mat-chip-list #chipList aria-label="Fruit selection">
+        <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
+                 [removable]="removable" (removed)="remove(fruit)">
+          {{fruit.name}}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+        <input placeholder="New fruit..."
+               [matChipInputFor]="chipList"
+               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+               [matChipInputAddOnBlur]="addOnBlur"
+               (matChipInputTokenEnd)="add($event)">
+      </mat-chip-list>
+    </mat-form-field>
+    
+  <mat-form-field>
+    <textarea matInput placeholder="רקע הדיון" formControlName="background"></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput placeholder="עיקרי הדיון" formControlName="mainPoints"></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput placeholder="סיכום מנהלי הדיון" formControlName="mainPointsSum"></textarea>
+  </mat-form-field>
+
+  <!-- priorTasks -->
+  <!-- continueTasks -->
+  <!-- comments -->
+  <!-- previousDiscussionId -->
+  <div mat-dialog-actions>
+    <button mat-raised-button (click)="exit()">ביטול</button>
+    <button mat-raised-button color="primary" type="submit">שמירה</button>
+  </div>
+</form>

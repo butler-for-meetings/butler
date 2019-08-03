@@ -28,7 +28,9 @@ export class SidenavComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AddDiscussionDialogComponent, {
-      width: '250px',
+      width: '50%',
+      height: '50%',
+      direction: 'rtl',
       data: {}
     });
 
