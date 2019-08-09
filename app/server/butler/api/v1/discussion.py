@@ -3,6 +3,7 @@ import json
 from flask import Blueprint, request, Response
 
 from butler.db.models import Discussion
+from butler.utils.creation_error import creation_error
 
 from mongoengine import DoesNotExist
 
@@ -18,13 +19,8 @@ def create_discussion():
         return Response(response=discussion.to_json(),
                         status=200,
                         mimetype="application/json")
-    except TypeError:
-        response = {
-            "message": "Error: missing required fields."
-        }
-        return Response(response=json.dumps(response),
-                        status=500,
-                        mimetype="application/json")
+    except TypeError as e:
+        return creation_error(e)
 
     return "An unknown error occured"
 

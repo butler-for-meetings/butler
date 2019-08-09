@@ -33,12 +33,8 @@ def create_project():
                         status=200,
                         mimetype="application/json")
     except TypeError:
-        response = {
-            "message": "Error: missing required fields."
-        }
-        return Response(response=json.dumps(response),
-                        status=500,
-                        mimetype="application/json")
+        return creation_error(e)
+        
     return "An unknown error occured"
 
 
