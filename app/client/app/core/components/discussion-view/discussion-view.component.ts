@@ -1,40 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ButlerApiService } from '../../services/butler-api.service';
+import { Discussion } from '../../models/discussion';
+import { User } from '../../models/user';
+import { camelCaseKeys } from '../../utils/camel-case-keys';
 @Component({
   selector: 'app-discussion-view',
   templateUrl: './discussion-view.component.html',
   styleUrls: ['./discussion-view.component.scss']
 })
 export class DiscussionViewComponent implements OnInit {
+  public discussion: Discussion;
+  constructor(private _butlerApiService: ButlerApiService) {
+  }
 
-  discussion = {
-    title: 'הדיון הכי הכי הכי',
-    date: new Date(),
-    purpose: 'לא לכל דיון יש מטרה אמיתית, בזבוז זמן מוחלט',
-    host: 'מיטב שרוני',
-    participants: ['מנחם ציקוואשווילי', 'לירון טאוב'],
-    tags: ['חיל המודיעין', 'גזרת צפון'],
-    background: 'בלחסלדחדלגחכדלגחכ דלחגכילד גחכידלג חכיד לגחכידלגח כידלגחכידלגכ שדג',
-    mainPoints: 'שדגשדגש דגשדג שדג שדג שדג שדגשד גשדגשדגשדגשגד שדגש',
-    mainPointsSum: 'שגלשךדגלשדג שדג שדצג שלדצג שלצד גלשצד גלשצד גלשדצ גלשדצ גשדגח',
-    priorTasks: [
-      {summary: 'משימה 1', endDate: new Date(), responsible: 'שיראל קדוש', jiraLink: 'url', finished: true},
-      {summary: 'משימה 1', endDate: new Date(), responsible: 'שיראל קדוש', jiraLink: 'url', finished: true},
-      {summary: 'משימה 1', endDate: new Date(), responsible: 'שיראל קדוש', jiraLink: 'url', finished: false}
-    ],
-    continueTasks: [
-      {summary: 'משימה 1', endDate: new Date(), responsible: 'שיראל קדוש', jiraLink: 'url', finished: false},
-      {summary: 'משימה 1', endDate: new Date(), responsible: 'שיראל קדוש', jiraLink: 'url', finished: false}
-    ],
-    comments: [
-      {author: 'שיראל קדוש', content: 'תגובה תגובה תגובה'},
-      {author: 'שיראל קדוש', content: 'תגובה תגובה תגובה'}
-    ]
-  };
 
-  constructor() { }
-
-  ngOnInit() {
+  async ngOnInit() {
+    let result = await this._butlerApiService.getDiscussion("5d3ead2f4cdaa568cb0b1635");
+    result.date = new Date(result.date["$date"]);
+    result.host = camelCaseKeys(result.host) as User;
+    this.discussion = camelCaseKeys(result) as Discussion;
   }
 
 }
