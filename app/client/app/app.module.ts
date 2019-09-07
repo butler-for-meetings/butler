@@ -6,6 +6,7 @@ import { AppComponent } from './core/containers/app/app.component';
 import { CoreModule } from './core/core.module';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ButlerApiService } from './core/services/butler-api.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     CoreModule,
   ],
-  providers: [],
+  providers: [ButlerApiService],
   bootstrap: [
     AppComponent
   ]

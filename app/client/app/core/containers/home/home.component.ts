@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDrawer } from '@angular/material';
+import { ButlerApiService } from '../../services/butler-api.service';
 
 @Component({
   selector: 'app-home',
@@ -7,8 +7,6 @@ import { MatDrawer } from '@angular/material';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  // @ViewChild('drawer',{static: true}) drawer: MatDrawer;
-
   constructor() { }
 
   ngOnInit() {

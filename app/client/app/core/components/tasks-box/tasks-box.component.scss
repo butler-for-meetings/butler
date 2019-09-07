@@ -41,21 +41,23 @@
 }
 
 ::ng-deep {
-    .mat-checkbox-frame, .mat-checkbox-background {
-        border-color: #0288d1;
-        border-radius: 50% !important;
-    }
-    .mat-checkbox-inner-container {
-        height: 40px!important;
-        width: 40px!important;
-    }
-
-    .mat-checkbox-checkmark {
-        height: 30px;
-        top: 5px !important;
-    }
-      
-    .mat-card {
-        box-shadow: none !important;
+    .tasks-box {
+        .mat-checkbox-frame, .mat-checkbox-background {
+            border-color: #0288d1;
+            border-radius: 50% !important;
+        }
+        .mat-checkbox-inner-container {
+            height: 40px!important;
+            width: 40px!important;
+        }
+    
+        .mat-checkbox-checkmark {
+            height: 30px;
+            top: 5px !important;
+        }
+          
+        .mat-card {
+            box-shadow: none !important;
+        }
     }
 }

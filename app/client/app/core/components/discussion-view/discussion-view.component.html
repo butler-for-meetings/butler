@@ -1,9 +1,9 @@
-<div class="discussion-main" fxLayout="row">
+<div class="discussion-main" fxLayout="row" *ngIf="discussion">
   <div class="discussion-main-content">
     <div class="discussion-header" fxLayout="row" fxLayoutAlign="space-between center">
       <div class="discussion-title">{{ discussion.title }}</div>
       <mat-chip-list>
-        <mat-chip class="date-chip">{{ discussion.date.toLocaleDateString('en-GB') }}</mat-chip>
+        <!-- <mat-chip class="date-chip">{{ discussion.date.toLocaleDateString('en-GB') }}</mat-chip> -->
       </mat-chip-list>
     </div>
     <div class="discussion-purpose" fxLayout="row" fxLayoutAlign="start center">

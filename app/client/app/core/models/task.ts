@@ -1,8 +1,6 @@
-import { User } from './user';
-
 export interface Task {
   finished: boolean;
-  responsible: User;
+  responsible: string;
   startDate: Date;
   endDate: Date;
   jiraLink: string;

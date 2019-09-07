@@ -1,8 +1,33 @@
 @import '../../../../styles/variables.scss';
 
+
+.mat-dialog-content {
+    height: 90%;
+
+    .mat-dialog-actions{
+        margin-left: 10%;
+    }
+
+    mat-list {
+        width: 85%;
+        margin: auto;
+
+        mat-form-field{
+            display: inline-block;
+            width: 30%;
+            margin-right: 3%;
+        }
+
+        .add-task-btn {
+            margin-right: 2%;
+        }
+    }
+}
+
 ::ng-deep{
     .mat-dialog-container{
         font-family: $rubik !important;
+        overflow: hidden !important;
     
         .mat-dialog-title {
             text-align: center;
@@ -12,8 +37,32 @@
         .mat-dialog-content{
             .mat-form-field{
                 display: block;
-                width: 50%;
+                font-family: $rubik !important;
+                width: 80%;
+                margin: auto;
             }
+        }
+    }
+    .tasks {
+        .mat-list-item {
+            direction: ltr;
+            .mat-list-text {
+                text-align: right !important;
+            }
+        }
+
+        .mat-checkbox-frame, .mat-checkbox-background {
+            border-color: #0288d1;
+            border-radius: 50% !important;
+        }
+        .mat-checkbox-inner-container {
+            height: 25px!important;
+            width: 25px!important;
+        }
+    
+        .mat-checkbox-checkmark {
+            height: 20px;
+            top: 2px !important;
         }
     }
 }

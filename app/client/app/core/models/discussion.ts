@@ -8,12 +8,12 @@ export interface Discussion {
   priorTasks: Task[];
   continueTasks: Task[];
   date: Date;
-  host: User;
-  participants: User[];
-  tags: Tag[];
+  host: string;
+  participants: string[];
+  tags: string[];
   purpose: string;
   background: string;
-  mainPoints: string[];
-  mainPointsSum: string[];
+  mainPoints: string;
+  mainPointsSum: string;
   comments: Comment[];
 }

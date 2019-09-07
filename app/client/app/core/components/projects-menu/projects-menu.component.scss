@@ -28,6 +28,10 @@
         font-size: 1.1em;
     }
 
+    .project-name {
+      cursor: pointer;
+    }
+
     .sidebar-project {
         background: $white;
         border-radius: 3px;

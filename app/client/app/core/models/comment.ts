@@ -1,6 +1,4 @@
-import { User } from './user';
-
 export interface Comment {
+  author: string;
   content: string;
-  author: User;
 }

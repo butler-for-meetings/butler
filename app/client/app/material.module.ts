@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSidenavModule, MatToolbarModule, MatIconModule, MatCheckboxModule, MatButtonModule,
   MatDividerModule, MatInputModule, MatChipsModule, MatCardModule, MatDialogModule, 
-  MatFormFieldModule, MatDatepickerModule } from '@angular/material';
+  MatFormFieldModule, MatDatepickerModule, MatListModule } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
@@ -23,7 +23,8 @@ const imports = [
   FormsModule,
   ReactiveFormsModule,
   MatDatepickerModule,
-  MatMomentDateModule
+  MatMomentDateModule,
+  MatListModule
 ];
 
 const exportsModules = [
@@ -42,7 +43,8 @@ const exportsModules = [
   FormsModule,
   ReactiveFormsModule,
   MatDatepickerModule,
-  MatMomentDateModule
+  MatMomentDateModule,
+  MatListModule
 ];
 
 @NgModule({

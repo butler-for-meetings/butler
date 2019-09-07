@@ -1,18 +1,25 @@
 <div class="sidebar-container">
+  <div class="search-contianer" fxLayout="row" fxLayoutAlign="center center" [dir]="'rtl'">
+    <input class="search-input" type="text" placeholder="הזן טקסט לחיפוש" />
+  </div>
   <div class="sidebar-discussion-top">
-    <span class="go-back"><i class="material-icons">
+    <span class="go-back" (click)="updateMenuType($event)"><i class="material-icons">
         chevron_right
-        </i></span>
+      </i></span>
     <div class="current-project">
-      <div class="project-title">שם הפרויקט...</div>
-        <div class="project-count">
-        <span class=" project-discussion-num">11</span>
+      <div class="project-title">{{ project.title }}</div>
+      <div class="project-count">
+        <span class="project-discussion-num">{{ project.discussions.length }}</span>
         <span class="project-discussion-perfix">דיונים</span>
       </div>
     </div>
   </div>
-    <div class="sidebar-discussion">
-      <div class="discussion-title">הדיון הכי טוב בעולם</div>
-      <div class="discussion-date">12/07/2015</div>
+  <div class="sidebar-title">דיונים</div>
+  <div class="sidebar-discussion" *ngFor="let discussion of project.discussions; let i = index" (click)="discussionChosen(i)">
+    <div class="discussion-title">{{ discussion.title }}</div>
+    <div class="discussion-date">{{ discussion.date.toLocaleDateString('en-GB') }}</div>
   </div>
 </div>
+<button mat-fab class="add-button" (click)="openDialog()">
+  <mat-icon>add</mat-icon>
+</button>

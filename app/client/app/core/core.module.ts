@@ -20,6 +20,7 @@ import { HeaderComponent } from './containers/header/header.component';
 import { MaterialModule } from '../material.module';
 import { FormsModule } from '@angular/forms';
 import { AddDiscussionDialogComponent } from './components/add-discussion-dialog/add-discussion-dialog.component';
+import { ButlerApiService } from './services/butler-api.service';
 
 @NgModule({
   imports: [
@@ -46,6 +47,9 @@ import { AddDiscussionDialogComponent } from './components/add-discussion-dialog
   ],
   entryComponents: [
     AddDiscussionDialogComponent
+  ],
+  providers: [
+    
   ]
 })
 export class CoreModule { }

@@ -3,6 +3,23 @@
 .sidebar-container {
     padding: 20px 20px 0 20px;
     box-sizing: border-box;
+    height: 100%;
+
+    .search-contianer {
+        margin-bottom: 5%;
+        .search-input {
+          color: $white;
+          background-color: $dark-blue;
+          border: none;
+          border-radius: 100px;
+          padding: 15px 20px;
+          width: 100%;
+        }
+        .search-input::placeholder {
+          color: $white;
+          opacity: .75;
+        }
+      }
 
     .sidebar-discussion-top {
         color: $white;
@@ -14,6 +31,7 @@
             width: 10%;
             display: flex;
             align-items: center;
+            cursor: pointer;
         }
 
         .current-project {
@@ -45,6 +63,14 @@
 
         }
     }
+
+    .sidebar-title {
+        color: $white;
+        text-align: center;
+        font-weight: 700;
+        margin: 20px 0;
+        font-size: 1.1em;
+    }
     .sidebar-discussion {
         background: $white;
         border-radius: 3px;
@@ -52,6 +78,7 @@
         display: flex;
         justify-content: space-between;
         margin-bottom: 10px;
+        cursor: pointer;
     }
 
     .discussion-title {
@@ -69,4 +96,9 @@
         align-items: center;
     }
 
+}
+.add-button{
+    background-color: #eaa971;
+    float: left;
+    margin-left: 3%;
 }

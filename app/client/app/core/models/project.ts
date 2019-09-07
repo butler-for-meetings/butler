@@ -3,7 +3,7 @@ import { User } from './user';
 
 export interface Project {
   title: string;
-  participants: User[];
+  participants: string[];
   startDate: Date;
   endDate: Date;
   discussions: Discussion[];
