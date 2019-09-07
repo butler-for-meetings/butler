@@ -53,7 +53,7 @@ export class SidenavComponent implements OnInit {
             ]
           },
           {
-            title: 'הדיון הכי הכי הכי',
+            title: 'הדיון הכי הכי הכי 1',
             date: new Date(),
             purpose: 'לא לכל דיון יש מטרה אמיתית, בזבוז זמן מוחלט',
             host: 'מיטב שרוני',
@@ -74,10 +74,11 @@ export class SidenavComponent implements OnInit {
             comments: [
               {author: 'שיראל קדוש', content: 'תגובה תגובה תגובה'},
               {author: 'שיראל קדוש', content: 'תגובה תגובה תגובה'}
-            ]
+            ],
+            previousDiscussionId: 'הדיון הכי הכי הכי'
           },
           {
-            title: 'הדיון הכי הכי הכי',
+            title: 'הדיון הכי הכי הכי 2',
             date: new Date(),
             purpose: 'לא לכל דיון יש מטרה אמיתית, בזבוז זמן מוחלט',
             host: 'מיטב שרוני',
@@ -98,7 +99,8 @@ export class SidenavComponent implements OnInit {
             comments: [
               {author: 'שיראל קדוש', content: 'תגובה תגובה תגובה'},
               {author: 'שיראל קדוש', content: 'תגובה תגובה תגובה'}
-            ]
+            ],
+            previousDiscussionId: 'הדיון הכי הכי הכי 1'
           }
         ]
       },
@@ -109,7 +111,7 @@ export class SidenavComponent implements OnInit {
         endDate: new Date(),
         discussions: [
           {
-            title: 'הדיון הכי הכי הכי',
+            title: 'הדיון הכי הכי הכי 2',
             date: new Date(),
             purpose: 'לא לכל דיון יש מטרה אמיתית, בזבוז זמן מוחלט',
             host: 'מיטב שרוני',
@@ -133,7 +135,7 @@ export class SidenavComponent implements OnInit {
             ]
           },
           {
-            title: 'הדיון הכי הכי הכי',
+            title: 'הדיון הכי הכי הכי 3',
             date: new Date(),
             purpose: 'לא לכל דיון יש מטרה אמיתית, בזבוז זמן מוחלט',
             host: 'מיטב שרוני',
@@ -154,10 +156,11 @@ export class SidenavComponent implements OnInit {
             comments: [
               {author: 'שיראל קדוש', content: 'תגובה תגובה תגובה'},
               {author: 'שיראל קדוש', content: 'תגובה תגובה תגובה'}
-            ]
+            ],
+            previousDiscussionId: 'הדיון הכי הכי הכי 2'
           },
           {
-            title: 'הדיון הכי הכי הכי',
+            title: 'הדיון הכי הכי הכי 4',
             date: new Date(),
             purpose: 'לא לכל דיון יש מטרה אמיתית, בזבוז זמן מוחלט',
             host: 'מיטב שרוני',
@@ -178,7 +181,8 @@ export class SidenavComponent implements OnInit {
             comments: [
               {author: 'שיראל קדוש', content: 'תגובה תגובה תגובה'},
               {author: 'שיראל קדוש', content: 'תגובה תגובה תגובה'}
-            ]
+            ],
+            previousDiscussionId: 'הדיון הכי הכי הכי 3'
           }
         ]
       },
@@ -189,7 +193,7 @@ export class SidenavComponent implements OnInit {
         endDate: new Date(),
         discussions: [
           {
-            title: 'הדיון הכי הכי הכי',
+            title: 'הדיון הכי הכי הכי 5',
             date: new Date(),
             purpose: 'לא לכל דיון יש מטרה אמיתית, בזבוז זמן מוחלט',
             host: 'מיטב שרוני',
@@ -213,7 +217,7 @@ export class SidenavComponent implements OnInit {
             ]
           },
           {
-            title: 'הדיון הכי הכי הכי',
+            title: 'הדיון הכי הכי הכי 6',
             date: new Date(),
             purpose: 'לא לכל דיון יש מטרה אמיתית, בזבוז זמן מוחלט',
             host: 'מיטב שרוני',
@@ -234,10 +238,11 @@ export class SidenavComponent implements OnInit {
             comments: [
               {author: 'שיראל קדוש', content: 'תגובה תגובה תגובה'},
               {author: 'שיראל קדוש', content: 'תגובה תגובה תגובה'}
-            ]
+            ],
+            previousDiscussionId: 'הדיון הכי הכי הכי 5'
           },
           {
-            title: 'הדיון הכי הכי הכי',
+            title: 'הדיון הכי הכי הכי 7',
             date: new Date(),
             purpose: 'לא לכל דיון יש מטרה אמיתית, בזבוז זמן מוחלט',
             host: 'מיטב שרוני',
@@ -258,7 +263,8 @@ export class SidenavComponent implements OnInit {
             comments: [
               {author: 'שיראל קדוש', content: 'תגובה תגובה תגובה'},
               {author: 'שיראל קדוש', content: 'תגובה תגובה תגובה'}
-            ]
+            ],
+            previousDiscussionId: 'הדיון הכי הכי הכי 6'
           }
         ]
       }
@@ -269,6 +275,14 @@ export class SidenavComponent implements OnInit {
     this.menuType = input.menuType;
     if (this.menuType === this.menuTypes.DISCUSSION) {
       this.project = this.projects[input.projectIndex]; 
+    }
+  }
+
+  updateProject(input){
+    const index = this.projects.indexOf(input.project);
+
+    if (index >= 0) {
+      this.projects[index].discussions = input.project.discussions;
     }
   }
 }

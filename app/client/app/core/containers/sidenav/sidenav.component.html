@@ -1,4 +1,4 @@
 <div class="sidenav-container">
   <app-projects-menu [projects]="projects" (menuTypeClick)="updateMenuType($event)" *ngIf="menuType === menuTypes?.PROJECT"></app-projects-menu>
-  <app-discussions-menu [project]="project" (menuTypeClick)="updateMenuType($event)" *ngIf="menuType === menuTypes?.DISCUSSION"></app-discussions-menu>
+  <app-discussions-menu [project]="project" (menuTypeClick)="updateMenuType($event)" (updateProjectClick)="updateProject($event)" *ngIf="menuType === menuTypes?.DISCUSSION"></app-discussions-menu>
 </div>

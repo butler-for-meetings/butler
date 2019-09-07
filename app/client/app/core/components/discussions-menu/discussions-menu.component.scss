@@ -57,6 +57,10 @@
             
                 .project-discussion-perfix {
                     font-size: 0.8em;
+                    width: 65px;
+                    text-align: center;
+                    display: block;
+                    margin-top: 10%;
                 }
 
             }
@@ -79,6 +83,10 @@
         justify-content: space-between;
         margin-bottom: 10px;
         cursor: pointer;
+
+        &.chosen {
+            background-color: #eaa971;
+        }
     }
 
     .discussion-title {

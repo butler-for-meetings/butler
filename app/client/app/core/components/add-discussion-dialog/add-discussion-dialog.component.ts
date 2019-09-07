@@ -6,6 +6,14 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { Task } from '../../models/task';
 import { DiscussionEditComponent } from '../discussion-edit/discussion-edit.component';
+import { Project } from '../../models/project';
+import { Observable } from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
+
+export interface DialogData {
+  project: Project;
+  discussion: Discussion;
+}
 
 @Component({
   selector: 'app-add-discussion-dialog',
@@ -28,17 +36,32 @@ export class AddDiscussionDialogComponent implements OnInit {
   continueTasks: Task[];
   priorTaskObj: Task;
   continueTaskObj: Task;
+  commentObj: Comment;
+  options: string[];
+  autoControl = new FormControl();
+  filteredOptions: Observable<string[]>;
 
   constructor(private fb: FormBuilder,
     public dialogRef: MatDialogRef<AddDiscussionDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Discussion) { }
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
   
   ngOnInit() {
-    this.priorTaskObj = {summary: '', startDate: new Date(), endDate: new Date(), responsible: '', jiraLink: '', finished: false};
-    this.continueTaskObj = {summary: '', startDate: new Date(), endDate: new Date(), responsible: '', jiraLink: '', finished: false};
-    if (this.data) {
-
-
+    this.priorTaskObj = { summary: '', startDate: new Date(), endDate: new Date(), responsible: '', jiraLink: '', finished: false };
+    this.continueTaskObj = { summary: '', startDate: new Date(), endDate: new Date(), responsible: '', jiraLink: '', finished: false };
+    this.commentObj = { author: '', content: '' };    
+    this.options = this.data.project.discussions.map( discussion => discussion.title);
+    this.filteredOptions = this.autoControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filter(value))
+      );
+    if (this.data.discussion) {
+      this.discussionObj = this.data.discussion;
+      this.tags = this.discussionObj.tags;
+      this.participants = this.discussionObj.participants;
+      this.priorTasks = this.discussionObj.priorTasks;
+      this.continueTasks = this.discussionObj.continueTasks;
+      this.autoControl.setValue(this.discussionObj.previousDiscussionId);
     } else {
       this.discussionObj = {
         title: '', 
@@ -58,7 +81,7 @@ export class AddDiscussionDialogComponent implements OnInit {
       this.tags = [];
       this.participants = [];
       this.priorTasks = [];
-      this.continueTasks = [{summary: 'bla bnla jjj', startDate: new Date(), endDate: new Date(), responsible: 'kjfhkjfdhgdjdkg', jiraLink: 'jjj', finished: true}];
+      this.continueTasks = [];
     }
   }
 
@@ -133,14 +156,44 @@ export class AddDiscussionDialogComponent implements OnInit {
     }
   }
 
+  addComment(event) {
+    this.discussionObj.comments.push(this.commentObj);
+    this.commentObj = {content: '', author: '', };
+    event.preventDefault();
+  }
+
+  deleteComment(comment: Comment) {
+    const index = this.discussionObj.comments.indexOf(comment);
+
+    if (index >= 0) {
+      this.discussionObj.comments.splice(index, 1);
+    }
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  }
+
   exit(): void {
     this.dialogRef.close();
   }
 
   save() {
-    // update tags
-    // update participants
-    this.dialogRef.close(this.discussionObj);
+    this.discussionObj.tags = this.tags;
+    this.discussionObj.participants = this.participants;
+    this.discussionObj.priorTasks = this.priorTasks;
+    this.discussionObj.continueTasks = this.continueTasks;
+    this.discussionObj.previousDiscussionId = this.autoControl.value;
+    
+    if (this.data.discussion){
+      this.data.discussion = this.discussionObj;
+      this.dialogRef.close(this.data.discussion);
+    } else {
+      this.data.project.discussions.push(this.discussionObj);
+      this.dialogRef.close(this.data.project);
+    }
+    
   }
 
 }

@@ -19,16 +19,8 @@
             display: inline-block;
             width: 30%;
             margin-right: 3%;
-
-            &.task-summary {
-                display: block !important;
-                width: 60% !important;
-            }
         }
 
-        .add-task-btn {
-            margin-right: 2%;
-        }
     }
 }
 
@@ -49,28 +41,6 @@
                 width: 80%;
                 margin: auto;
             }
-        }
-    }
-    .tasks, .comments {
-        .mat-list-item {
-            direction: ltr;
-            .mat-list-text {
-                text-align: right !important;
-            }
-        }
-
-        .mat-checkbox-frame, .mat-checkbox-background {
-            border-color: #0288d1;
-            border-radius: 50% !important;
-        }
-        .mat-checkbox-inner-container {
-            height: 25px!important;
-            width: 25px!important;
-        }
-    
-        .mat-checkbox-checkmark {
-            height: 20px;
-            top: 2px !important;
         }
     }
 }

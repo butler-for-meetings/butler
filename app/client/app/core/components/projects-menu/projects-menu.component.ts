@@ -19,5 +19,8 @@ export class ProjectsMenuComponent implements OnInit {
     this.menuTypeClick.emit({menuType: 'discussion', projectIndex});
   }
 
+  filterBy(prop: string) {
+    return this.projects.sort((a, b) => a[prop] > b[prop] ? 1 : a[prop] === b[prop] ? 0 : -1);
+  }
 
 }

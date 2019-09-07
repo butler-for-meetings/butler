@@ -15,7 +15,7 @@
     </div>
   </div>
   <div class="sidebar-title">דיונים</div>
-  <div class="sidebar-discussion" *ngFor="let discussion of project.discussions; let i = index" (click)="discussionChosen(i)">
+  <div class="sidebar-discussion" *ngFor="let discussion of filterBy('date'); let i = index" (click)="discussionChosen(i)" [ngClass]="{'chosen': chosenDiscussionIndex === i}">
     <div class="discussion-title">{{ discussion.title }}</div>
     <div class="discussion-date">{{ discussion.date.toLocaleDateString('en-GB') }}</div>
   </div>

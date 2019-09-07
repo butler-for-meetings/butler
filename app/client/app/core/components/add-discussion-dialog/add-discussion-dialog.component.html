@@ -1,11 +1,20 @@
 <h1 mat-dialog-title>הוספת דיון חדש</h1>
 <div mat-dialog-content>
 
-  <!-- previousDiscussionId -->
+  <!-- project -->
   <mat-form-field>
-    <input matInput placeholder="מזהה דיון קודם" [(ngModel)]="discussionObj.previousDiscussionId">
+    <input matInput [disabled]="true" placeholder="פרויקט" [(ngModel)]="data.project.title">
   </mat-form-field>
 
+  <!-- previousDiscussionId -->
+  <mat-form-field class="example-full-width">
+    <input type="text" placeholder="דיון קודם" matInput [formControl]="autoControl" [matAutocomplete]="auto" tabindex="-1">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
   <!-- title -->
   <mat-form-field>
     <input matInput placeholder="כותרת" [(ngModel)]="discussionObj.title">
@@ -70,19 +79,18 @@
   </mat-form-field>
 
   <!-- priorTasks -->
-  <!-- <app-tasks-list [title]="'משימות מדיון קודם'" [(tasks)]="priorTasks"></app-tasks-list> -->
   <mat-list class="tasks">
       <h3 mat-subheader>משימות מדיון קודם</h3>
       <mat-list-item *ngFor="let task of priorTasks">
-        <mat-checkbox [ngClass]="{'checked': task.finished}" [(ngModel)]="task.finished"></mat-checkbox>
+        <mat-checkbox [(ngModel)]="task.finished"></mat-checkbox>
         <h4 mat-line>{{ task.summary }}</h4>
         <p mat-line>{{ task.endDate.toLocaleDateString('en-GB') }} | {{ task.responsible }}</p>
         <p mat-line> <a [href]="task.jiraLink" target="_blank">Open in JIRA</a></p>
         <mat-icon mat-list-icon (click)="deletePriorTask(task)">delete</mat-icon>
       </mat-list-item>
       <div>
-        <mat-form-field>
-          <input matInput placeholder="תיאור" [(ngModel)]="priorTaskObj.summary">
+        <mat-form-field class="task-summary">
+          <textarea matInput placeholder="תיאור המשימה" [(ngModel)]="priorTaskObj.summary"></textarea>
         </mat-form-field>
         <mat-form-field>
           <input matInput placeholder="אחראי" [(ngModel)]="priorTaskObj.responsible">
@@ -96,12 +104,11 @@
           <mat-datepicker-toggle matSuffix [for]="picker_prior"></mat-datepicker-toggle>
           <mat-datepicker #picker_prior></mat-datepicker>
         </mat-form-field>
-        <button mat-raised-button class="add-task-btn" (click)="addPriorTask($event)">הוסף משימה</button>
+        <button mat-raised-button class="add-task-btn" (click)="addPriorTask($event)">הוספת משימה</button>
       </div>
     </mat-list>
 
   <!-- continueTasks -->
-  <!-- <app-tasks-list [title]="'משימות להמשך'" [(tasks)]="continueTasks"></app-tasks-list> -->
   <mat-list class="tasks">
     <h3 mat-subheader>משימות להמשך</h3>
     <mat-list-item *ngFor="let task of continueTasks">
@@ -112,8 +119,8 @@
       <mat-icon mat-list-icon (click)="deleteContinueTask(task)">delete</mat-icon>
     </mat-list-item>
     <div>
-      <mat-form-field>
-        <input matInput placeholder="תיאור" [(ngModel)]="continueTaskObj.summary">
+      <mat-form-field class="task-summary">
+        <textarea matInput placeholder="תיאור המשימה" [(ngModel)]="continueTaskObj.summary"></textarea>
       </mat-form-field>
       <mat-form-field>
         <input matInput placeholder="אחראי" [(ngModel)]="continueTaskObj.responsible">
@@ -127,12 +134,31 @@
         <mat-datepicker-toggle matSuffix [for]="picker_continue"></mat-datepicker-toggle>
         <mat-datepicker #picker_continue></mat-datepicker>
       </mat-form-field>
-      <button mat-raised-button class="add-task-btn" (click)="addContinueTask($event)">הוסף משימה</button>
+      <button mat-raised-button class="add-task-btn" (click)="addContinueTask($event)">הוספת משימה</button>
     </div>
   </mat-list>
 
+  <!-- comments -->
+  <mat-list class="comments">
+      <h3 mat-subheader>משימות להמשך</h3>
+      <mat-list-item *ngFor="let comment of discussionObj.comments">
+        <h4 mat-line>{{ comment.content }}</h4>
+        <p mat-line>{{ comment.author }}</p>
+        <mat-icon mat-list-icon (click)="deleteComment(comment)">delete</mat-icon>
+      </mat-list-item>
+      <div>
+        <mat-form-field class="task-summary">
+          <textarea matInput placeholder="תוכן התגובה" [(ngModel)]="commentObj.content"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="מחבר התגובה" [(ngModel)]="commentObj.author">
+        </mat-form-field>
+        <button mat-raised-button class="add-task-btn" (click)="addComment($event)">הוספת תגובה</button>
+      </div>
+    </mat-list>
+
   <div mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
     <button mat-raised-button (click)="exit()">ביטול</button>
-    <button mat-raised-button color="primary" (click)="save()">שמירה</button>
+    <button mat-raised-button class="primary" (click)="save()">שמירה</button>
   </div>
 </div>

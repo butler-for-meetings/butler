@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>הוספת תגובה חדשה</h1>
+<div mat-dialog-content>
+
+  <!-- author -->
+  <mat-form-field>
+    <input matInput placeholder="מחבר התגובה" [(ngModel)]="comment.author">
+  </mat-form-field>
+
+  <!-- content -->
+  <mat-form-field>
+    <textarea matInput placeholder="תוכן התגובה" [(ngModel)]="comment.content"></textarea>
+  </mat-form-field>
+
+  <div mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button (click)="exit()">ביטול</button>
+    <button mat-raised-button class="primary" (click)="save()">שמירה</button>
+  </div>
+</div>

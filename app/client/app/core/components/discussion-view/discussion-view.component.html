@@ -1,9 +1,14 @@
 <div class="discussion-main" fxLayout="row" *ngIf="discussion">
   <div class="discussion-main-content">
     <div class="discussion-header" fxLayout="row" fxLayoutAlign="space-between center">
-      <div class="discussion-title">{{ discussion.title }}</div>
+      <div class="discussion-title">
+        {{ discussion.title }}
+        <button mat-mini-fab (click)="openDialogDiscussion()" class="edit-btn">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
       <mat-chip-list>
-        <!-- <mat-chip class="date-chip">{{ discussion.date.toLocaleDateString('en-GB') }}</mat-chip> -->
+        <mat-chip class="date-chip">{{ discussion.date.toLocaleDateString('en-GB') }}</mat-chip>
       </mat-chip-list>
     </div>
     <div class="discussion-purpose" fxLayout="row" fxLayoutAlign="start center">
@@ -58,21 +63,22 @@
           <div class="comment-content">{{ comment.content }}</div>
         </div>
       </div>
+      <button mat-fab class="add-button" (click)="openDialogComment()">
+        <mat-icon>add</mat-icon>
+      </button>
     </div>
 
     <div class="buttons" fxLayout="row" fxLayoutAlign="start center">
-      <button mat-fab>
+      <button mat-fab (click)="movePreviousDiscussion()">
         <mat-icon>arrow_forward</mat-icon>
       </button>
-      <button mat-fab>
+      <button mat-fab (click)="moveNextDiscussion()">
         <mat-icon>arrow_back</mat-icon>
       </button>
     </div>
 
   </div>
-  <div class="discussion-divider">
-
-  </div>
+  <div class="discussion-divider"></div>
   <div class="discussion-side">
     <div class="tasks-box">
       <app-tasks-box [title]="'משימות מדיון קודם'" [tasks]="discussion.priorTasks"></app-tasks-box>
@@ -81,4 +87,7 @@
       <app-tasks-box [title]="'משימות להמשך'" [tasks]="discussion.continueTasks"></app-tasks-box>
     </div>
   </div>
+</div>
+<div class="no-discussion" *ngIf="!discussion">
+אנא בחרו דיון מהתפריט שמימין על מנת לקבל פרטים אודותיו
 </div>

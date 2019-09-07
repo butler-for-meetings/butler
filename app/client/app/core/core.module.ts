@@ -21,6 +21,7 @@ import { MaterialModule } from '../material.module';
 import { FormsModule } from '@angular/forms';
 import { AddDiscussionDialogComponent } from './components/add-discussion-dialog/add-discussion-dialog.component';
 import { ButlerApiService } from './services/butler-api.service';
+import { AddCommentDialogComponent } from './components/add-comment-dialog/add-comment-dialog.component';
 
 @NgModule({
   imports: [
@@ -43,10 +44,12 @@ import { ButlerApiService } from './services/butler-api.service';
     HeaderComponent,
     DescriptionBoxComponent,
     TasksBoxComponent,
-    AddDiscussionDialogComponent
+    AddDiscussionDialogComponent,
+    AddCommentDialogComponent
   ],
   entryComponents: [
-    AddDiscussionDialogComponent
+    AddDiscussionDialogComponent,
+    AddCommentDialogComponent
   ],
   providers: [
     
