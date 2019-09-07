@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material';
 import { AddDiscussionDialogComponent } from '../add-discussion-dialog/add-discussion-dialog.component';
 import { ButlerApiService } from '../../services/butler-api.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-discussions-menu',
@@ -15,15 +16,16 @@ export class DiscussionsMenuComponent implements OnInit {
   @Input() project: Project;
   @Output() menuTypeClick: EventEmitter<any> = new EventEmitter<any>();
   @Output() updateProjectClick: EventEmitter<any> = new EventEmitter<any>();
-  chosenDiscussionIndex: Number;
+  chosenDiscussionIndex: number;
   subscription: Subscription;
+  searchText: string;
 
-  constructor(public dialog: MatDialog, private butlerApiService: ButlerApiService) { }
+  constructor(public dialog: MatDialog, private butlerApiService: ButlerApiService, private router: Router) { }
 
   ngOnInit() {
     const self = this;
-    this.subscription = this.butlerApiService.discussionViewToMenu.subscribe(message => { 
-      self.chosenDiscussionIndex = message; 
+    this.subscription = this.butlerApiService.discussionViewToMenu.subscribe(message => {
+      self.chosenDiscussionIndex = message;
     });
   }
 
@@ -47,6 +49,7 @@ export class DiscussionsMenuComponent implements OnInit {
   discussionChosen(discussionIndex): void {
     this.chosenDiscussionIndex = discussionIndex;
     this.butlerApiService.discussionMenuToView.next({project: this.project, discussionIndex});
+    // this.router.navigate(['discussion', this.project.discussions[discussionIndex].title]);
   }
 
   filterBy(prop: string) {

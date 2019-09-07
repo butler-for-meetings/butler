@@ -2,10 +2,10 @@ import { Component, OnInit, Input, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS, MatChipInputEvent } from '@angular/material';
 import { Discussion } from '../../models/discussion';
 import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { Task } from '../../models/task';
-import { DiscussionEditComponent } from '../discussion-edit/discussion-edit.component';
+import { Comment } from '../../models/comment';
 import { Project } from '../../models/project';
 import { Observable } from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
@@ -42,13 +42,13 @@ export class AddDiscussionDialogComponent implements OnInit {
   filteredOptions: Observable<string[]>;
 
   constructor(private fb: FormBuilder,
-    public dialogRef: MatDialogRef<AddDiscussionDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
-  
+              public dialogRef: MatDialogRef<AddDiscussionDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
+
   ngOnInit() {
     this.priorTaskObj = { summary: '', startDate: new Date(), endDate: new Date(), responsible: '', jiraLink: '', finished: false };
     this.continueTaskObj = { summary: '', startDate: new Date(), endDate: new Date(), responsible: '', jiraLink: '', finished: false };
-    this.commentObj = { author: '', content: '' };    
+    this.commentObj = { author: '', content: '' };
     this.options = this.data.project.discussions.map( discussion => discussion.title);
     this.filteredOptions = this.autoControl.valueChanges
       .pipe(
@@ -64,13 +64,13 @@ export class AddDiscussionDialogComponent implements OnInit {
       this.autoControl.setValue(this.discussionObj.previousDiscussionId);
     } else {
       this.discussionObj = {
-        title: '', 
+        title: '',
         date: new Date(),
-        purpose: '', 
-        host: '', 
+        purpose: '',
+        host: '',
         participants: [],
         tags: [],
-        background: '', 
+        background: '',
         mainPoints: '',
         mainPointsSum: '',
         priorTasks: [],
@@ -105,7 +105,7 @@ export class AddDiscussionDialogComponent implements OnInit {
       this.tags.splice(index, 1);
     }
   }
-  
+
   addParticipant(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value;
@@ -185,15 +185,13 @@ export class AddDiscussionDialogComponent implements OnInit {
     this.discussionObj.priorTasks = this.priorTasks;
     this.discussionObj.continueTasks = this.continueTasks;
     this.discussionObj.previousDiscussionId = this.autoControl.value;
-    
-    if (this.data.discussion){
+
+    if (this.data.discussion) {
       this.data.discussion = this.discussionObj;
       this.dialogRef.close(this.data.discussion);
     } else {
       this.data.project.discussions.push(this.discussionObj);
       this.dialogRef.close(this.data.project);
     }
-    
   }
-
 }

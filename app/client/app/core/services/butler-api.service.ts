@@ -10,15 +10,13 @@ export class ButlerApiService {
 
   constructor(private _http: HttpClient) { }
 
+  public discussionMenuToView = new Subject<any>();
+  public discussionViewToMenu = new Subject<any>();
+
   /**
    * Get all projetcs
    */
   getAllProjetcs(): Promise<Project[]> {
     return this._http.get<Project[]>('/api/projects').toPromise();
   }
-
-  public discussionMenuToView = new Subject<any>();
-  public discussionViewToMenu = new Subject<any>();
-
-
 }

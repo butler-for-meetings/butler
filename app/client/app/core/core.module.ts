@@ -22,13 +22,16 @@ import { FormsModule } from '@angular/forms';
 import { AddDiscussionDialogComponent } from './components/add-discussion-dialog/add-discussion-dialog.component';
 import { ButlerApiService } from './services/butler-api.service';
 import { AddCommentDialogComponent } from './components/add-comment-dialog/add-comment-dialog.component';
+import { FilterPipe } from './pipes/filter.pipe';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   declarations: [
     ContentComponent,
@@ -45,14 +48,12 @@ import { AddCommentDialogComponent } from './components/add-comment-dialog/add-c
     DescriptionBoxComponent,
     TasksBoxComponent,
     AddDiscussionDialogComponent,
-    AddCommentDialogComponent
+    AddCommentDialogComponent,
+    FilterPipe
   ],
   entryComponents: [
     AddDiscussionDialogComponent,
     AddCommentDialogComponent
-  ],
-  providers: [
-    
   ]
 })
 export class CoreModule { }

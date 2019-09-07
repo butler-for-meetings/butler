@@ -2,7 +2,7 @@
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSidenavModule, MatToolbarModule, MatIconModule, MatCheckboxModule, MatButtonModule,
-  MatDividerModule, MatInputModule, MatChipsModule, MatCardModule, MatDialogModule, 
+  MatDividerModule, MatInputModule, MatChipsModule, MatCardModule, MatDialogModule,
   MatFormFieldModule, MatDatepickerModule, MatListModule, MatAutocompleteModule } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';

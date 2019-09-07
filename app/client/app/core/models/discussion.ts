@@ -1,6 +1,5 @@
 import { Task } from './task';
-import { User } from './user';
-import { Tag } from './tag';
+import { Comment } from './comment';
 
 export interface Discussion {
   title: string;

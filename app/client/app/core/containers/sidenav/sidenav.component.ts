@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Project } from '../../models/project';
 
+
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
@@ -50,7 +51,8 @@ export class SidenavComponent implements OnInit {
             comments: [
               {author: 'שיראל קדוש', content: 'תגובה תגובה תגובה'},
               {author: 'שיראל קדוש', content: 'תגובה תגובה תגובה'}
-            ]
+            ],
+            previousDiscussionId: ''
           },
           {
             title: 'הדיון הכי הכי הכי 1',
@@ -132,7 +134,8 @@ export class SidenavComponent implements OnInit {
             comments: [
               {author: 'שיראל קדוש', content: 'תגובה תגובה תגובה'},
               {author: 'שיראל קדוש', content: 'תגובה תגובה תגובה'}
-            ]
+            ],
+            previousDiscussionId: ''
           },
           {
             title: 'הדיון הכי הכי הכי 3',
@@ -214,7 +217,8 @@ export class SidenavComponent implements OnInit {
             comments: [
               { author: 'שיראל קדוש', content: 'תגובה תגובה תגובה'},
               { author: 'שיראל קדוש', content: 'תגובה תגובה תגובה'}
-            ]
+            ],
+            previousDiscussionId: ''
           },
           {
             title: 'הדיון הכי הכי הכי 6',
@@ -261,8 +265,8 @@ export class SidenavComponent implements OnInit {
               {summary: 'משימה 1', startDate: new Date(), endDate: new Date(), responsible: 'שיראל קדוש', jiraLink: 'url', finished: false}
             ],
             comments: [
-              {author: 'שיראל קדוש', content: 'תגובה תגובה תגובה'},
-              {author: 'שיראל קדוש', content: 'תגובה תגובה תגובה'}
+              { author: 'שיראל קדוש', content: 'תגובה תגובה תגובה'},
+              { author: 'שיראל קדוש', content: 'תגובה תגובה תגובה'}
             ],
             previousDiscussionId: 'הדיון הכי הכי הכי 6'
           }
@@ -271,14 +275,14 @@ export class SidenavComponent implements OnInit {
     ];
   }
 
-  updateMenuType(input){
+  updateMenuType(input) {
     this.menuType = input.menuType;
     if (this.menuType === this.menuTypes.DISCUSSION) {
-      this.project = this.projects[input.projectIndex]; 
+      this.project = this.projects[input.projectIndex];
     }
   }
 
-  updateProject(input){
+  updateProject(input) {
     const index = this.projects.indexOf(input.project);
 
     if (index >= 0) {

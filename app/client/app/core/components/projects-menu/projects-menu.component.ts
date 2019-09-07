@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Project } from '../../models/project';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-projects-menu',
@@ -9,14 +10,17 @@ import { Project } from '../../models/project';
 export class ProjectsMenuComponent implements OnInit {
 
   @Input() projects: Project[];
-  @Output() menuTypeClick: EventEmitter<any> = new EventEmitter<any>(); 
-  constructor() { }
+  @Output() menuTypeClick: EventEmitter<any> = new EventEmitter<any>();
+  searchText: string;
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
-  updateMenuType(event, projectIndex){
+  updateMenuType(event, projectIndex) {
     this.menuTypeClick.emit({menuType: 'discussion', projectIndex});
+    // this.router.navigate(['project', this.projects[projectIndex].title]);
   }
 
   filterBy(prop: string) {

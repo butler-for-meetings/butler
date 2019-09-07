@@ -121,7 +121,7 @@
 .no-discussion {
     font-size: 75px;
     margin-top: 20%;
-    margin-right: 5%;
+    margin-right: 3%;
     color: #6191fd;
     font-weight: bold;
 }
@@ -131,6 +131,10 @@
         &.mat-standard-chip{
             background-color: #c3c1c1;        
         }    
+    }
+
+    .mat-mini-fab .mat-button-wrapper {
+        line-height: 22px;
     }
 }
 

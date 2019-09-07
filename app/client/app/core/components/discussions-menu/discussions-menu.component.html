@@ -1,6 +1,6 @@
 <div class="sidebar-container">
   <div class="search-contianer" fxLayout="row" fxLayoutAlign="center center" [dir]="'rtl'">
-    <input class="search-input" type="text" placeholder="הזן טקסט לחיפוש" />
+    <input class="search-input" type="text" placeholder="הזן טקסט לחיפוש" [(ngModel)]="searchText" />
   </div>
   <div class="sidebar-discussion-top">
     <span class="go-back" (click)="updateMenuType($event)"><i class="material-icons">
@@ -15,7 +15,7 @@
     </div>
   </div>
   <div class="sidebar-title">דיונים</div>
-  <div class="sidebar-discussion" *ngFor="let discussion of filterBy('date'); let i = index" (click)="discussionChosen(i)" [ngClass]="{'chosen': chosenDiscussionIndex === i}">
+  <div class="sidebar-discussion" *ngFor="let discussion of filterBy('date') | filter : searchText; let i = index" (click)="discussionChosen(i)" [ngClass]="{'chosen': chosenDiscussionIndex === i}">
     <div class="discussion-title">{{ discussion.title }}</div>
     <div class="discussion-date">{{ discussion.date.toLocaleDateString('en-GB') }}</div>
   </div>

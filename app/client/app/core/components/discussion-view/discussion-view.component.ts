@@ -18,15 +18,15 @@ export class DiscussionViewComponent implements OnInit, OnDestroy  {
   project: Project;
   subscription: Subscription;
 
-  ngOnInit() { 
+  ngOnInit() {
     const self = this;
-    this.subscription = this.butlerApiService.discussionMenuToView.subscribe(message => { 
-      self.discussion = message.project.discussions[message.discussionIndex]; 
+    this.subscription = this.butlerApiService.discussionMenuToView.subscribe(message => {
+      self.discussion = message.project.discussions[message.discussionIndex];
       self.project = message.project;
     });
   }
 
-  constructor(private butlerApiService: ButlerApiService, public dialog: MatDialog,) {
+  constructor(private butlerApiService: ButlerApiService, public dialog: MatDialog) {
   }
 
   ngOnDestroy() {
