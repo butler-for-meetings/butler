@@ -1,0 +1,136 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.25.0
+# ignores vulnerabilities until expiry date; change duration by modifying expiry date
+ignore:
+  SNYK-JS-HANDLEBARS-534478:
+    - '* > handlebars@4.1.2':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:29:55.784Z
+  SNYK-JS-LODASH-450202:
+    - '* > lodash@4.17.11':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:29:55.944Z
+  SNYK-JS-LODASH-608086:
+    - '* > lodash@4.17.11':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:29:56.051Z
+  SNYK-JS-LODASH-1040724:
+    - '* > lodash@4.17.11':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:29:56.128Z
+  SNYK-JS-LODASH-1018905:
+    - '* > lodash@4.17.11':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:29:56.207Z
+  SNYK-JS-LOADERUTILS-3042992:
+    - '* > loader-utils@1.2.3':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:29:56.404Z
+  SNYK-JS-LOADERUTILS-3043105:
+    - '* > loader-utils@1.2.3':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:29:56.492Z
+  SNYK-JS-LOADERUTILS-3105943:
+    - '* > loader-utils@1.2.3':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:29:56.568Z
+  SNYK-JS-MINIMATCH-3050818:
+    - '* > minimatch@3.0.4':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:29:56.728Z
+  SNYK-JS-BRACES-6838727:
+    - '* > braces@2.3.2':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:29:57.068Z
+  SNYK-JS-QS-3153490:
+    - '* > qs@6.5.2':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:29:57.243Z
+    - '* > qs@6.7.0':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:29:59.063Z
+  SNYK-JS-ANSIREGEX-1583908:
+    - '* > ansi-regex@4.1.0':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:29:57.428Z
+    - '* > ansi-regex@3.0.0':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:29:59.910Z
+  SNYK-JS-MINIMIST-559764:
+    - '* > minimist@0.0.10':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:29:57.723Z
+    - '* > minimist@1.2.0':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:29:57.987Z
+    - '* > minimist@0.0.8':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:29:58.647Z
+  SNYK-JS-MINIMIST-2429795:
+    - '* > minimist@0.0.10':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:29:57.807Z
+    - '* > minimist@1.2.0':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:29:58.084Z
+    - '* > minimist@0.0.8':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:29:58.727Z
+  SNYK-JS-JSONSCHEMA-1920922:
+    - '* > json-schema@0.2.3':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:29:58.327Z
+  SNYK-JS-XML2JS-5414874:
+    - '* > xml2js@0.4.19':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:29:58.483Z
+  SNYK-JS-INI-1048974:
+    - '* > ini@1.3.5':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:29:58.887Z
+  SNYK-JS-JSON5-3182856:
+    - '* > json5@1.0.1':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:29:59.227Z
+  SNYK-JS-URLPARSE-2401205:
+    - '* > url-parse@1.4.7':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:29:59.403Z
+  SNYK-JS-URLPARSE-2407759:
+    - '* > url-parse@1.4.7':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:29:59.564Z
+  SNYK-JS-URLPARSE-2407770:
+    - '* > url-parse@1.4.7':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:29:59.647Z
+  SNYK-JS-IP-6240864:
+    - '* > ip@1.1.5':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:30:00.087Z
+  SNYK-JS-SETVALUE-450213:
+    - '* > set-value@0.4.3':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:30:00.244Z
+    - '* > set-value@2.0.0':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:30:00.508Z
+  SNYK-JS-SETVALUE-1540541:
+    - '* > set-value@0.4.3':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:30:00.327Z
+    - '* > set-value@2.0.0':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:30:00.587Z
+  npm:debug:20170905:
+    - '* > debug@4.1.1':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:30:00.747Z
+  SNYK-JS-DECODEURICOMPONENT-3149970:
+    - '* > decode-uri-component@0.2.0':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:30:00.904Z
+  SNYK-JS-Y18N-1021887:
+    - '* > y18n@4.0.0':
+        reason: Fixed by Seal Security
+        created: 2024-09-03T11:30:01.084Z
